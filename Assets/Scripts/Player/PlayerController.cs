@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private bool isMoving;
     private Vector2 input;
     private Animator animator;
+    public LayerMask solidObjectsLayer;
+    public LayerMask monsterLayer;
 
     private void Awake(){
         animator = GetComponent<Animator>();
@@ -28,8 +30,10 @@ public class PlayerController : MonoBehaviour
 
             targetPos.x += input.x;
             targetPos.y += input.y;
+            if(IsWalkable(targetPos)){
 
             StartCoroutine(Move(targetPos));
+            }
         }
         }
         animator.SetBool("isMoving", isMoving);
@@ -44,5 +48,19 @@ public class PlayerController : MonoBehaviour
         }
         transform.position = targetPos;
         isMoving = false;
+        CheckForEncounters();
+    }
+
+    private bool IsWalkable(Vector3 targetPos){
+        if(Physics2D.OverlapCircle(targetPos, 0.05f, solidObjectsLayer)) {
+            return false;
+        }
+        return true;
+    }
+
+    private void CheckForEncounters(){
+        if(Physics2D.OverlapCircle(transform.position, 0.2f, monsterLayer) != null){
+            Debug.Log("Encountered a monster");
+        }
     }
 }
