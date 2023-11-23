@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask solidObjectsLayer;
     public LayerMask monsterLayer;
 
+    public GameController gameController;
+
     private void Awake(){
         animator = GetComponent<Animator>();
+        Debug.Log("I miss her");
     }
-    private void Update()
+    public void Update()
     {
         if(!isMoving){
             input.x = Input.GetAxisRaw("Horizontal");
@@ -24,6 +28,7 @@ public class PlayerController : MonoBehaviour
             input.y = 0;
         }
         if (input != Vector2.zero){
+            Debug.Log("moving");
             animator.SetFloat("moveX", input.x);
             animator.SetFloat("moveY", input.y);
             var targetPos = transform.position;
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour
     private void CheckForEncounters(){
         if(Physics2D.OverlapCircle(transform.position, 0.2f, monsterLayer) != null){
             Debug.Log("Encountered a monster");
+            gameController.BattleMode();
         }
     }
 }
