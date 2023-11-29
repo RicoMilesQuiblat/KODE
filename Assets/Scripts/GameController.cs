@@ -11,7 +11,9 @@ public class GameController : MonoBehaviour
     public GameObject mainGameObject;
     public GameObject battleGameObject;
 
+  
 
+    
 
     private void Awake(){
         // mainCamera.SetActive(true);
@@ -29,6 +31,10 @@ public class GameController : MonoBehaviour
         Debug.Log("BattleModeOn");
         mainGameObject.SetActive(false);
         battleGameObject.SetActive(true);
+    }
+
+    public void MazeTeleporterAnim(){
+        // Animation.
     }
 
     public void FreeRoamMode(){

@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     private bool isMoving;
+    private bool tele_isActive;
     private Vector2 input;
     private Animator animator;
     public LayerMask solidObjectsLayer;
     public LayerMask monsterLayer;
-
+    public LayerMask teleporterLayer;
     public GameController gameController;
+    private static readonly int hashActiveTele = Animator.StringToHash("Activate_teleporter");
 
     private void Awake(){
         animator = GetComponent<Animator>();
@@ -63,10 +65,51 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
-    private void CheckForEncounters(){
-        if(Physics2D.OverlapCircle(transform.position, 0.2f, monsterLayer) != null){
+    private void CheckForEncounters()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, monsterLayer) != null)
+        {
             Debug.Log("Encountered a monster");
             gameController.BattleMode();
         }
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, teleporterLayer);
+        foreach (Collider2D collider in colliders)
+        {
+            Debug.Log("Encountered a teleporter");
+            ActivateTeleporter();
+        }
+
+        if (colliders.Length == 0)
+        {
+            DeactivateTeleporter();
+        }
     }
+
+
+
+
+    private void ActivateTeleporter()
+    {
+        if (tele_isActive) return;
+
+        tele_isActive = true;
+        animator.SetTrigger(hashActiveTele);
+    }
+
+        private void DeactivateTeleporter()
+    {
+        if (!tele_isActive) return;
+
+        tele_isActive = false;
+
+        // You can add any logic here for deactivating the teleporter if needed
+
+        // Transition to the "Idle" state in the animator
+        animator.SetTrigger("Idle");  // Replace "Idle" with the actual trigger name for your idle state
+    }
+    public void Finish_TeleporterActivate() => tele_isActive = false;
+
+
+
 }
