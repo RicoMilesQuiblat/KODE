@@ -45,9 +45,27 @@ TagManager:
   - name: Background
     uniqueID: 1722072759
     locked: 0
-  - name: ForeGround
+  - name: patch
     uniqueID: 1169869033
+    locked: 0
+  - name: tiles
+    uniqueID: 4075391507
+    locked: 0
+  - name: solidObject back
+    uniqueID: 195129469
+    locked: 0
+  - name: SolidObject Front
+    uniqueID: 2164863753
     locked: 0
   - name: Player
     uniqueID: 2890438019
+    locked: 0
+  - name: Monster
+    uniqueID: 3790378465
+    locked: 0
+  - name: Trees back
+    uniqueID: 1162251287
+    locked: 0
+  - name: Trees front
+    uniqueID: 873852801
     locked: 0
