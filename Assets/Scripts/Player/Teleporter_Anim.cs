@@ -1,4 +1,5 @@
 
+using System.Data.Common;
 using UnityEngine;
 
 public class Teleporter_Anim : MonoBehaviour
@@ -10,6 +11,7 @@ public class Teleporter_Anim : MonoBehaviour
 
     public Transform GetDestination(){
         return destination;
+        
     }
     private void Start()
     {
