@@ -32,4 +32,8 @@ public class DialogueBox : MonoBehaviour
     public void UpdateMonsterHP(string text){
         monsterHP.text = text;
     }
+
+    public string GetHP(){
+        return playerHP.ToString();
+    }
 }
