@@ -73,38 +73,38 @@ public class PlayerController : MonoBehaviour
             gameController.BattleMode();
         }
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, teleporterLayer);
-        foreach (Collider2D collider in colliders)
-        {
-            Debug.Log("Encountered a teleporter");
-            ActivateTeleporter();
-        }
+        // Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, teleporterLayer);
+        // foreach (Collider2D collider in colliders)
+        // {
+        //     Debug.Log("Encountered a teleporter");
+        //     ActivateTeleporter();
+        // }
 
-        if (colliders.Length == 0)
-        {
-            DeactivateTeleporter();
-        }
+        // if (colliders.Length == 0)
+        // {
+        //     DeactivateTeleporter();
+        // }
     }
 
 
 
 
-    private void ActivateTeleporter()
-    {
-        if (tele_isActive) return;
+    // private void ActivateTeleporter()
+    // {
+    //     if (tele_isActive) return;
 
-        tele_isActive = true;
-        animator.SetTrigger(hashActiveTele);
-    }
+    //     tele_isActive = true;
+    //     animator.SetTrigger(hashActiveTele);
+    // }
 
-        private void DeactivateTeleporter()
-    {
-        if (!tele_isActive) return;
+    //     private void DeactivateTeleporter()
+    // {
+    //     if (!tele_isActive) return;
 
-        tele_isActive = false;     
-        animator.SetTrigger("Idle");  
-    }
-    public void Finish_TeleporterActivate() => tele_isActive = false;
+    //     tele_isActive = false;     
+    //     animator.SetTrigger("Idle");  
+    // }
+    // public void Finish_TeleporterActivate() => tele_isActive = false;
 
 
 

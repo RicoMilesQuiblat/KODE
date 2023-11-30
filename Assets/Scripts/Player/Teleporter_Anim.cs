@@ -4,6 +4,8 @@ using UnityEngine;
 public class Teleporter_Anim : MonoBehaviour
 {
     private Animator animator;
+    
+
     [SerializeField] private Transform destination;
 
     public Transform GetDestination(){
@@ -19,9 +21,15 @@ public class Teleporter_Anim : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")) // You can use a tag or layer to identify your player
-        {
+        {   
+            TipPopout.Create(transform.position, "Press 'E'");
             // Start the animation
             animator.SetBool("IsPlayerOnSprite", true);
+        }
+        else
+        {
+            
+            animator.SetBool("IsPlayerOnSprite", false);
         }
     }
 
@@ -31,7 +39,11 @@ public class Teleporter_Anim : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Stop the animation
-            animator.SetBool("IsPlayerOnSprite", false);
+            animator.SetBool("IsPlayerOffSprite", true);
+        }
+        else
+        {
+            animator.SetBool("IsPlayerOffSprite", false);
         }
     }
 }
