@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerTeleport : MonoBehaviour
 {
     private GameObject currentTeleporter;
-    // Start is called before the first frame update
 
     void Update()
     {

@@ -101,12 +101,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!tele_isActive) return;
 
-        tele_isActive = false;
-
-        // You can add any logic here for deactivating the teleporter if needed
-
-        // Transition to the "Idle" state in the animator
-        animator.SetTrigger("Idle");  // Replace "Idle" with the actual trigger name for your idle state
+        tele_isActive = false;     
+        animator.SetTrigger("Idle");  
     }
     public void Finish_TeleporterActivate() => tele_isActive = false;
 
