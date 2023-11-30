@@ -46,8 +46,27 @@ TagManager:
     uniqueID: 1722072759
     locked: 0
   - name: ForeGround
+  - name: Ground Patch
+    uniqueID: 3060727905
+    locked: 0
+  - name: Tiles
+    uniqueID: 2024270081
+    locked: 0
+  - name: stair
+    uniqueID: 2105990331
+    locked: 0
+  - name: SolidObject_back
+    uniqueID: 1328167089
+    locked: 0
+  - name: SolidObject_front
     uniqueID: 1169869033
     locked: 0
   - name: Player
     uniqueID: 2890438019
+    locked: 0
+  - name: Trees back
+    uniqueID: 3329773633
+    locked: 0
+  - name: Trees front
+    uniqueID: 2002154985
     locked: 0
