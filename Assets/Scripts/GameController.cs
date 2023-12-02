@@ -23,15 +23,15 @@ public class GameController : MonoBehaviour
         mainGameObject.SetActive(true);
         battleGameObject.SetActive(false);
     }
-    public void BattleMode(){
-        // mainCamera.SetActive(false);
-        // mainGrid.SetActive(false);
-        // mainPlayer.SetActive(false);
-        // mainMonsters.SetActive(false);
-        Debug.Log("BattleModeOn");
-        mainGameObject.SetActive(false);
-        battleGameObject.SetActive(true);
-    }
+    // public void BattleMode(){
+    //     // mainCamera.SetActive(false);
+    //     // mainGrid.SetActive(false);
+    //     // mainPlayer.SetActive(false);
+    //     // mainMonsters.SetActive(false);
+    //     Debug.Log("BattleModeOn");
+    //     mainGameObject.SetActive(false);
+    //     battleGameObject.SetActive(true);
+    // }
 
     public void MazeTeleporterAnim(){
         // Animation.
