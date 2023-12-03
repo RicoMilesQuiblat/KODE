@@ -105,6 +105,7 @@ public class EnemyController : MonoBehaviour
                   Vector2 knockback = direction * knockbackForce;
                   Debug.Log(knockback);
                   player.GetHit(knockback * -1);
+                  
                 }
               }
         }

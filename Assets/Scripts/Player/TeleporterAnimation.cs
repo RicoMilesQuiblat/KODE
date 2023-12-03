@@ -2,7 +2,7 @@
 using System.Data.Common;
 using UnityEngine;
 
-public class Teleporter_Anim : MonoBehaviour
+public class TeleporterAnimation : MonoBehaviour
 {
     private Animator animator;
     

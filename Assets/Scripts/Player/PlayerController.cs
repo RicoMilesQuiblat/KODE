@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
     public InGameUiController inGameUiController;
+    public InGameUiController HitAnim;
 
     public bool isAlive = true;
 
@@ -101,9 +104,13 @@ public class PlayerController : MonoBehaviour
             }
             Attack();
         }
-        animator.SetBool("isMoving", isMoving);
 
-        slider.value = health;
+        // if (Keyboard.){
+        //     rb.velocity = new Vector2(input.x * moveSpeed*4, input.y * moveSpeed*4);
+        // }
+        // animator.SetBool("isMoving", isMoving);
+
+        // slider.value = health;
         }
         
     }
@@ -152,7 +159,7 @@ public class PlayerController : MonoBehaviour
         // animator.SetTrigger("Hit");
         Debug.Log(health);
         rb.AddForce(knockback);
-       
+        inGameUiController.HitScreen();
     } 
 
     public bool CheckIsAlive(){

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class InGameUiController : MonoBehaviour
@@ -7,6 +8,8 @@ public class InGameUiController : MonoBehaviour
     public GameObject tools;
     public GameObject journal;
     public GameObject deathScreen;
+    public GameObject damageScreen;
+
 
     public PlayerController playerController;
 
@@ -26,6 +29,12 @@ public class InGameUiController : MonoBehaviour
 
     public void DeathScreen(){
         deathScreen.SetActive(true);
+    }
+
+    public async void HitScreen(){
+        damageScreen.SetActive(true);
+        await Task.Delay(100);
+        damageScreen.SetActive(false);
     }
 
     public void Respawn(){
