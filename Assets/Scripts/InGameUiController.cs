@@ -10,6 +10,9 @@ public class InGameUiController : MonoBehaviour
     public GameObject deathScreen;
     public GameObject damageScreen;
 
+    public GameObject dashScreen;
+
+
 
     public PlayerController playerController;
 
@@ -35,6 +38,12 @@ public class InGameUiController : MonoBehaviour
         damageScreen.SetActive(true);
         await Task.Delay(100);
         damageScreen.SetActive(false);
+    }
+
+    public async void DashScreen(){
+        dashScreen.SetActive(true);
+        await Task.Delay(100);
+        dashScreen.SetActive(false);
     }
 
     public void Respawn(){

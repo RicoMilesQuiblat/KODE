@@ -39,7 +39,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 startPosition;
 
     public EnemyController enemyController;
-
+    private bool facingRight=false;
+    private bool facingUp=false;
     public float Health{
         set{
             health = value;
@@ -69,11 +70,16 @@ public class PlayerController : MonoBehaviour
     }
     public void Update()
     {
-        if(isAlive){
+        if (isAlive)
+        {
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
-
-            if(input != Vector2.zero){
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                Teleport(2f);
+            }
+            if (input != Vector2.zero)
+            {
                 rb.velocity = new Vector2(input.x * moveSpeed, input.y * moveSpeed);
 
                 animator.SetFloat("moveX", input.x);
@@ -85,12 +91,22 @@ public class PlayerController : MonoBehaviour
                     moveSpeed * Time.fixedDeltaTime + collisionOffset
                 );
                 isMoving = true;
-            }else{
+
+                
+                // Check the facing direction
+            }
+            else
+            {
                 isMoving = false;
             }
 
+             if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                
+                inGameUiController.DashScreen();
+            }
 
-        if (Input.GetMouseButtonDown(0)){
+              if (Input.GetMouseButtonDown(0)){
             Debug.Log("Attacking");
             Vector2 facingDirection = GetFacingDirection();
             if(facingDirection == Vector2.right){
@@ -105,15 +121,47 @@ public class PlayerController : MonoBehaviour
             Attack();
         }
 
-        // if (Keyboard.){
-        //     rb.velocity = new Vector2(input.x * moveSpeed*4, input.y * moveSpeed*4);
-        // }
-        // animator.SetBool("isMoving", isMoving);
-
-        // slider.value = health;
+            animator.SetBool("isMoving", isMoving);
+            slider.value = health;
         }
-        
     }
+
+    private void Teleport(float distance)
+    {
+        Vector2 facingDirection = GetFacingDirection();
+        Vector2 teleportPosition = rb.position + facingDirection * distance;
+
+        // Check if the teleportPosition is walkable (modify this based on your game logic)
+        if (IsWalkable(teleportPosition))
+        {
+            StartCoroutine(TeleportCoroutine(teleportPosition));
+        }
+    }
+
+    private bool IsWalkable(Vector2 targetPos)
+    {
+        // Add your logic to check if the target position is walkable
+        // You may want to use Physics2D.OverlapCircle or other methods based on your game design.
+        // For now, let's assume any position is walkable.
+        return true;
+    }
+
+    private IEnumerator TeleportCoroutine(Vector2 targetPos)
+    {
+        isMoving = true;
+
+        // Optional: Add any teleportation animation or effects here
+
+        // Teleport the player to the target position
+        transform.position = targetPos;
+
+        yield return null; // Wait for the end of the frame
+
+        isMoving = false;
+
+        // Optional: Add any teleportation animation or effects here
+    }
+
 
     public void Respawn(){
         Awake();
