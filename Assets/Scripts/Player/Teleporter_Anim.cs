@@ -8,9 +8,14 @@ public class Teleporter_Anim : MonoBehaviour
     
 
     [SerializeField] private Transform destination;
+    [SerializeField] private bool trigger = false;
 
     public Transform GetDestination(){
-        return destination;
+        if(trigger){
+            return destination;
+        }else{
+            return null;
+        }
         
     }
     private void Start()
@@ -24,7 +29,10 @@ public class Teleporter_Anim : MonoBehaviour
     {
         if (other.CompareTag("Player")) // You can use a tag or layer to identify your player
         {   
-            TipPopout.Create(transform.position, "Press 'E'");
+            if(trigger){
+                TipPopout.Create(transform.position, "Press 'E'");
+            }
+            
             // Start the animation
             animator.SetBool("IsPlayerOnSprite", true);
         }
