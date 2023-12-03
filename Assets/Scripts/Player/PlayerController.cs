@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,11 +21,21 @@ public class PlayerController : MonoBehaviour
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
+    public InGameUiController inGameUiController;
+
     public bool isAlive = true;
 
     private Rigidbody2D rb;
 
     public SwordAttack swordAttack;
+
+    public Slider slider;
+
+    public GameObject fill;
+
+    private Vector2 startPosition;
+
+    public EnemyController enemyController;
 
     public float Health{
         set{
@@ -38,14 +49,20 @@ public class PlayerController : MonoBehaviour
             return health;
         }
     }
-    public float health = 10f;
+    public float health;
     
 
     private void Awake(){
+        health = 10f;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        fill.SetActive(true);
         animator.SetBool("IsAlive", true);
         Debug.Log("I miss her");
+        startPosition = new Vector2(0.5f, 0.8f);
+        transform.position = startPosition;
+        isAlive = true;
+
     }
     public void Update()
     {
@@ -85,15 +102,24 @@ public class PlayerController : MonoBehaviour
             Attack();
         }
         animator.SetBool("isMoving", isMoving);
+
+        slider.value = health;
         }
         
     }
 
+    public void Respawn(){
+        Awake();
+        
+
+    }
     
 
     public void PlayerDie(){
         animator.SetBool("IsAlive", false);
+        fill.SetActive(false);
         isAlive = false;
+        inGameUiController.DeathScreen();
     }
     
 

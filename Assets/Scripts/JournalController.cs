@@ -8,6 +8,23 @@ public class JournalController : MonoBehaviour
    public InGameUiController inGameUiController;
    private int currentPage = 0;
 
+    public GameObject EmptyPage;
+    public GameObject NonEmptyPage;
+   public GameObject page1;
+   public GameObject page2;
+
+
+    public void DisplayPage(){
+        Debug.Log(pages.Count);
+        if(pages.Count == 0){
+            NonEmptyPage.SetActive(false);
+            EmptyPage.SetActive(true);
+        }else{
+            EmptyPage.SetActive(false);
+            NonEmptyPage.SetActive(true);
+
+        }
+    }
    public void NextPage(){
         int nextPage = currentPage + 1;
         if(nextPage >= pages.Count){
@@ -28,6 +45,14 @@ public class JournalController : MonoBehaviour
             pages[currentPage].SetActive(false);
             pages[previousPage].SetActive(true);
             currentPage = previousPage;
+        }
+   }
+
+   public void AddPage(){
+        if(pages.Count == 0){
+            pages.Add(page1);
+        }else if(pages.Count == 1){
+            pages.Add(page2);
         }
    }
 

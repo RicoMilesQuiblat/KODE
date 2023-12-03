@@ -58,6 +58,9 @@ TagManager:
   - name: SolidObject Front
     uniqueID: 2164863753
     locked: 0
+  - name: Scroll
+    uniqueID: 2065598115
+    locked: 0
   - name: Monster
     uniqueID: 3790378465
     locked: 0

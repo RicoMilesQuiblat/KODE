@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -15,13 +16,12 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed = 800f;
 
     public bool playerIsAlive;
+    public ScrollController scrollController;
+    private Vector2 dropPosition;
+
+    public bool isFlipped = false;
   
 
-    private void Start(){
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-        animator.SetBool("isAlive", true);
-    }
     public float Health{
         set{
             health = value;
@@ -34,17 +34,36 @@ public class EnemyController : MonoBehaviour
             return health;
         }
     }
-    public float health = 10f;
+    public float health;
+    private void Start(){
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        animator.SetBool("isAlive", true);
+       
+    }
 
     void FixedUpdate(){
         if(detectionZone.detectedObj.Count > 0){
             Vector2 direction = (detectionZone.detectedObj[0].transform.position - transform.position).normalized;
+            Vector3 scale = transform.localScale;
+            
+
+            if(direction.x < 0 && !isFlipped){
+                scale.x *= -1;
+                transform.localScale = scale;
+                isFlipped = true;
+            }else if(direction.x > 0 && isFlipped){
+                scale.x *= -1;
+                transform.localScale = scale;
+                isFlipped = false;
+            } 
             
             rb.AddForce(direction * moveSpeed * Time.deltaTime);
             animator.SetBool("IsMoving", true);
         }else{
             animator.SetBool("IsMoving", false);
         }
+        dropPosition = transform.position;
     }
     public void GetHit(Vector2 knockback){
         animator.SetTrigger("Hit");
@@ -57,7 +76,17 @@ public class EnemyController : MonoBehaviour
     }
 
     public void RemoveEnemy(){
+        if(scrollController){
+
+            scrollController.DropScroll(dropPosition);
+        }
         Destroy(gameObject);
+        
+    }
+
+    public void Respawn(){
+        Start();
+
     }
     void OnCollisionEnter2D(Collision2D col){
         if(col.collider.tag == "Player"){
@@ -80,6 +109,5 @@ public class EnemyController : MonoBehaviour
               }
         }
     }
-
     
 }
