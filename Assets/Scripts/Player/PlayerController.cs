@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
     public InGameUiController inGameUiController;
+    public InGameUiController HitAnim;
 
     public bool isAlive = true;
 
@@ -36,7 +39,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 startPosition;
 
     public EnemyController enemyController;
-
+    private bool facingRight=false;
+    private bool facingUp=false;
     public LivesController livesController;
 
 
@@ -76,8 +80,12 @@ public class PlayerController : MonoBehaviour
         if(isAlive && lives > 0){
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
-
-            if(input != Vector2.zero){
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                Teleport(2f);
+            }
+            if (input != Vector2.zero)
+            {
                 rb.velocity = new Vector2(input.x * moveSpeed, input.y * moveSpeed);
 
                 animator.SetFloat("moveX", input.x);
@@ -89,12 +97,22 @@ public class PlayerController : MonoBehaviour
                     moveSpeed * Time.fixedDeltaTime + collisionOffset
                 );
                 isMoving = true;
-            }else{
+
+                
+                // Check the facing direction
+            }
+            else
+            {
                 isMoving = false;
             }
 
+             if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                
+                inGameUiController.DashScreen();
+            }
 
-        if (Input.GetMouseButtonDown(0)){
+              if (Input.GetMouseButtonDown(0)){
             Debug.Log("Attacking");
             Vector2 facingDirection = GetFacingDirection();
             if(facingDirection == Vector2.right){
@@ -108,16 +126,52 @@ public class PlayerController : MonoBehaviour
             }
             Attack();
         }
-        animator.SetBool("isMoving", isMoving);
 
-        slider.value = health;
+            animator.SetBool("isMoving", isMoving);
+            slider.value = health;
         }
 
         if(lives == 0){
             GameOver();
         }
-        
     }
+
+    private void Teleport(float distance)
+    {
+        Vector2 facingDirection = GetFacingDirection();
+        Vector2 teleportPosition = rb.position + facingDirection * distance;
+
+        // Check if the teleportPosition is walkable (modify this based on your game logic)
+        if (IsWalkable(teleportPosition))
+        {
+            StartCoroutine(TeleportCoroutine(teleportPosition));
+        }
+    }
+
+    private bool IsWalkable(Vector2 targetPos)
+    {
+        // Add your logic to check if the target position is walkable
+        // You may want to use Physics2D.OverlapCircle or other methods based on your game design.
+        // For now, let's assume any position is walkable.
+        return true;
+    }
+
+    private IEnumerator TeleportCoroutine(Vector2 targetPos)
+    {
+        isMoving = true;
+
+        // Optional: Add any teleportation animation or effects here
+
+        // Teleport the player to the target position
+        transform.position = targetPos;
+
+        yield return null; // Wait for the end of the frame
+
+        isMoving = false;
+
+        // Optional: Add any teleportation animation or effects here
+    }
+
 
     public void Respawn(){
 
@@ -152,7 +206,7 @@ public class PlayerController : MonoBehaviour
         // animator.SetTrigger("Hit");
         Debug.Log(health);
         rb.AddForce(knockback);
-       
+        inGameUiController.HitScreen();
     } 
 
     public bool CheckIsAlive(){
