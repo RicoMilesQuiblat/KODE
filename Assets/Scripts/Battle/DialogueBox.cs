@@ -10,9 +10,7 @@ public class DialogueBox : MonoBehaviour
     public Text chocie3;
     public Text choice4;
 
-    public Text playerHP;
-    public Text monsterHP;
-
+    
 
     
     public void ChangeQuestion(string newQuestion){
@@ -26,14 +24,5 @@ public class DialogueBox : MonoBehaviour
         choice4.text = choices[3];
     }
 
-    public void UpdatePlayerHP(string text){
-        playerHP.text = text;
-    }
-    public void UpdateMonsterHP(string text){
-        monsterHP.text = text;
-    }
 
-    public string GetHP(){
-        return playerHP.ToString();
-    }
 }

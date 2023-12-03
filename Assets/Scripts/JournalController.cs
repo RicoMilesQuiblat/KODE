@@ -12,6 +12,9 @@ public class JournalController : MonoBehaviour
     public GameObject NonEmptyPage;
    public GameObject page1;
    public GameObject page2;
+   public GameObject page3;
+   public GameObject page4;
+   public GameObject page5;
 
 
     public void DisplayPage(){
@@ -53,6 +56,12 @@ public class JournalController : MonoBehaviour
             pages.Add(page1);
         }else if(pages.Count == 1){
             pages.Add(page2);
+        }else if (pages.Count == 2){
+            pages.Add(page3);
+        }else if (pages.Count == 3){
+            pages.Add(page4);
+        }else if (pages.Count == 4){
+            pages.Add(page5);
         }
    }
 

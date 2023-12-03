@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Teleporter
   - enemy
+  - boss
   layers:
   - Default
   - TransparentFX

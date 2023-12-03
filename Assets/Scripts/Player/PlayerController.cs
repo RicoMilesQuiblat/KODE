@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
 
     public EnemyController enemyController;
 
+    public LivesController livesController;
+
+
     public float Health{
         set{
             health = value;
@@ -49,6 +52,9 @@ public class PlayerController : MonoBehaviour
             return health;
         }
     }
+
+    
+    private float lives = 3f;
     public float health;
     
 
@@ -62,11 +68,12 @@ public class PlayerController : MonoBehaviour
         startPosition = new Vector2(0.5f, 0.8f);
         transform.position = startPosition;
         isAlive = true;
+        Debug.Log(lives);
 
     }
     public void Update()
     {
-        if(isAlive){
+        if(isAlive && lives > 0){
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
@@ -105,10 +112,15 @@ public class PlayerController : MonoBehaviour
 
         slider.value = health;
         }
+
+        if(lives == 0){
+            GameOver();
+        }
         
     }
 
     public void Respawn(){
+
         Awake();
         
 
@@ -117,9 +129,15 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDie(){
         animator.SetBool("IsAlive", false);
-        fill.SetActive(false);
         isAlive = false;
+        Removelife();
         inGameUiController.DeathScreen();
+
+    }
+
+    public void Removelife(){
+        lives -= 1;
+        livesController.RemoveLives();
     }
     
 
@@ -129,24 +147,6 @@ public class PlayerController : MonoBehaviour
         Vector2 facingDirection = new Vector2(moveX, moveY).normalized;
         return facingDirection;
     }
-
-    // IEnumerator Move(Vector3 targetPos){
-    //     isMoving = true;
-    //     while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon){
-    //         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-    //         yield return null;
-    //     }
-    //     transform.position = targetPos;
-    //     isMoving = false;
-    // }
-
-   
-    // private bool IsWalkable(Vector3 targetPos){
-    //     if(Physics2D.OverlapCircle(targetPos, 0.25f, solidObjectsLayer)) {
-    //         return false;
-    //     }
-    //     return true;
-    // }
 
     public void GetHit(Vector2 knockback){
         // animator.SetTrigger("Hit");
@@ -159,6 +159,9 @@ public class PlayerController : MonoBehaviour
         return isAlive;
     }
 
+    public void GameOver(){
+        Debug.Log("Game Over");
+    }
    
 
     private void Attack()

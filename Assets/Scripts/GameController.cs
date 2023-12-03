@@ -8,8 +8,8 @@ public class GameController : MonoBehaviour
     // public GameObject mainGrid;
     // public GameObject mainPlayer;
     // public GameObject mainMonsters;
-    public GameObject mainGameObject;
-    public GameObject battleGameObject;
+    public Camera mainCamera;
+    public Camera battleCamera;
 
   
 
@@ -20,8 +20,8 @@ public class GameController : MonoBehaviour
         // mainGrid.SetActive(true);
         // mainPlayer.SetActive(true);
         // mainMonsters.SetActive(true);
-        mainGameObject.SetActive(true);
-        battleGameObject.SetActive(false);
+        mainCamera.enabled = true;
+        battleCamera.enabled = false;
     }
     // public void BattleMode(){
     //     // mainCamera.SetActive(false);
@@ -33,13 +33,11 @@ public class GameController : MonoBehaviour
     //     battleGameObject.SetActive(true);
     // }
 
-    public void MazeTeleporterAnim(){
-        // Animation.
-    }
+   
 
     public void FreeRoamMode(){
-        mainGameObject.SetActive(true);
-        battleGameObject.SetActive(false);
+        mainCamera.enabled = true;
+        battleCamera.enabled = false;
     }
     
 }

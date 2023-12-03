@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,41 +13,59 @@ public class BatlleController : MonoBehaviour
     private List<string> choices;
 
     public DialogueBox dialogueBox;
-    private int playerInitialHP = 10;
-    private int monsterInitialHP = 10;
+    private int playerInitialHP;
+    private int monsterInitialHP;
     private string chosenQuestion;
     private int answerCode;
     private bool isCorrect = false;
 
+    public Slider playerHp;
+    public Slider monsterHp;
+
     public GameController gameController;
+     
+     public PlayerController playerController;
+
+     private bool shouldUpdate;
+
 
 
 
 
     private void Awake(){
-        questions = new Dictionary<string, int>();
-        answers = new List<string>();
-        choices = new List<string>();
         Initialize();
+       
+    }
+
+
+
+    public void Update(){
+        if(shouldUpdate){
+
+            if (playerInitialHP <= 0 || monsterInitialHP <= 0){
+                playerController.Removelife();
+                gameController.FreeRoamMode();
+                shouldUpdate = false;
+            }
+        }
+    }
+
+    private void NextQuestion(){
         SelectQuestion();
         Display();
     }
 
-    public void Update(){
-        if(isCorrect){
-            SelectQuestion();
-            Display();
-
-            isCorrect = false;
-        }
-
-        if (playerInitialHP <= 0 || monsterInitialHP <= 0){
-            gameController.FreeRoamMode();
-        }
-    }
-
-    private void Initialize()
+    public void Initialize()
     {
+        shouldUpdate = true;
+        playerInitialHP = 10;
+        monsterInitialHP = 20;
+        questions = new Dictionary<string, int>();
+        answers = new List<string>();
+        choices = new List<string>();
+        playerHp.value = playerInitialHP;
+        monsterHp.value = monsterInitialHP;
+
         questions.Add("What shape in a flowchart represents a process?", 1);
         answers.Add("a.Oval");
         answers.Add("b.Rectangle");
@@ -72,6 +91,9 @@ public class BatlleController : MonoBehaviour
         answers.Add("b.Direction");
         answers.Add("c.Decision");
         answers.Add("d.Process");
+
+        SelectQuestion();
+        Display();
     }
 
     private void SelectQuestion(){
@@ -133,12 +155,11 @@ public class BatlleController : MonoBehaviour
         Debug.Log("button clicked");
         if(answerCode == 0 || answerCode == 4 || answerCode == 8 || answerCode == 12 || answerCode == 16){
             monsterInitialHP -= 2;
-            dialogueBox.UpdateMonsterHP("HP: " + monsterInitialHP);
-            isCorrect = true;
+            monsterHp.value = monsterInitialHP;
+            NextQuestion();
         }else{
             playerInitialHP -= 2;
-            dialogueBox.UpdatePlayerHP("HP: " + playerInitialHP);
-            isCorrect = false;
+            playerHp.value = playerInitialHP;
         }
     }
     public void Button2Click()
@@ -146,12 +167,12 @@ public class BatlleController : MonoBehaviour
         Debug.Log("button clicked");
         if(answerCode == 1 || answerCode == 5 || answerCode == 9 || answerCode == 13 || answerCode == 17){
             monsterInitialHP -= 2;
-            dialogueBox.UpdateMonsterHP("HP: " + monsterInitialHP);
-            isCorrect = true;
+             monsterHp.value = monsterInitialHP;
+             NextQuestion();
         }else{
             playerInitialHP -= 2;
-            dialogueBox.UpdatePlayerHP("HP: " + playerInitialHP);
-            isCorrect = false;
+            playerHp.value = playerInitialHP;
+            
         }
         
     }
@@ -161,12 +182,11 @@ public class BatlleController : MonoBehaviour
         Debug.Log("button clicked");
         if(answerCode == 2 || answerCode == 6 || answerCode == 10 || answerCode == 14 || answerCode == 18){
             monsterInitialHP -= 2;
-            dialogueBox.UpdateMonsterHP("HP: " + monsterInitialHP);
-            isCorrect = true;
+            monsterHp.value = monsterInitialHP;
+            NextQuestion();
         }else{
             playerInitialHP -= 2;
-            dialogueBox.UpdatePlayerHP("HP: " + playerInitialHP);
-            isCorrect = false;
+            playerHp.value = playerInitialHP;
         }
         
     }
@@ -176,12 +196,11 @@ public class BatlleController : MonoBehaviour
         Debug.Log("button clicked");
         if(answerCode == 3 || answerCode == 7 || answerCode == 11 || answerCode == 15 || answerCode == 19){
             monsterInitialHP -= 2;
-            dialogueBox.UpdateMonsterHP("HP: " + monsterInitialHP);
-            isCorrect = true;
+            monsterHp.value = monsterInitialHP;
+            NextQuestion();
         }else{
             playerInitialHP -= 2;
-            dialogueBox.UpdatePlayerHP("HP: " + playerInitialHP);
-            isCorrect = false;
+            playerHp.value = playerInitialHP;
         }
         
     }
