@@ -5,10 +5,13 @@ using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class BatlleController : MonoBehaviour
 {
-    public FlowChartQuestions flowChartQuestions = new FlowChartQuestions();
+
+    private Questions questionSource;
     private Dictionary<string, int> questions;
     private List<string> answers;
 
@@ -30,11 +33,22 @@ public class BatlleController : MonoBehaviour
 
      private bool shouldUpdate;
 
+     public SceneSwitcher sceneSwitcher;
 
+    public List<int> temp = new List<int>(){
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    };
+    private Scene currentScene;
 
 
 
     private void Awake(){
+        currentScene = SceneManager.GetActiveScene();
+        if(currentScene.buildIndex == 0){
+            questionSource = new FlowChartQuestions();
+        }else if(currentScene.buildIndex == 1){
+            questionSource = new InputOutputQuestions();
+        }
         Initialize();
        
     }
@@ -44,13 +58,18 @@ public class BatlleController : MonoBehaviour
     public void Update(){
         if(shouldUpdate){
 
-            if (playerInitialHP <= 0 || monsterInitialHP <= 0){
+            if (playerInitialHP <= 0){
                 playerController.Removelife();
                 gameController.FreeRoamMode();
+                shouldUpdate = false;
+            }else if(monsterInitialHP <= 0){
+                sceneSwitcher.SwitchScene();
                 shouldUpdate = false;
             }
         }
     }
+
+    
 
     private void NextQuestion(){
         SelectQuestion();
@@ -68,14 +87,15 @@ public class BatlleController : MonoBehaviour
         choices = new List<string>();
         playerHp.value = playerInitialHP;
         monsterHp.value = monsterInitialHP;
-        Debug.Log(flowChartQuestions.questions);
+        Debug.Log(questionSource.questions);
 
-        foreach(var question in flowChartQuestions.questions){
+        foreach(var question in questionSource.questions){
             questions.Add(question.Key, question.Value);
             Debug.Log(question);
+            
         }
 
-        foreach(var answer in flowChartQuestions.answers){
+        foreach(var answer in questionSource.answers){
             answers.Add(answer);
             Debug.Log(answer);
         }
@@ -88,8 +108,17 @@ public class BatlleController : MonoBehaviour
         string currentQuestion = chosenQuestion;
 
         while(currentQuestion == chosenQuestion){
-            chosenQuestion = questions.Keys.ElementAt(Random.Range(0, questions.Count));
+            int randomNumber = temp[Random.Range(0 , temp.Count)];
+            chosenQuestion = questions.Keys.ElementAt(randomNumber);
+
+            temp.Remove(randomNumber);
+            
             answerCode = questions[chosenQuestion];
+
+
+            foreach(var number in temp){
+                Debug.Log(number);
+            }
         }
     }
     private void Display()
@@ -123,13 +152,47 @@ public class BatlleController : MonoBehaviour
             choices.Add(answers[13]);
             choices.Add(answers[14]);
             choices.Add(answers[15]);
-        }
-        else
+        }else if (answerCode <= 19)
         {
             choices.Add(answers[16]);
             choices.Add(answers[17]);
             choices.Add(answers[18]);
             choices.Add(answers[19]);
+        }
+        else if (answerCode <= 23)
+        {
+            choices.Add(answers[20]);
+            choices.Add(answers[21]);
+            choices.Add(answers[22]);
+            choices.Add(answers[23]);
+        }
+        else if (answerCode <= 27)
+        {
+            choices.Add(answers[24]);
+            choices.Add(answers[25]);
+            choices.Add(answers[26]);
+            choices.Add(answers[27]);
+        }
+        else if (answerCode <= 31)
+        {
+            choices.Add(answers[28]);
+            choices.Add(answers[29]);
+            choices.Add(answers[30]);
+            choices.Add(answers[31]);
+        }
+        else if (answerCode <= 35)
+        {
+            choices.Add(answers[32]);
+            choices.Add(answers[33]);
+            choices.Add(answers[34]);
+            choices.Add(answers[35]);
+        }
+        else
+        {
+            choices.Add(answers[36]);
+            choices.Add(answers[37]);
+            choices.Add(answers[38]);
+            choices.Add(answers[39]);
         }
 
         dialogueBox.ChangeQuestion(chosenQuestion);

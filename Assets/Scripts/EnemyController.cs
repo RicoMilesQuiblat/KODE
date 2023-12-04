@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Experimental.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -20,6 +22,9 @@ public class EnemyController : MonoBehaviour
     private Vector2 dropPosition;
 
     public bool isFlipped = false;
+    private Scene currentScene;
+
+    private bool canMove = true;
   
 
     public float Health{
@@ -36,6 +41,13 @@ public class EnemyController : MonoBehaviour
     }
     public float health;
     private void Start(){
+        currentScene = SceneManager.GetActiveScene();
+
+        if(currentScene.buildIndex == 0){
+            health = 10f;
+        }else if(currentScene.buildIndex == 1){
+            health = 20f;
+        }
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         animator.SetBool("isAlive", true);
@@ -43,6 +55,8 @@ public class EnemyController : MonoBehaviour
     }
 
     void FixedUpdate(){
+        if(canMove){
+
         if(detectionZone.detectedObj.Count > 0 && detectionZone){
             Vector2 direction = (detectionZone.detectedObj[0].transform.position - transform.position).normalized;
             Vector3 scale = transform.localScale;
@@ -63,6 +77,7 @@ public class EnemyController : MonoBehaviour
         }else{
             animator.SetBool("IsMoving", false);
         }
+        }
         dropPosition = transform.position;
     }
     public void GetHit(Vector2 knockback){
@@ -72,6 +87,7 @@ public class EnemyController : MonoBehaviour
 
     public void Defeated(){
         Debug.Log("Defeated");
+        canMove = false;
         animator.SetBool("isAlive", false);
     }
 

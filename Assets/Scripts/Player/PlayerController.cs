@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
     private bool facingUp=false;
     public LivesController livesController;
 
+    private Scene currentScene;
+
 
     public float Health{
         set{
@@ -63,6 +66,7 @@ public class PlayerController : MonoBehaviour
     
 
     private void Awake(){
+        currentScene = SceneManager.GetActiveScene();
         health = 10f;
         slider.value = health;
         animator = GetComponent<Animator>();
@@ -70,12 +74,18 @@ public class PlayerController : MonoBehaviour
         fill.SetActive(true);
         animator.SetBool("IsAlive", true);
         Debug.Log("I miss her");
-        startPosition = new Vector2(0.5f, 0.8f);
+        if(currentScene.buildIndex == 0){
+            startPosition = new Vector2(0.5f, 0.8f);
+        }else if(currentScene.buildIndex == 1){
+            startPosition = new Vector2(107.42f, 8.85f);
+        }
         transform.position = startPosition;
         isAlive = true;
         Debug.Log(lives);
 
     }
+
+    
     public void Update()
     {
         if(isAlive && lives > 0){

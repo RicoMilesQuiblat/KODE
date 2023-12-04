@@ -52,16 +52,22 @@ public class JournalController : MonoBehaviour
    }
 
    public void AddPage(){
-        if(pages.Count == 0){
+        if(pages.Count == 0 || pages.Count == 5){
             pages.Add(page1);
-        }else if(pages.Count == 1){
+        }else if(pages.Count == 1 || pages.Count == 6){
             pages.Add(page2);
-        }else if (pages.Count == 2){
+        }else if (pages.Count == 2 || pages.Count == 7){
             pages.Add(page3);
         }else if (pages.Count == 3){
+            if(page4){
             pages.Add(page4);
+
+            }
         }else if (pages.Count == 4){
-            pages.Add(page5);
+            if(page5){
+
+             pages.Add(page5);
+            }
         }
    }
 
