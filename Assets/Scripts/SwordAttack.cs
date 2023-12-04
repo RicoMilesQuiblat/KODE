@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SwordAttack : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class SwordAttack : MonoBehaviour
     public float damage = 3f;
     public float knockbackForce = 500f;
 
+    public Scene currentScene;
     private void Start(){
-       
+       currentScene = SceneManager.GetActiveScene();
     }
 
     
@@ -70,6 +72,13 @@ public class SwordAttack : MonoBehaviour
     // }
 
     private void OnTriggerEnter2D(Collider2D other){
+        if(currentScene.buildIndex == 0){
+            damage = 3f;
+        }else if(currentScene.buildIndex == 1){
+            damage = 4f;
+        }else if(currentScene.buildIndex == 2){
+            damage = 5f;
+        }
         if(other.tag == "enemy"){
             Debug.Log("ouch");
             EnemyController enemy = other.GetComponent<EnemyController>();

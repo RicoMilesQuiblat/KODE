@@ -76,8 +76,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log("I miss her");
         if(currentScene.buildIndex == 0){
             startPosition = new Vector2(0.5f, 0.8f);
+            
         }else if(currentScene.buildIndex == 1){
             startPosition = new Vector2(107.42f, 8.85f);
+        }else if(currentScene.buildIndex ==2){
+            startPosition = new Vector2(34.2f, -25.7f);
         }
         transform.position = startPosition;
         isAlive = true;

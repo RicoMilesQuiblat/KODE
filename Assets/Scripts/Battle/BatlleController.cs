@@ -35,9 +35,7 @@ public class BatlleController : MonoBehaviour
 
      public SceneSwitcher sceneSwitcher;
 
-    public List<int> temp = new List<int>(){
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-    };
+    public List<int> temp;
     private Scene currentScene;
 
 
@@ -48,6 +46,8 @@ public class BatlleController : MonoBehaviour
             questionSource = new FlowChartQuestions();
         }else if(currentScene.buildIndex == 1){
             questionSource = new InputOutputQuestions();
+        }else if(currentScene.buildIndex == 2){
+            questionSource = new OperatorQuestions();
         }
         Initialize();
        
@@ -56,6 +56,8 @@ public class BatlleController : MonoBehaviour
 
 
     public void Update(){
+        Debug.Log("gago " + shouldUpdate);
+        Debug.Log("HP " + monsterInitialHP);
         if(shouldUpdate){
 
             if (playerInitialHP <= 0){
@@ -85,6 +87,8 @@ public class BatlleController : MonoBehaviour
         questions = new Dictionary<string, int>();
         answers = new List<string>();
         choices = new List<string>();
+        temp = new List<int>(){
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         playerHp.value = playerInitialHP;
         monsterHp.value = monsterInitialHP;
         Debug.Log(questionSource.questions);
@@ -105,20 +109,18 @@ public class BatlleController : MonoBehaviour
     }
 
     private void SelectQuestion(){
-        string currentQuestion = chosenQuestion;
+        
+        int randomNumber = temp[Random.Range(0 , temp.Count)];
+        chosenQuestion = questions.Keys.ElementAt(randomNumber);
 
-        while(currentQuestion == chosenQuestion){
-            int randomNumber = temp[Random.Range(0 , temp.Count)];
-            chosenQuestion = questions.Keys.ElementAt(randomNumber);
-
-            temp.Remove(randomNumber);
+        temp.Remove(randomNumber);
             
-            answerCode = questions[chosenQuestion];
+        answerCode = questions[chosenQuestion];
 
 
-            foreach(var number in temp){
+        foreach(var number in temp){
                 Debug.Log(number);
-            }
+        
         }
     }
     private void Display()
