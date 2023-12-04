@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
 
     public bool playerIsAlive;
     public ScrollController scrollController;
+    public bool dropScroll = false;
     private Vector2 dropPosition;
 
     public bool isFlipped = false;
@@ -92,8 +93,7 @@ public class EnemyController : MonoBehaviour
     }
 
     public void RemoveEnemy(){
-        if(scrollController){
-
+        if(dropScroll){
             scrollController.DropScroll(dropPosition);
         }
         Destroy(gameObject);
