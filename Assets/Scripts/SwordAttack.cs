@@ -71,7 +71,7 @@ public class SwordAttack : MonoBehaviour
     //     }
     // }
 
-    Color white = new Color(1, 1, 1, 1); // Opaque white
+    Color white = new Color(100, 100, 100, 100); // Opaque white
 
     private void OnTriggerEnter2D(Collider2D other){
         if(currentScene.buildIndex == 0){
@@ -89,7 +89,9 @@ public class SwordAttack : MonoBehaviour
                 Debug.Log("ouch");
                   enemy.Health -= damage;
                   
-                  TipPopout.Create(transform.position, damage.ToString(), 10f, white);
+                  TipPopout.Create(transform.position, damage.ToString(), 50f, white);
+
+
                   Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
                   Vector2 direction = (Vector2) (parentPosition - other.gameObject.transform.position).normalized;
                   Vector2 knockback = direction * knockbackForce;
