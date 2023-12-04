@@ -40,13 +40,15 @@ public class BatlleController : MonoBehaviour
 
 
 
+
+
     private void Awake(){
         currentScene = SceneManager.GetActiveScene();
-        if(currentScene.buildIndex == 0){
+        if(currentScene.name == "FlowChart"){
             questionSource = new FlowChartQuestions();
-        }else if(currentScene.buildIndex == 1){
+        }else if(currentScene.name == "InputOutput"){
             questionSource = new InputOutputQuestions();
-        }else if(currentScene.buildIndex == 2){
+        }else if(currentScene.name == "Operations"){
             questionSource = new OperatorQuestions();
         }
         Initialize();
@@ -56,8 +58,6 @@ public class BatlleController : MonoBehaviour
 
 
     public void Update(){
-        Debug.Log("gago " + shouldUpdate);
-        Debug.Log("HP " + monsterInitialHP);
         if(shouldUpdate){
 
             if (playerInitialHP <= 0){

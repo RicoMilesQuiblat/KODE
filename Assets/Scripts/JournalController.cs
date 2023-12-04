@@ -28,6 +28,10 @@ public class JournalController : MonoBehaviour
 
         }
     }
+
+    public int GetJournalCount(){
+        return pages.Count;
+    }
    public void NextPage(){
         int nextPage = currentPage + 1;
         if(nextPage >= pages.Count){

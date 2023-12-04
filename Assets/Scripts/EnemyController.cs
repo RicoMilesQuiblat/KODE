@@ -44,10 +44,12 @@ public class EnemyController : MonoBehaviour
     private void Start(){
         currentScene = SceneManager.GetActiveScene();
 
-        if(currentScene.buildIndex == 0){
+        if(currentScene.name == "FlowChart"){
             health = 10f;
-        }else if(currentScene.buildIndex == 1){
+        }else if(currentScene.name == "InputOutput"){
             health = 20f;
+        }else if(currentScene.name == "Operations"){
+            health = 30f;
         }
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();

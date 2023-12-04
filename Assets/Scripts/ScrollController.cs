@@ -7,6 +7,7 @@ public class ScrollController : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject scroll;
+    
     // Update is called once per frame
     public void DropScroll(Vector2 dropPosition){
             Debug.Log("dropeed");

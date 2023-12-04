@@ -72,11 +72,11 @@ public class SwordAttack : MonoBehaviour
     // }
 
     private void OnTriggerEnter2D(Collider2D other){
-        if(currentScene.buildIndex == 0){
+        if(currentScene.name == "FlowChart"){
             damage = 3f;
-        }else if(currentScene.buildIndex == 1){
+        }else if(currentScene.name == "InputOutput"){
             damage = 4f;
-        }else if(currentScene.buildIndex == 2){
+        }else if(currentScene.name == "Operations"){
             damage = 5f;
         }
         if(other.tag == "enemy"){

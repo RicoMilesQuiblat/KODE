@@ -74,12 +74,12 @@ public class PlayerController : MonoBehaviour
         fill.SetActive(true);
         animator.SetBool("IsAlive", true);
         Debug.Log("I miss her");
-        if(currentScene.buildIndex == 0){
-            startPosition = new Vector2(0.5f, 0.8f);
+        if(currentScene.name == "FlowChart"){
+            startPosition = new Vector2(-9.43f, 3.16f);
             
-        }else if(currentScene.buildIndex == 1){
+        }else if(currentScene.name == "InputOutput"){
             startPosition = new Vector2(107.42f, 8.85f);
-        }else if(currentScene.buildIndex ==2){
+        }else if(currentScene.name == "Operations"){
             startPosition = new Vector2(34.2f, -25.7f);
         }
         transform.position = startPosition;
