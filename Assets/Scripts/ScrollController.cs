@@ -9,7 +9,7 @@ public class ScrollController : MonoBehaviour
     public GameObject scroll;
     // Update is called once per frame
     public void DropScroll(Vector2 dropPosition){
-        
+            Debug.Log("dropeed");
             scroll.SetActive(true);
             scroll.transform.position = dropPosition;
             

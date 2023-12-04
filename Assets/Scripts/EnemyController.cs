@@ -93,7 +93,9 @@ public class EnemyController : MonoBehaviour
     }
 
     public void RemoveEnemy(){
-        if(dropScroll){
+        Debug.Log(dropScroll);
+        Debug.Log("shets");
+        if(scrollController){
             scrollController.DropScroll(dropPosition);
         }
         Destroy(gameObject);
