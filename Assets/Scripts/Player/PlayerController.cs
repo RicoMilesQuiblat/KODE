@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
                 inGameUiController.DashScreen();
             }
 
-              if (Input.GetKeyDown(KeyCode.J)){
+              if (Input.GetKeyDown(KeyCode.J) || Input.GetMouseButtonDown(0)){
             Debug.Log("Attacking");
             Vector2 facingDirection = GetFacingDirection();
             if(facingDirection == Vector2.right){
