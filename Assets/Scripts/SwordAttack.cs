@@ -12,8 +12,8 @@ public class SwordAttack : MonoBehaviour
     public Collider2D swordCollider;
     public float damage = 3f;
     public float knockbackForce = 500f;
-
     public Scene currentScene;
+
     private void Start(){
        currentScene = SceneManager.GetActiveScene();
     }
@@ -71,6 +71,8 @@ public class SwordAttack : MonoBehaviour
     //     }
     // }
 
+    Color white = new Color(100, 100, 100, 100); // Opaque white
+
     private void OnTriggerEnter2D(Collider2D other){
         if(currentScene.name == "FlowChart"){
             damage = 3f;
@@ -82,10 +84,14 @@ public class SwordAttack : MonoBehaviour
         if(other.tag == "enemy"){
             Debug.Log("ouch");
             EnemyController enemy = other.GetComponent<EnemyController>();
-
+            
             if(enemy != null){
                 Debug.Log("ouch");
                   enemy.Health -= damage;
+                  
+                  TipPopout.Create(transform.position, damage.ToString(), 50f, white);
+
+
                   Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
                   Vector2 direction = (Vector2) (parentPosition - other.gameObject.transform.position).normalized;
                   Vector2 knockback = direction * knockbackForce;
