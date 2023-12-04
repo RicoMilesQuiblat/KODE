@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake(){
         health = 10f;
+        slider.value = health;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         fill.SetActive(true);
@@ -185,12 +186,18 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsAlive", false);
         isAlive = false;
         Removelife();
+        if(lives > 0){
         inGameUiController.DeathScreen();
+        }else{
+            inGameUiController.GameOverScreen();
+        }
 
     }
 
     public void Removelife(){
         lives -= 1;
+        health = 10f;
+        slider.value = health;
         livesController.RemoveLives();
     }
     

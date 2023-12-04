@@ -12,6 +12,8 @@ public class InGameUiController : MonoBehaviour
 
     public GameObject dashScreen;
 
+    public GameObject gameOverScreen;
+
 
 
     public PlayerController playerController;
@@ -49,5 +51,9 @@ public class InGameUiController : MonoBehaviour
     public void Respawn(){
         deathScreen.SetActive(false);
         playerController.Respawn();
+    }
+
+    public void GameOverScreen(){
+        gameOverScreen.SetActive(true);
     }
 }

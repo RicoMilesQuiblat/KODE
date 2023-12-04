@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BatlleController : MonoBehaviour
 {
+    public FlowChartQuestions flowChartQuestions = new FlowChartQuestions();
     private Dictionary<string, int> questions;
     private List<string> answers;
 
@@ -57,6 +59,7 @@ public class BatlleController : MonoBehaviour
 
     public void Initialize()
     {
+        
         shouldUpdate = true;
         playerInitialHP = 10;
         monsterInitialHP = 20;
@@ -65,32 +68,17 @@ public class BatlleController : MonoBehaviour
         choices = new List<string>();
         playerHp.value = playerInitialHP;
         monsterHp.value = monsterInitialHP;
+        Debug.Log(flowChartQuestions.questions);
 
-        questions.Add("What shape in a flowchart represents a process?", 1);
-        answers.Add("a.Oval");
-        answers.Add("b.Rectangle");
-        answers.Add("c.Diamond");
-        answers.Add("d.Arrow");
-        questions.Add("Which symbol is used to depict a decision in a flowchart?", 6);
-        answers.Add("a.Oval");
-        answers.Add("b.Rectangle");
-        answers.Add("c.Diamond");
-        answers.Add("d.Arrow");
-        questions.Add("What does the rectangle symbolize in a flowchart?", 10);
-        answers.Add("a.Start/End");
-        answers.Add("b.Process");
-        answers.Add("c.Decision");
-        answers.Add("d.Connector");
-        questions.Add("What shape is used to indicate the start or end of a process in a flowchart?", 12);
-        answers.Add("a.Oval");
-        answers.Add("b.Rectangle");
-        answers.Add("c.Diamond");
-        answers.Add("d.Arrow");
-        questions.Add("In a flowchart, what does an arrow represent?", 17);
-        answers.Add("a.Data");
-        answers.Add("b.Direction");
-        answers.Add("c.Decision");
-        answers.Add("d.Process");
+        foreach(var question in flowChartQuestions.questions){
+            questions.Add(question.Key, question.Value);
+            Debug.Log(question);
+        }
+
+        foreach(var answer in flowChartQuestions.answers){
+            answers.Add(answer);
+            Debug.Log(answer);
+        }
 
         SelectQuestion();
         Display();
@@ -153,7 +141,7 @@ public class BatlleController : MonoBehaviour
     public void Button1Click()
     {
         Debug.Log("button clicked");
-        if(answerCode == 0 || answerCode == 4 || answerCode == 8 || answerCode == 12 || answerCode == 16){
+        if(answerCode == 0 || answerCode == 4 || answerCode == 8 || answerCode == 12 || answerCode == 16 || answerCode == 20 || answerCode == 24 || answerCode == 28 || answerCode == 32 || answerCode == 36){
             monsterInitialHP -= 2;
             monsterHp.value = monsterInitialHP;
             NextQuestion();
@@ -165,7 +153,7 @@ public class BatlleController : MonoBehaviour
     public void Button2Click()
     {
         Debug.Log("button clicked");
-        if(answerCode == 1 || answerCode == 5 || answerCode == 9 || answerCode == 13 || answerCode == 17){
+        if(answerCode == 1 || answerCode == 5 || answerCode == 9 || answerCode == 13 || answerCode == 17 || answerCode == 21 || answerCode == 25 || answerCode == 29 || answerCode == 33 || answerCode == 37){
             monsterInitialHP -= 2;
              monsterHp.value = monsterInitialHP;
              NextQuestion();
@@ -180,7 +168,7 @@ public class BatlleController : MonoBehaviour
     public void Button3Click()
     {
         Debug.Log("button clicked");
-        if(answerCode == 2 || answerCode == 6 || answerCode == 10 || answerCode == 14 || answerCode == 18){
+        if(answerCode == 2 || answerCode == 6 || answerCode == 10 || answerCode == 14 || answerCode == 18 || answerCode == 22 || answerCode == 26 || answerCode == 30 || answerCode == 34 || answerCode == 38 ){
             monsterInitialHP -= 2;
             monsterHp.value = monsterInitialHP;
             NextQuestion();
@@ -194,7 +182,7 @@ public class BatlleController : MonoBehaviour
     public void Button4Click()
     {
         Debug.Log("button clicked");
-        if(answerCode == 3 || answerCode == 7 || answerCode == 11 || answerCode == 15 || answerCode == 19){
+        if(answerCode == 3 || answerCode == 7 || answerCode == 11 || answerCode == 15 || answerCode == 19 || answerCode == 23 || answerCode == 27 || answerCode == 31 || answerCode == 35 || answerCode == 39){
             monsterInitialHP -= 2;
             monsterHp.value = monsterInitialHP;
             NextQuestion();
