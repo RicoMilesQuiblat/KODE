@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
     private Scene currentScene;
 
+    private bool canAttack = true;
+
 
     public float Health{
         set{
@@ -88,7 +90,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    
+    public void SetCanAttack(bool setter){
+        canAttack = setter;
+    }
     public void Update()
     {
         if(isAlive && lives > 0){
@@ -125,6 +129,7 @@ public class PlayerController : MonoBehaviour
                 
                 inGameUiController.DashScreen();
             }
+            if(canAttack){
 
               if (Input.GetKeyDown(KeyCode.J) || Input.GetMouseButtonDown(0)){
             Debug.Log("Attacking");
@@ -139,7 +144,8 @@ public class PlayerController : MonoBehaviour
                 swordAttack.AttackDown();
             }
             Attack();
-        }
+            }
+            }
 
             animator.SetBool("isMoving", isMoving);
             slider.value = health;
