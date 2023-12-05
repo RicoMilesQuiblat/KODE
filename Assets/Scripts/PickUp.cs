@@ -15,8 +15,8 @@ public class PickUp : MonoBehaviour
             journalController.AddPage();
             objectivesController.ChangeObjective();
                
-            }
             Destroy(gameObject);
+            }
         }
     }
 

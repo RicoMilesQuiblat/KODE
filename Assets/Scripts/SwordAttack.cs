@@ -80,7 +80,7 @@ public class SwordAttack : MonoBehaviour
             damage = 4f;
         }else if(currentScene.name == "Operations"){
             damage = 5f;
-        }
+        }   
         if(other.tag == "enemy"){
             Debug.Log("ouch");
             EnemyController enemy = other.GetComponent<EnemyController>();
@@ -89,7 +89,7 @@ public class SwordAttack : MonoBehaviour
                 Debug.Log("ouch");
                   enemy.Health -= damage;
                   
-                  TipPopout.Create(transform.position, damage.ToString(), 50f, white);
+                  TipPopout.Create(transform.position, damage.ToString(), 5f, white);
 
 
                   Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;

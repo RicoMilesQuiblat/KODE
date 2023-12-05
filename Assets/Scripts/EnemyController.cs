@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -81,6 +82,7 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("IsMoving", false);
         }
         }
+       
         dropPosition = transform.position;
     }
     public void GetHit(Vector2 knockback){

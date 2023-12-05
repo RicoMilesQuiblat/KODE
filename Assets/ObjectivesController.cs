@@ -12,26 +12,55 @@ public class ObjectivesController : MonoBehaviour
         "Go and Check the time machine",
         "Defeat the Slime",
         "Collect Journals ",
-        "Kill the boss",
+        "Continue exploring the forest",
+        "Enter the mysterious entrance",
     };
     public Text objectiveText;
+
+    public Camera mainCamera;
+    public Camera timeMachineCamera;
+    public Camera playerMiniCamera;
+    public GameObject playerMiniCameraCanvas;
+
+    private bool shouldSwitchSlime = true;
+
 
     private int currentObjective = 0;
 
     public JournalController journalController;
+
+    public GameObject timeMachineCanvas;
+
+    public PlayerController playerController;
+
+    public GameObject subQuest;
+    private bool shouldUpdate = false;
+
+    public void setShouldUpdate(bool should){
+        shouldUpdate = should;
+    }
     private void Awake(){
         objectiveText.text = objectives[currentObjective];
+    }
+
+    private void Update(){
+        if(!slime && shouldSwitchSlime){
+            StartCoroutine(PlayerMiniCamera());
+            shouldSwitchSlime = false;
+        }
     }
 
     public void ChangeObjective(){
         if(currentObjective == 0){
             StartCoroutine(SpawnFirstSlime());
         }else if(currentObjective == 2 && journalController.GetJournalCount() < 5){
+
             animator.SetTrigger("Change");
             currentObjective -= 1;
         }else if(currentObjective == 2 && journalController.GetJournalCount() == 5){
             animator.SetTrigger("Change");
         }
+        
         
         animator.SetTrigger("Change");
         
@@ -53,8 +82,38 @@ public class ObjectivesController : MonoBehaviour
     }
 
     IEnumerator SpawnFirstSlime(){
-        yield return new WaitForSeconds(2f);
+        playerController.SetCanAttack(false);
+        Debug.Log(currentObjective);
+        mainCamera.enabled = false;
+        timeMachineCamera.enabled = true;
+        timeMachineCanvas.SetActive(true);
+        yield return new WaitUntil(() => shouldUpdate);
+        yield return new WaitForSeconds(4f);
         slime.SetActive(true);
+        StartCoroutine(TimeMachineCamera());
+        shouldUpdate = false;
     }
+
+    IEnumerator TimeMachineCamera(){
+        yield return new WaitForSeconds(1f);
+        timeMachineCanvas.SetActive(false);
+        mainCamera.enabled = true;
+        timeMachineCamera.enabled = false;
+        playerController.SetCanAttack(true);
+    }
+
+    IEnumerator PlayerMiniCamera(){
+        playerController.SetCanAttack(false);
+        mainCamera.enabled = false;
+        playerMiniCamera.enabled = true;
+        playerMiniCameraCanvas.SetActive(true);
+        yield return new WaitUntil(() => shouldUpdate);
+        playerMiniCamera.enabled = false;
+        mainCamera.enabled = true;
+        playerMiniCameraCanvas.SetActive(false);
+        playerController.SetCanAttack(true);
+    }
+
+    
 
 }

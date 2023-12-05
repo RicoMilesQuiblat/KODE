@@ -16,6 +16,8 @@ public class JournalController : MonoBehaviour
    public GameObject page4;
    public GameObject page5;
 
+   public bool firstCompletion = false;
+
 
     public void DisplayPage(){
         Debug.Log(pages.Count);

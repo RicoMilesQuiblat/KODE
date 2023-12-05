@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -504588831
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -705273548, guid: e9212aa0b859c75418592c74cd32898b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -168,6 +168,11 @@ MonoBehaviour:
   detectionZone: {fileID: 542490084507672246}
   canAttack: 1
   moveSpeed: 800
+  playerIsAlive: 0
+  scrollController: {fileID: 0}
+  dropScroll: 0
+  isFlipped: 0
+  hpSlider: {fileID: 0}
   health: 10
 --- !u!95 &8153930625828972868
 Animator:
