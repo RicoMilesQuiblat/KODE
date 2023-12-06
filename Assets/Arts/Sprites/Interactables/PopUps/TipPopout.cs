@@ -7,9 +7,13 @@ using UnityEngine;
 public class TipPopout : MonoBehaviour
 {
     private TextMeshPro textMesh;
+    private float moveYSpeed = 20f;
     private float disappearTimer;
     private Color textColor;
     private Color initialColor; // Store the initial color
+
+    // Adjust this variable to control how long the tip remains visible
+    public float timeToDisappear = 2f;
 
     public static TipPopout Create(Vector3 position, string tip, float textSize, Color color)
     {
@@ -30,7 +34,7 @@ public class TipPopout : MonoBehaviour
         textMesh.SetText(Tip);
         textMesh.fontSize = textSize;
         initialColor = color; // Set the initial color
-        disappearTimer = 1f;
+        disappearTimer = timeToDisappear; // Set the disappear timer initially
     }
 
     private void Start()
@@ -42,19 +46,16 @@ public class TipPopout : MonoBehaviour
 
     private void Update()
     {
-        float moveYSpeed = 20f;
+        // Move along the Y-axis
         transform.position += new Vector3(0, moveYSpeed) * Time.deltaTime / 4;
 
+        // Decrease the disappear timer
         disappearTimer -= Time.deltaTime;
-        if (disappearTimer < 0)
+
+        // Check if the disappear timer has reached zero
+        if (disappearTimer <= 0)
         {
-            float disappearSpeed = 3f;
-            textColor.a -= disappearSpeed * Time.deltaTime;
-            textMesh.color = textColor;
-            if (textColor.a < 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject); // Destroy the GameObject after the specified time
         }
     }
 }
