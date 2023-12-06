@@ -24,6 +24,15 @@ public class BattlePlayerDialogue : MonoBehaviour
         "THEN TRY ME, YOU BIG FAT SLIMY BASTARD"
     };
 
+    public BattleCameraController BattleCameraController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
+
     private List<string> dialogues3 = new List<string>();
     private void OnEnable(){
         if(currentDialogue == 0){

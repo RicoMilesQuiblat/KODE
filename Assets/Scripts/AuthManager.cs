@@ -71,6 +71,11 @@ public class AuthManager : MonoBehaviour
         StartCoroutine(Register(nameRegisterField.text, ageRegisterField.text, emailRegisterField.text, passwordRegisterField.text));
     }
 
+    private void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
     private IEnumerator Login(string _email, string _password)
     {
         //Call the Firebase auth signin function passing the email and password
@@ -115,6 +120,10 @@ public class AuthManager : MonoBehaviour
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
             SceneManager.LoadScene(0, LoadSceneMode.Single);
+
+            ChangeScene("Main Homepage");
+
+
         }
     }
 

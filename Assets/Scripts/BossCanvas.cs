@@ -20,6 +20,15 @@ public class BossCanvas : MonoBehaviour
         "I shall lay mine terms plain: Yield thee, or thou must parry my queries on the art of flowcharting.",
         "Shouldst thy answers prove true, I grant thee leave to strike upon me—if thine arm be strong enough, that is! MUHAHAHAHA! Fail, and thou shalt know mine fury!"
     };
+
+    public BattleCameraController BattleCameraController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     private void OnEnable(){
         if(currentDialogue == 0){
             dialogues = dialogues1;

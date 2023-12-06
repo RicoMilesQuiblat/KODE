@@ -25,6 +25,13 @@ public class JournalController : MonoBehaviour
 
    public bool firstCompletion = false;
 
+    public InGameUiController InGameUiController
+    {
+        get => default;
+        set
+        {
+        }
+    }
     private void Start(){
         allPages.Add(page1);
         allPages.Add(page2);

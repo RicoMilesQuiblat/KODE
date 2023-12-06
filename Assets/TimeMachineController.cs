@@ -9,6 +9,15 @@ public class TimeMachineController : MonoBehaviour
     public GameObject chapter2Start;
     public bool shouldUpdate = true;
 
+    public ObjectivesController ObjectivesController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
+
     public GameObject atmosphere;
     public GameObject rain;
     public Chapter2StartDialogueController chapter2StartDialogueController;
