@@ -1443,17 +1443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb387e28dd592747aad92d823bc3c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dependencyStatus: 0
-  emailLoginField: {fileID: 451624555}
-  passwordLoginField: {fileID: 1407554306}
-  warningLoginText: {fileID: 315936121}
-  confirmLoginText: {fileID: 1505087071}
-  nameRegisterField: {fileID: 694446902}
-  ageRegisterField: {fileID: 482245082}
-  emailRegisterField: {fileID: 947300290}
-  passwordRegisterField: {fileID: 615910278}
-  warningRegisterText: {fileID: 2031889825}
-  confirmRegisterText: {fileID: 1940641047}
 --- !u!4 &513904193
 Transform:
   m_ObjectHideFlags: 0
@@ -4236,8 +4225,8 @@ Canvas:
   m_GameObject: {fileID: 1523161043}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1991210215}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -4713,8 +4702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08889312ebc763d45ab3fc36223fccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loginUI: {fileID: 858468984}
-  registerUI: {fileID: 1696993363}
 --- !u!4 &1688854944
 Transform:
   m_ObjectHideFlags: 0

@@ -51,6 +51,7 @@ public class ObjectivesController : MonoBehaviour
             shouldSwitchSlime = false;
         }
     }
+    
 
     public void ChangeObjective(){
         if(currentObjective == 0){
