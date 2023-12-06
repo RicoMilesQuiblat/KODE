@@ -81,22 +81,25 @@ public class SwordAttack : MonoBehaviour
         }else if(currentScene.name == "Operations"){
             damage = 5f;
         }   
-        if(other.tag == "enemy"){
+        if (other.tag == "enemy")
+        {
             Debug.Log("ouch");
             EnemyController enemy = other.GetComponent<EnemyController>();
-            
-            if(enemy != null){
+
+            if (enemy != null)
+            {
                 Debug.Log("ouch");
-                  enemy.Health -= damage;
-                  
-                  TipPopout.Create(transform.position, damage.ToString(), 5f, white);
+                enemy.Health -= damage;
 
+            
+                TipPopout tip = TipPopout.Create(transform.position, damage.ToString(), 5f, white);
+                
 
-                  Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
-                  Vector2 direction = (Vector2) (parentPosition - other.gameObject.transform.position).normalized;
-                  Vector2 knockback = direction * knockbackForce;
-                  enemy.GetHit(knockback * -1);
-              }
+                Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
+                Vector2 direction = (Vector2)(parentPosition - other.gameObject.transform.position).normalized;
+                Vector2 knockback = direction * knockbackForce;
+                enemy.GetHit(knockback * -1);
+            }
         }
     }
     

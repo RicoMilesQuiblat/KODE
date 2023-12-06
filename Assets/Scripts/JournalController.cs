@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,9 @@ public class JournalController : MonoBehaviour
             NonEmptyPage.SetActive(true);
 
         }
+    }
+    public void LoadPages(){
+        
     }
 
     public int GetJournalCount(){

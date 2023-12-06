@@ -13,6 +13,10 @@ public class InGameUiController : MonoBehaviour
     public GameObject dashScreen;
 
     public GameObject gameOverScreen;
+    public GameObject Maze_StartScreen;
+    public GameObject Maze_InputScreen;
+    public GameObject Maze_IfScreen;
+    public GameObject Maze_ProcessScreen;
 
 
 
@@ -52,7 +56,37 @@ public class InGameUiController : MonoBehaviour
         deathScreen.SetActive(false);
         playerController.Respawn();
     }
+    public void mazestartscreen(){
+        Maze_StartScreen.SetActive(true);
+    }
 
+    public void mazestartscreenCLOSE(){
+        Maze_StartScreen.SetActive(false);
+    }
+
+    public void mazeifscreen(){
+        Maze_IfScreen.SetActive(true);
+    }
+
+    public void mazeifscreenCLOSE(){
+        Maze_IfScreen.SetActive(false);
+    }
+
+    public void mazeprocessscreen(){
+        Maze_ProcessScreen.SetActive(true);
+    }
+
+    public void mazeprocessscreenCLOSE(){
+        Maze_ProcessScreen.SetActive(false);
+    }
+
+    public void mazeinputscreen(){
+        Maze_InputScreen.SetActive(true);
+    }
+
+    public void mazeinputscreenCLOSE(){
+        Maze_InputScreen.SetActive(false);
+    }
     public void GameOverScreen(){
         gameOverScreen.SetActive(true);
     }

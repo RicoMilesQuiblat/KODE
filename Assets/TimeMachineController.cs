@@ -5,9 +5,9 @@ using UnityEngine;
 public class TimeMachineController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Camera mainCamera;
     public ObjectivesController objectivesController;
-    private bool shouldUpdate = true;
+    public GameObject chapter2Start;
+    public bool shouldUpdate = true;
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collider){
        
@@ -17,7 +17,16 @@ public class TimeMachineController : MonoBehaviour
                     objectivesController.ChangeObjective();
                     shouldUpdate = false;
 
+                }else if(objectivesController.GetCurrentObjective() == 5 && shouldUpdate){
+                    chapter2Start.SetActive(true);
                 }
         }
+
+
+    }
+
+    private IEnumerator StartChapter2(){
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        chapter2Start.SetActive(false);
     }
 }
