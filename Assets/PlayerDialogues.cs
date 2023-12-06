@@ -35,6 +35,22 @@ public class FirstSlimeDialogue : MonoBehaviour
         "I should go back to the time machine and rest."
     };
 
+    public BeforeBossColliderController BeforeBossColliderController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
+    public ObjectivesController ObjectivesController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     private void Start(){
         
     }

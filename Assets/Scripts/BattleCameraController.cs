@@ -20,7 +20,13 @@ public class BattleCameraController : MonoBehaviour
     public Animator animator;
     public TextMesh text;
 
-    
+    public ToBattle ToBattle
+    {
+        get => default;
+        set
+        {
+        }
+    }
 
     public void StartDialogue(){
        Debug.Log( "gagogagoagaogo");
@@ -30,7 +36,6 @@ public class BattleCameraController : MonoBehaviour
 
     
     IEnumerator Switch(){
-       
         mainBattleCamera.enabled = false;
         PlayerBattleCamera.enabled = true;
         MonsterBattleCamera.enabled = false;

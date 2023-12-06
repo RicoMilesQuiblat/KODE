@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Questions">
+    <Position X="11.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Battle\Questions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlowChartQuestions">
+    <Position X="9" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Battle\FlowChartQuestions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputOutputQuestions">
+    <Position X="11.5" Y="10" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Battle\InputOutputQuestions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OperatorQuestions">
+    <Position X="14.25" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Battle\OperatorQuestions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BatlleController">
+    <Position X="1.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAcABAgUCBFEQQgQAAAIAQAAEAxAEIGEAABIEAAACWQ=</HashCode>
+      <FileName>Assets\Scripts\Battle\BatlleController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Questions" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DialogueBox">
+    <Position X="22.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAQBoAAAQAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Assets\Scripts\Battle\DialogueBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyAreaManager">
+    <Position X="22" Y="22.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAIAAAAAIAAAAAAAAEAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Assets\Scripts\Player\EnemyAreaManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maze_IF_Anim">
+    <Position X="24.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQACACAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\Maze_IF_Anim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController">
+    <Position X="3.75" Y="15.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BQQAiBIAEDBAABwUABARICAIRIIBADAACAlFBAMCgMg=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GameController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerTeleport">
+    <Position X="29" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerTeleport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScreenDisplayOnClearMonsters">
+    <Position X="18.5" Y="22" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAAAAAAAAAAAAAAAAABAAAAAAAAAAAABAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Player\ScreenDisplayOnClearMonsters.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EnemyAreaManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Teleporter_Anim">
+    <Position X="29" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAACAECAAAAAAAAAAAAQAAEAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\Teleporter_Anim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeleporterAnimation">
+    <Position X="30.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAACAECAAAAAAAAAAAAQAAEAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\TeleporterAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameController">
+    <Position X="6.75" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAEAAQAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\GameController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AuthManager">
+    <Position X="19.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAEAAQAAACAgEAABBAQgAkABQAgBAgkA=</HashCode>
+      <FileName>Assets\Scripts\AuthManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCameraController">
+    <Position X="8.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAkIAAAAAQAAJgAAAAgAAAEAAAAAAEIAABAgAAAACA=</HashCode>
+      <FileName>Assets\Scripts\BattleCameraController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ToBattle" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ToBattle">
+    <Position X="5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEIAAAAAAAAQAQAAAEAAAAQAAEAAEAEQAAAEgAAAAYA=</HashCode>
+      <FileName>Assets\Scripts\ToBattle.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BatlleController" />
+      <Property Name="BattleCameraController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BattlePlayerDialogue">
+    <Position X="8" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEBAAAAAAAAAAAgABEAEAAAAAAAAAAAIAAAAAwAACAA=</HashCode>
+      <FileName>Assets\Scripts\BattlePlayerDialogue.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BattleCameraController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BattlePromptsController">
+    <Position X="21" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\BattlePromptsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BeforeBossColliderController">
+    <Position X="6.5" Y="15.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAACgAAAEAEAAEAEAAABAgBEBCAA=</HashCode>
+      <FileName>Assets\Scripts\BeforeBossColliderController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PlayerController" />
+      <Property Name="ObjectivesController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ObjectivesController">
+    <Position X="10" Y="15" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAGAACQwCAAgCCAACAAAAQQEAEAAAZAAAABSEA=</HashCode>
+      <FileName>Assets\ObjectivesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossCanvas">
+    <Position X="12" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEBAAAAAAAAAAAgABEAEAAAAAAAAAAAIAAAAAwAACAA=</HashCode>
+      <FileName>Assets\Scripts\BossCanvas.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BattleCameraController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Detection">
+    <Position X="21" Y="16.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAACAAAAAAAAAAAQAAAEAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Detection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DialogueController">
+    <Position X="24.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DialogueController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyController">
+    <Position X="18" Y="15" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BgAACAACEyAgwggEQAQAACAABARAAAAAAAggAAACAAg=</HashCode>
+      <FileName>Assets\Scripts\EnemyController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Detection" />
+      <Property Name="ScrollController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ScrollController">
+    <Position X="21" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ScrollController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InGameUiController">
+    <Position X="0.5" Y="17.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgCIAIACgAQAAAAEAAAACAEBgBAAIQAAKZAAACGNCE=</HashCode>
+      <FileName>Assets\Scripts\InGameUiController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PlayerController" />
+      <Property Name="JournalController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="JournalController">
+    <Position X="9.5" Y="22.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IQEAAAAAACMBACAIBQAAAAAAAIAAgAAgAAAAgwACACA=</HashCode>
+      <FileName>Assets\Scripts\JournalController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InGameUiController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PickUp">
+    <Position X="13.75" Y="19.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQAAAAFAAA=</HashCode>
+      <FileName>Assets\Scripts\PickUp.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ObjectivesController" />
+      <Property Name="JournalController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SceneSwitcher">
+    <Position X="30.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAEAIAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SceneSwitcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager">
+    <Position X="34.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAACAAAIAAAAAEAAAAAABAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Level_Manager">
+    <Position X="20.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACACAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\Level_Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelManager">
+    <Position X="22.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKACAAAAAIAAAIAAAAAAAAAAAAAGAAAAAAA=</HashCode>
+      <FileName>Assets\LevelManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FirstSlimeDialogue">
+    <Position X="5.75" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAACAAAEAAAAAEAAAAAAAAAAAIAADAgwABSAA=</HashCode>
+      <FileName>Assets\PlayerDialogues.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BeforeBossColliderController" />
+      <Property Name="ObjectivesController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SlimeSpawnController">
+    <Position X="32.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAABARAiAAAAAAAAAAAAEAAAAAAAAAgQAAAF4AAAA=</HashCode>
+      <FileName>Assets\ScrollSpawnController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimeMachineController">
+    <Position X="6.5" Y="20.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAIAAAAAAAEAAAAEAAAQAAAABAAA=</HashCode>
+      <FileName>Assets\TimeMachineController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ObjectivesController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TImeMachineDialogue">
+    <Position X="13.75" Y="16.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAACAAAAgABAAAAAAAAAAAAAAIAAAAAAABCAA=</HashCode>
+      <FileName>Assets\TImeMachineDialogue.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ObjectivesController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GameAssets">
+    <Position X="19" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAABAAAAAAAAAAAAAIAAAAAAAgAA=</HashCode>
+      <FileName>Assets\Resources\GameAssets.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parallax">
+    <Position X="27.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAECAAAAAAAAAAAAAAAgAAEAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Background\Script\Parallax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TipPopout">
+    <Position X="32.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAIAAACAEAAwAAAACCAAAAAAAAEAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Arts\Sprites\Interactables\PopUps\TipPopout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IDamageable">
+    <Position X="27" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Assets\Scripts\IDamageable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -21,6 +21,15 @@ public class BattlePlayerDialogue : MonoBehaviour
         "HOW CAN YOU TALK?! B-but anyways, I just need to answer your questions and I can attack you, right?! ",
         "THEN TRY ME, YOU BIG FAT SLIMY BASTARD"
     };
+
+    public BattleCameraController BattleCameraController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     private void OnEnable(){
         if(currentDialogue == 0){
             dialogues = dialogues1;

@@ -19,6 +19,13 @@ public class JournalController : MonoBehaviour
 
    public bool firstCompletion = false;
 
+    public InGameUiController InGameUiController
+    {
+        get => default;
+        set
+        {
+        }
+    }
 
     public void DisplayPage(){
         Debug.Log(pages.Count);

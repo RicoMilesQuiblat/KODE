@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class BatlleController : MonoBehaviour
 {
-
+    [SerializeField] private AudioSource winSoundEffect;
     private Questions questionSource;
     private Dictionary<string, int> questions;
     private List<string> answers;
@@ -55,11 +55,13 @@ public class BatlleController : MonoBehaviour
 
     TimeMachineController timeMachineController;
 
-    
-
-
-
-
+    public Questions Questions
+    {
+        get => default;
+        set
+        {
+        }
+    }
 
     private void Awake(){
         currentScene = SceneManager.GetActiveScene();
@@ -77,6 +79,7 @@ public class BatlleController : MonoBehaviour
 
 
     public void Update(){
+        
         if(shouldUpdate){
 
             if (playerInitialHP <= 0){
@@ -95,6 +98,7 @@ public class BatlleController : MonoBehaviour
     }
 
     private IEnumerator handleWin(){
+        winSoundEffect.Play();
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         winScreen.SetActive(false);
         mainCamera.enabled = false;
@@ -120,7 +124,7 @@ public class BatlleController : MonoBehaviour
 
     public void Initialize()
     {
-        
+
         shouldUpdate = true;
         playerInitialHP = 10;
         monsterInitialHP = 20;

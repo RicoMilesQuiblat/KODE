@@ -25,6 +25,22 @@ public class InGameUiController : MonoBehaviour
 
     public JournalController journalController;
 
+    public PlayerController PlayerController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
+    public JournalController JournalController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     public void OpenJournal(){
         tools.SetActive(false);
         journal.SetActive(true);

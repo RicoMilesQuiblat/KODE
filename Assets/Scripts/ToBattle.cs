@@ -16,6 +16,22 @@ public class ToBattle : MonoBehaviour
 
     public bool shouldUpdate = false;
 
+    public BatlleController BatlleController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
+    public BattleCameraController BattleCameraController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     public void BattleMode(){
         if(atmosphere){
             atmosphere.SetActive(false);

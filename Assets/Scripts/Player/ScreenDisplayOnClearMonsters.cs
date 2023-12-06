@@ -8,6 +8,14 @@ public class ScreenDisplayOnClearMonsters : MonoBehaviour
     [SerializeField] private EnemyAreaManager enemyAreaManager; // Serialized field for the EnemyAreaManager
     private bool isActive = false;
 
+    public EnemyAreaManager EnemyAreaManager
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     void Update()
     {
         // Check if there are no enemies left in the specified area
