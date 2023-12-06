@@ -52,8 +52,8 @@ public class BatlleController : MonoBehaviour
     public bool shouldSwitch = false;
 
     public ObjectivesController objectivesController;
+    public TimeMachineController timeMachineController;
 
-    TimeMachineController timeMachineController;
 
     
 
@@ -61,11 +61,11 @@ public class BatlleController : MonoBehaviour
 
 
 
-    private void Awake(){
+    private void OnEnable(){
         currentScene = SceneManager.GetActiveScene();
-        if(currentScene.name == "FlowChart"){
+        if(objectivesController.GetCurrentObjective() < 5){
             questionSource = new FlowChartQuestions();
-        }else if(currentScene.name == "InputOutput"){
+        }else if(objectivesController.GetCurrentObjective() < 8){
             questionSource = new InputOutputQuestions();
         }else if(currentScene.name == "Operations"){
             questionSource = new OperatorQuestions();
@@ -107,7 +107,8 @@ public class BatlleController : MonoBehaviour
         playerDialogue.SetActive(false);
         objectivesController.ChangeObjective();
         timeMachineController.shouldUpdate = true;
-         shouldSwitch = false;
+        shouldSwitch = false;
+        playerController.SetCanAttack(true);
 
     }
 

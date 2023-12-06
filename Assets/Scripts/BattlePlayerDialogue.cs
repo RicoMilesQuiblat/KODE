@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class BattlePlayerDialogue : MonoBehaviour
     private bool isClicked = false;
     int count = 0;
     public BattleCameraController battleCameraController;
+    public ObjectivesController objectivesController;
 
     private int currentDialogue = 0;
     private List<string> dialogues;
@@ -21,6 +23,8 @@ public class BattlePlayerDialogue : MonoBehaviour
         "HOW CAN YOU TALK?! B-but anyways, I just need to answer your questions and I can attack you, right?! ",
         "THEN TRY ME, YOU BIG FAT SLIMY BASTARD"
     };
+
+    private List<string> dialogues3 = new List<string>();
     private void OnEnable(){
         if(currentDialogue == 0){
             dialogues = dialogues1;

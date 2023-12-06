@@ -14,6 +14,8 @@ public class FirstSlimeDialogue : MonoBehaviour
     public BatlleController batlleController;
     private int currentDialogue = 0;
 
+    public Chapter2StartDialogueController chapter2StartDialogueController;
+
     private List<string> dialogues;
     private List<string> dialogues1 = new List<string>(){
         "Well, that was... peculiar. Now, what is this? A piece of paper?",
@@ -35,6 +37,14 @@ public class FirstSlimeDialogue : MonoBehaviour
         "I should go back to the time machine and rest."
     };
 
+    private List<string> dialogues5 = new List<string>(){
+        "Ah, THIEVES! Wait… NO! GOBLINS! "
+    };
+
+    private List<string> dialogues6 = new List<string>(){
+        "Now, let's head back to the time machine and try to put this again to its rightful place"
+    };
+
     private void Start(){
         
     }
@@ -48,6 +58,10 @@ public class FirstSlimeDialogue : MonoBehaviour
             dialogues = dialogues3;
         }else if(currentDialogue == 3){
             dialogues = dialogues4;
+        }else if(currentDialogue == 4){
+            dialogues = dialogues5;
+        }else if(currentDialogue == 5){
+            dialogues = dialogues6;
         }
         StartCoroutine(ChangeText());
     }
@@ -65,11 +79,14 @@ public class FirstSlimeDialogue : MonoBehaviour
         }
         if(currentDialogue == 2 || currentDialogue == 1){
             beforeBossColliderController.SetShouldUpdate(true);
+        }else if(currentDialogue == 4){
+            chapter2StartDialogueController.shouldUpdate = true;
         }
-        objectivesController.setShouldUpdate(true);
         if(batlleController.win == true){
             batlleController.shouldSwitch = true;
         }
+        objectivesController.setShouldUpdate(true);
+        
         currentDialogue++;
     }
 }

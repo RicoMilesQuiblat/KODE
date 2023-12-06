@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class JournalController : MonoBehaviour
@@ -16,10 +17,24 @@ public class JournalController : MonoBehaviour
    public GameObject page3;
    public GameObject page4;
    public GameObject page5;
+   public GameObject page6;
+   public GameObject page7;
+   public GameObject page8;
+
+   private List<GameObject> allPages = new List<GameObject>();
 
    public bool firstCompletion = false;
 
-
+    private void Start(){
+        allPages.Add(page1);
+        allPages.Add(page2);
+        allPages.Add(page3);
+        allPages.Add(page4);
+        allPages.Add(page5);
+        allPages.Add(page6);
+        allPages.Add(page7);
+        allPages.Add(page8);
+    }
     public void DisplayPage(){
         Debug.Log(pages.Count);
         if(pages.Count == 0){
@@ -62,26 +77,7 @@ public class JournalController : MonoBehaviour
    }
 
    public void AddPage(){
-        if(pages.Count == 0 || pages.Count == 5 || pages.Count == 8){
-            pages.Add(page1);
-        }else if(pages.Count == 1 || pages.Count == 6 || pages.Count == 9){
-            pages.Add(page2);
-        }else if (pages.Count == 2 || pages.Count == 7){
-            if(page3){
-
-            pages.Add(page3);
-            }
-        }else if (pages.Count == 3){
-            if(page4){
-            pages.Add(page4);
-
-            }
-        }else if (pages.Count == 4){
-            if(page5){
-
-             pages.Add(page5);
-            }
-        }
+        pages.Add(allPages[pages.Count]);
    }
 
    public void QuitJournal(){
