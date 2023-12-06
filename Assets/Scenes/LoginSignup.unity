@@ -3735,6 +3735,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407554304}
   m_CullTransparentMesh: 1
+--- !u!1 &1407953082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407953084}
+  - component: {fileID: 1407953083}
+  m_Layer: 0
+  m_Name: ScallSpawnController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1407953083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407953082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149c174494cbd0445869522a26bad505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scroll1: {fileID: 0}
+  Scroll2: {fileID: 0}
+  Scroll3: {fileID: 0}
+  Scroll4: {fileID: 0}
+  Scroll5: {fileID: 0}
+--- !u!4 &1407953084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407953082}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1430694629
 GameObject:
   m_ObjectHideFlags: 0
@@ -4748,7 +4797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1696993364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5680,3 +5729,4 @@ SceneRoots:
   - {fileID: 1250948237}
   - {fileID: 513904193}
   - {fileID: 1688854944}
+  - {fileID: 1407953084}
