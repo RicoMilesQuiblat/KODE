@@ -38,6 +38,10 @@ public class BatlleController : MonoBehaviour
     public List<int> temp;
     private Scene currentScene;
 
+    public GameObject smokeEffect;
+
+    
+
 
 
 
@@ -65,7 +69,8 @@ public class BatlleController : MonoBehaviour
                 gameController.FreeRoamMode();
                 shouldUpdate = false;
             }else if(monsterInitialHP <= 0){
-                sceneSwitcher.SwitchScene();
+                gameController.FreeRoamMode();
+                smokeEffect.SetActive(false);
                 shouldUpdate = false;
             }
         }
@@ -95,13 +100,12 @@ public class BatlleController : MonoBehaviour
 
         foreach(var question in questionSource.questions){
             questions.Add(question.Key, question.Value);
-            Debug.Log(question);
-            
+           
         }
 
         foreach(var answer in questionSource.answers){
             answers.Add(answer);
-            Debug.Log(answer);
+            
         }
 
         SelectQuestion();
@@ -209,7 +213,9 @@ public class BatlleController : MonoBehaviour
         if(answerCode == 0 || answerCode == 4 || answerCode == 8 || answerCode == 12 || answerCode == 16 || answerCode == 20 || answerCode == 24 || answerCode == 28 || answerCode == 32 || answerCode == 36){
             monsterInitialHP -= 2;
             monsterHp.value = monsterInitialHP;
-            NextQuestion();
+            if(monsterInitialHP > 0){
+             NextQuestion();
+             }
         }else{
             playerInitialHP -= 2;
             playerHp.value = playerInitialHP;
@@ -221,7 +227,10 @@ public class BatlleController : MonoBehaviour
         if(answerCode == 1 || answerCode == 5 || answerCode == 9 || answerCode == 13 || answerCode == 17 || answerCode == 21 || answerCode == 25 || answerCode == 29 || answerCode == 33 || answerCode == 37){
             monsterInitialHP -= 2;
              monsterHp.value = monsterInitialHP;
+             if(monsterInitialHP > 0){
              NextQuestion();
+             }
+
         }else{
             playerInitialHP -= 2;
             playerHp.value = playerInitialHP;
@@ -236,7 +245,9 @@ public class BatlleController : MonoBehaviour
         if(answerCode == 2 || answerCode == 6 || answerCode == 10 || answerCode == 14 || answerCode == 18 || answerCode == 22 || answerCode == 26 || answerCode == 30 || answerCode == 34 || answerCode == 38 ){
             monsterInitialHP -= 2;
             monsterHp.value = monsterInitialHP;
-            NextQuestion();
+            if(monsterInitialHP > 0){
+             NextQuestion();
+             }
         }else{
             playerInitialHP -= 2;
             playerHp.value = playerInitialHP;
@@ -250,7 +261,9 @@ public class BatlleController : MonoBehaviour
         if(answerCode == 3 || answerCode == 7 || answerCode == 11 || answerCode == 15 || answerCode == 19 || answerCode == 23 || answerCode == 27 || answerCode == 31 || answerCode == 35 || answerCode == 39){
             monsterInitialHP -= 2;
             monsterHp.value = monsterInitialHP;
-            NextQuestion();
+            if(monsterInitialHP > 0){
+             NextQuestion();
+             }
         }else{
             playerInitialHP -= 2;
             playerHp.value = playerInitialHP;

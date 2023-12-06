@@ -5,9 +5,8 @@ using UnityEngine;
 public class TimeMachineController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Camera mainCamera;
     public ObjectivesController objectivesController;
-    private bool shouldUpdate = true;
+    public bool shouldUpdate = true;
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collider){
        
@@ -17,7 +16,11 @@ public class TimeMachineController : MonoBehaviour
                     objectivesController.ChangeObjective();
                     shouldUpdate = false;
 
+                }else if(objectivesController.GetCurrentObjective() == 5){
+
                 }
         }
+
+
     }
 }
