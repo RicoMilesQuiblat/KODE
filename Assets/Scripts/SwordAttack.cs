@@ -71,7 +71,7 @@ public class SwordAttack : MonoBehaviour
     //     }
     // }
 
-    Color white = new Color(100, 100, 100, 100); // Opaque white
+    
 
     private void OnTriggerEnter2D(Collider2D other){
         if(currentScene.name == "FlowChart"){
@@ -92,7 +92,7 @@ public class SwordAttack : MonoBehaviour
                 enemy.Health -= damage;
 
             
-                TipPopout tip = TipPopout.Create(transform.position, damage.ToString(), 5f, white);
+                TipPopout tip = TipPopout.Create(transform.position, damage.ToString(), 5f, Color.white,(float).5);
                 
 
                 Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;

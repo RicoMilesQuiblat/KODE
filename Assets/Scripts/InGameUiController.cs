@@ -17,7 +17,7 @@ public class InGameUiController : MonoBehaviour
     public GameObject Maze_InputScreen;
     public GameObject Maze_IfScreen;
     public GameObject Maze_ProcessScreen;
-
+    public GameObject LowHPScreen;
 
 
     public PlayerController playerController;
@@ -86,6 +86,14 @@ public class InGameUiController : MonoBehaviour
 
     public void mazeinputscreenCLOSE(){
         Maze_InputScreen.SetActive(false);
+    }
+
+    public void lowhpscreen(){
+        LowHPScreen.SetActive(true);
+    }
+
+    public void lowhpscreenCLOSE(){
+        LowHPScreen.SetActive(false);
     }
     public void GameOverScreen(){
         gameOverScreen.SetActive(true);

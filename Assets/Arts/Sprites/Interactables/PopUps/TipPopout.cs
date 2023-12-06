@@ -13,29 +13,32 @@ public class TipPopout : MonoBehaviour
     private Color initialColor; // Store the initial color
 
     // Adjust this variable to control how long the tip remains visible
-    public float timeToDisappear = 2f;
+    public float timeToDisappear = 1f;
 
-    public static TipPopout Create(Vector3 position, string tip, float textSize, Color color)
-    {
-        Transform TipPopupTransform = Instantiate(GameAssets.i.PfPopUp, position, Quaternion.identity);
-        TipPopout tipPopup = TipPopupTransform.GetComponent<TipPopout>();
-        tipPopup.setup(tip, textSize, color);
+    public static TipPopout Create(Vector3 position, string tip, float textSize, Color color, float timeToDisappear)
+{
+    Transform TipPopupTransform = Instantiate(GameAssets.i.PfPopUp, position, Quaternion.identity);
+    TipPopout tipPopup = TipPopupTransform.GetComponent<TipPopout>();
+    tipPopup.setup(tip, textSize, color, timeToDisappear);
 
-        return tipPopup;
-    }
+    return tipPopup;
+}
+
 
     private void Awake()
     {
         textMesh = transform.GetComponent<TextMeshPro>();
     }
 
-    public void setup(string Tip, float textSize, Color color)
+    public void setup(string Tip, float textSize, Color color, float timeToDisappear)
     {
         textMesh.SetText(Tip);
         textMesh.fontSize = textSize;
         initialColor = color; // Set the initial color
+        this.timeToDisappear = timeToDisappear; // Set the disappear timer based on the parameter
         disappearTimer = timeToDisappear; // Set the disappear timer initially
     }
+
 
     private void Start()
     {
@@ -55,7 +58,7 @@ public class TipPopout : MonoBehaviour
         // Check if the disappear timer has reached zero
         if (disappearTimer <= 0)
         {
-            Destroy(gameObject); // Destroy the GameObject after the specified time
+            Destroy(gameObject); 
         }
     }
 }

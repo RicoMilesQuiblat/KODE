@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Maze_IF_Anim : MonoBehaviour
 {
     private Animator animator;
     private bool isPlayerInTrigger = false; 
-
+    public bool isOn = false;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -17,8 +18,13 @@ public class Maze_IF_Anim : MonoBehaviour
        
         if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
         {
-           
-            bool isOn = animator.GetBool("isOn");
+            if(isOn){
+                TipPopout.Create(transform.position, "True (Press E for False)", 10f, new Color(135, 206, 235),2);
+            }else{
+                TipPopout.Create(transform.position, "False (Press E for True)", 10f, new Color(1, 0, 0),2);
+
+            }
+            isOn = animator.GetBool("isOn");
             animator.SetBool("isOn", !isOn); 
         }
     }
@@ -27,7 +33,13 @@ public class Maze_IF_Anim : MonoBehaviour
     {
         if (other.CompareTag("Player")) 
         {   
-            TipPopout.Create(transform.position, "Toggle 'E'", 30f, new Color(1, 1, 1));
+            if(!isOn){
+                TipPopout.Create(transform.position, "True (Press E for False)", 10f, new Color(1, 1, 1),2);
+            }else{
+                TipPopout.Create(transform.position, "False (Press E for True)", 10f, new Color(1, 1, 1),2);
+
+            }
+            
             isPlayerInTrigger = true; 
         }
     }

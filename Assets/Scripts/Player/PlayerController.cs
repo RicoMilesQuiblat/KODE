@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     public InGameUiController inGameUiController;
     public InGameUiController HitAnim;
+    public InGameUiController LowAnim;
 
     public bool isAlive = true;
 
@@ -34,11 +35,11 @@ public class PlayerController : MonoBehaviour
     public SwordAttack swordAttack;
 
     public Slider slider;
-
+    public bool isLowHealth = false;
     public GameObject fill;
 
     private Vector2 startPosition;
-
+    private bool hasRecoveredFromLowHealth;
     public EnemyController enemyController;
     private bool facingRight=false;
     private bool facingUp=false;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private Scene currentScene;
 
     private bool canAttack = true;
+    private bool wasLowHealth = false;
 
 
     public float Health{
@@ -94,10 +96,25 @@ public class PlayerController : MonoBehaviour
         canAttack = setter;
     }
     public void Update()
-    {
+    {   
         if(isAlive && lives > 0){
+            bool isCurrentlyLowHealth = health < 4f;
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
+            if (isCurrentlyLowHealth != wasLowHealth) {
+                wasLowHealth = isCurrentlyLowHealth;
+
+                if (isCurrentlyLowHealth) {
+                    LowAnim.lowhpscreen();
+                    hasRecoveredFromLowHealth = false; // Reset recovery flag when health becomes low
+                } else {
+                    // Check if we have not recovered from low health and health is acceptable
+                    if (!hasRecoveredFromLowHealth && health >= 4f) {
+                        LowAnim.lowhpscreenCLOSE();
+                        hasRecoveredFromLowHealth = true; // Set recovery flag
+                    }
+                }
+            }
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 Teleport(2f);
@@ -124,6 +141,8 @@ public class PlayerController : MonoBehaviour
                 isMoving = false;
             }
 
+             
+
              if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 
@@ -146,9 +165,14 @@ public class PlayerController : MonoBehaviour
             Attack();
             }
             }
-
+            
             animator.SetBool("isMoving", isMoving);
             slider.value = health;
+            
+            
+        }
+        if(!isAlive){
+           LowAnim.lowhpscreenCLOSE();
         }
 
         if(lives == 0){
