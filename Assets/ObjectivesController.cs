@@ -14,6 +14,7 @@ public class ObjectivesController : MonoBehaviour
         "Collect Journals ",
         "Continue exploring the forest",
         "Enter the mysterious entrance",
+        "Defeat the boss",
     };
     public Text objectiveText;
 
@@ -34,6 +35,7 @@ public class ObjectivesController : MonoBehaviour
     public PlayerController playerController;
 
     public GameObject subQuest;
+    public bool firstCompletion = false;
     private bool shouldUpdate = false;
 
     public void setShouldUpdate(bool should){
@@ -54,7 +56,7 @@ public class ObjectivesController : MonoBehaviour
         if(currentObjective == 0){
             StartCoroutine(SpawnFirstSlime());
         }else if(currentObjective == 2 && journalController.GetJournalCount() < 5){
-
+            
             animator.SetTrigger("Change");
             currentObjective -= 1;
         }else if(currentObjective == 2 && journalController.GetJournalCount() == 5){
