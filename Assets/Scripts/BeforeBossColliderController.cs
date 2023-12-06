@@ -44,6 +44,7 @@ public class BeforeBossColliderController : MonoBehaviour
         yield return new WaitUntil(() => shouldUpdate);
         playerMiniCamera.enabled = false;
         mainCamera.enabled = true;
+        playerCanvas.SetActive(false);
          shouldUpdate = false;
          objectivesController.ChangeObjective();
         

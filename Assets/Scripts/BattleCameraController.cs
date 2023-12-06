@@ -12,24 +12,32 @@ public class BattleCameraController : MonoBehaviour
     public GameObject prompt1;
     public GameObject prompt2;
     public ToBattle toBattle;
-    public bool shouldUpdate = true;
+    public bool shouldUpdate = false;
 
     public GameObject playerCanvas;
     public GameObject monsterCanvas;
 
+    public Animator animator;
+    public TextMesh text;
+
     
 
     public void StartDialogue(){
-        Switch();
+       Debug.Log( "gagogagoagaogo");
+        StartCoroutine(Switch());
+        
     }
-    IEnumerator Switch(){
 
+    
+    IEnumerator Switch(){
+       
         mainBattleCamera.enabled = false;
         PlayerBattleCamera.enabled = true;
         MonsterBattleCamera.enabled = false;
         shouldUpdate = false;
         playerCanvas.SetActive(true);
         yield return new WaitUntil(() => shouldUpdate);
+        Debug.Log( "gagogagoagaogo");
         MonsterBattleCamera.enabled = true;
         PlayerBattleCamera.enabled = false;
         shouldUpdate = false;
@@ -43,19 +51,22 @@ public class BattleCameraController : MonoBehaviour
         monsterCanvas.SetActive(false);
         prompts.SetActive(true);
         prompt1.SetActive(true);
-        yield return new WaitForSeconds(2f);
         prompt2.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        // animator.Play("zoomIn");
+        yield return new WaitForSeconds(8f);
+        
         prompts.SetActive(false);
         monsterCanvas.SetActive(true);
         MonsterBattleCamera.enabled = true;
         PlayerBattleCamera.enabled = false;
         shouldUpdate = false;
          yield return new WaitUntil(() => shouldUpdate);
+         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
          playerCanvas.SetActive(false);
         monsterCanvas.SetActive(false);
          MonsterBattleCamera.enabled = false;
-         mainBattleCamera.enabled = true;
-         toBattle.shouldUpdate = true;
+         shouldUpdate = false;
+        toBattle.shouldUpdate = true;
+         toBattle.Initialize();
     }
 }

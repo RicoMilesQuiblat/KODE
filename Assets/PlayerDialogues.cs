@@ -10,6 +10,8 @@ public class FirstSlimeDialogue : MonoBehaviour
     public ObjectivesController objectivesController;
 
     public BeforeBossColliderController beforeBossColliderController;
+
+    public BatlleController batlleController;
     private int currentDialogue = 0;
 
     private List<string> dialogues;
@@ -29,6 +31,10 @@ public class FirstSlimeDialogue : MonoBehaviour
         "I know it's a bad idea but I wanna go there."
     };
 
+    private List<string> dialogues4 = new List<string>(){
+        "I should go back to the time machine and rest."
+    };
+
     private void Start(){
         
     }
@@ -40,6 +46,8 @@ public class FirstSlimeDialogue : MonoBehaviour
             dialogues = dialogues2;
         }else if(currentDialogue == 2){
             dialogues = dialogues3;
+        }else if(currentDialogue == 3){
+            dialogues = dialogues4;
         }
         StartCoroutine(ChangeText());
     }
@@ -59,6 +67,9 @@ public class FirstSlimeDialogue : MonoBehaviour
             beforeBossColliderController.SetShouldUpdate(true);
         }
         objectivesController.setShouldUpdate(true);
+        if(batlleController.win == true){
+            batlleController.shouldSwitch = true;
+        }
         currentDialogue++;
     }
 }

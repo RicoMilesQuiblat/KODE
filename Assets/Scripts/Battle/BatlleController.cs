@@ -22,7 +22,7 @@ public class BatlleController : MonoBehaviour
     private int monsterInitialHP;
     private string chosenQuestion;
     private int answerCode;
-    private bool isCorrect = false;
+   
 
     public Slider playerHp;
     public Slider monsterHp;
@@ -39,6 +39,21 @@ public class BatlleController : MonoBehaviour
     private Scene currentScene;
 
     public GameObject smokeEffect;
+
+    public GameObject winScreen;
+
+    public Camera playerMiniCamera;
+
+    public Camera mainCamera;
+
+    public GameObject playerDialogue;
+    public bool win = false;
+    
+    public bool shouldSwitch = false;
+
+    public ObjectivesController objectivesController;
+
+    TimeMachineController timeMachineController;
 
     
 
@@ -69,11 +84,31 @@ public class BatlleController : MonoBehaviour
                 gameController.FreeRoamMode();
                 shouldUpdate = false;
             }else if(monsterInitialHP <= 0){
+                win = true;
                 gameController.FreeRoamMode();
                 smokeEffect.SetActive(false);
+                winScreen.SetActive(true);
                 shouldUpdate = false;
+                StartCoroutine(handleWin());
             }
         }
+    }
+
+    private IEnumerator handleWin(){
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        winScreen.SetActive(false);
+        mainCamera.enabled = false;
+        playerMiniCamera.enabled = true;
+        playerDialogue.SetActive(true);
+        shouldSwitch = false;
+        yield return new WaitUntil(() => shouldSwitch);
+        mainCamera.enabled = true;
+        playerMiniCamera.enabled = false;
+        playerDialogue.SetActive(false);
+        objectivesController.ChangeObjective();
+        timeMachineController.shouldUpdate = true;
+         shouldSwitch = false;
+
     }
 
     
@@ -123,8 +158,7 @@ public class BatlleController : MonoBehaviour
 
 
         foreach(var number in temp){
-                Debug.Log(number);
-        
+                
         }
     }
     private void Display()

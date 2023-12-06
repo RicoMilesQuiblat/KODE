@@ -11,6 +11,8 @@ public class ToBattle : MonoBehaviour
     public BatlleController batlleController;
     public GameObject atmosphere;
     public BattleCameraController battleCameraController;
+    public GameObject playerHP;
+    public GameObject monsterHP;
 
     public bool shouldUpdate = false;
 
@@ -21,10 +23,16 @@ public class ToBattle : MonoBehaviour
         mainCamera.enabled = false;
         Debug.Log("omsim ka");
         StartCoroutine(StartBattleDialogue());
+        
+    }
+
+    public void Initialize(){
         Debug.Log(mainCamera.enabled);
         batlleController.Initialize();
         battleCamera.enabled = true;
         Debug.Log(battleCamera.enabled);
+        playerHP.SetActive(true);
+        monsterHP.SetActive(true);
     }
 
     IEnumerator StartBattleDialogue(){

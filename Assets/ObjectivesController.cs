@@ -14,7 +14,7 @@ public class ObjectivesController : MonoBehaviour
         "Collect Journals ",
         "Continue exploring the forest",
         "Enter the mysterious entrance",
-        "Defeat the boss",
+        "Go back to the time machine",
     };
     public Text objectiveText;
 
@@ -51,7 +51,7 @@ public class ObjectivesController : MonoBehaviour
             shouldSwitchSlime = false;
         }
     }
-    
+
 
     public void ChangeObjective(){
         if(currentObjective == 0){
