@@ -4,6 +4,8 @@ using Firebase;
 using Firebase.Auth;
 using TMPro;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class AuthManager : MonoBehaviour
 {
@@ -28,6 +30,14 @@ public class AuthManager : MonoBehaviour
         public TMP_InputField passwordRegisterField;
     public TMP_Text warningRegisterText;
     public TMP_Text confirmRegisterText;
+
+
+
+    private void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
 
     void Awake()
     {
@@ -111,6 +121,8 @@ public class AuthManager : MonoBehaviour
             Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
+
+            ChangeScene("Main Homepage");
         }
     }
 
@@ -185,8 +197,10 @@ public class AuthManager : MonoBehaviour
                         UIManager.instance.LoginScreen();
                         warningRegisterText.text = "";
                     }
+                  
                 }
             }
         }
     }
+
 }
