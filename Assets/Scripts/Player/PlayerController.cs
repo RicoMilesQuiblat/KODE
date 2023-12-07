@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private AudioSource attackSoundEffect, dashSoundEffect, deathSoundEffect, winSoundEffect, ouchSoundEffect;
     public float moveSpeed = 50f;
     public float maxSpeed = 8f;
     private bool isMoving;
@@ -49,7 +50,6 @@ public class PlayerController : MonoBehaviour
 
     private bool canAttack = true;
     private bool wasLowHealth = false;
-
 
     public float Health{
         set{
@@ -202,6 +202,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator TeleportCoroutine(Vector2 targetPos)
     {
+        dashSoundEffect.Play();
         isMoving = true;
 
         // Optional: Add any teleportation animation or effects here
@@ -226,6 +227,7 @@ public class PlayerController : MonoBehaviour
     
 
     public void PlayerDie(){
+        deathSoundEffect.Play();
         animator.SetBool("IsAlive", false);
         isAlive = false;
         Removelife();
@@ -257,6 +259,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log(health);
         rb.AddForce(knockback);
         inGameUiController.HitScreen();
+        ouchSoundEffect.Play();
     } 
 
     public bool CheckIsAlive(){
@@ -270,11 +273,16 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
+        attackSoundEffect.Play();
         animator.SetTrigger("swordAttack");
         
     }
-        
-    
 
-
+    public GameController GameController
+    {
+        get => default;
+        set
+        {
+        }
+    }
 }

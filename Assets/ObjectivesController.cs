@@ -15,6 +15,9 @@ public class ObjectivesController : MonoBehaviour
         "Continue exploring the forest",
         "Enter the mysterious entrance",
         "Go back to the time machine",
+        "Find the goblins",
+        "Follow the footsteps",
+        "Head back to the time machine"
     };
     public Text objectiveText;
 
@@ -22,6 +25,7 @@ public class ObjectivesController : MonoBehaviour
     public Camera timeMachineCamera;
     public Camera playerMiniCamera;
     public GameObject playerMiniCameraCanvas;
+
 
     private bool shouldSwitchSlime = true;
 
@@ -63,7 +67,12 @@ public class ObjectivesController : MonoBehaviour
         }else if(currentObjective == 2 && journalController.GetJournalCount() == 5){
             animator.SetTrigger("Change");
         }
-        
+        else if(currentObjective == 6 && journalController.GetJournalCount() >5 && journalController.GetJournalCount() < 8){
+            animator.SetTrigger("Change");
+            currentObjective -= 1;
+        }else if(currentObjective == 6 && journalController.GetJournalCount() == 8 ){
+            animator.SetTrigger("Change");
+        }
         
         animator.SetTrigger("Change");
         
@@ -76,6 +85,9 @@ public class ObjectivesController : MonoBehaviour
         string newText = objectives[currentObjective];
         if(currentObjective == 2){
             newText = newText + journalController.GetJournalCount() + "/5"; 
+        }
+        if(currentObjective == 6){
+            newText = newText + (journalController.GetJournalCount() - 5) + "/3";
         }
         objectiveText.text = newText;
     }

@@ -17,6 +17,14 @@ public class TImeMachineDialogue : MonoBehaviour
         "Well, looks like I'll need to improvise a way out of this mess. Time to channel my inner Renaissance inventor and figure out how to fix this contraptions"
     };
 
+    public ObjectivesController ObjectivesController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     private void Start(){
         StartCoroutine(ChangeText());
     }

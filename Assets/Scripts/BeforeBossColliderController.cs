@@ -16,6 +16,23 @@ public class BeforeBossColliderController : MonoBehaviour
     public ObjectivesController objectivesController;
     
     private bool shouldUpdate = false;
+
+    public PlayerController PlayerController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
+    public ObjectivesController ObjectivesController
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collider){
         FirstSwitch();
     }

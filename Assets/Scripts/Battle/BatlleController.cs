@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class BatlleController : MonoBehaviour
 {
-
+    [SerializeField] private AudioSource winSoundEffect;
     private Questions questionSource;
     private Dictionary<string, int> questions;
     private List<string> answers;
@@ -52,20 +52,22 @@ public class BatlleController : MonoBehaviour
     public bool shouldSwitch = false;
 
     public ObjectivesController objectivesController;
-
-    TimeMachineController timeMachineController;
-
-    
+    public TimeMachineController timeMachineController;
 
 
+    public Questions Questions
+    {
+        get => default;
+        set
+        {
+        }
+    }
 
-
-
-    private void Awake(){
+    private void OnEnable(){
         currentScene = SceneManager.GetActiveScene();
-        if(currentScene.name == "FlowChart"){
+        if(objectivesController.GetCurrentObjective() < 5){
             questionSource = new FlowChartQuestions();
-        }else if(currentScene.name == "InputOutput"){
+        }else if(objectivesController.GetCurrentObjective() < 8){
             questionSource = new InputOutputQuestions();
         }else if(currentScene.name == "Operations"){
             questionSource = new OperatorQuestions();
@@ -77,6 +79,7 @@ public class BatlleController : MonoBehaviour
 
 
     public void Update(){
+        
         if(shouldUpdate){
 
             if (playerInitialHP <= 0){
@@ -95,6 +98,7 @@ public class BatlleController : MonoBehaviour
     }
 
     private IEnumerator handleWin(){
+        winSoundEffect.Play();
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         winScreen.SetActive(false);
         mainCamera.enabled = false;
@@ -107,7 +111,8 @@ public class BatlleController : MonoBehaviour
         playerDialogue.SetActive(false);
         objectivesController.ChangeObjective();
         timeMachineController.shouldUpdate = true;
-         shouldSwitch = false;
+        shouldSwitch = false;
+        playerController.SetCanAttack(true);
 
     }
 
@@ -120,7 +125,7 @@ public class BatlleController : MonoBehaviour
 
     public void Initialize()
     {
-        
+
         shouldUpdate = true;
         playerInitialHP = 10;
         monsterInitialHP = 20;

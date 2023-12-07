@@ -132,5 +132,20 @@ public class EnemyController : MonoBehaviour
               }
         }
     }
-    
+
+    public Detection Detection
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
+    public ScrollController ScrollController
+    {
+        get => default;
+        set
+        {
+        }
+    }
 }

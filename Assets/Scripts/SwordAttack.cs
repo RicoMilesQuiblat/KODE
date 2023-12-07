@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,7 @@ public class SwordAttack : MonoBehaviour
     public float damage = 3f;
     public float knockbackForce = 500f;
     public Scene currentScene;
+    
 
     private void Start(){
        currentScene = SceneManager.GetActiveScene();
@@ -103,4 +105,5 @@ public class SwordAttack : MonoBehaviour
         }
     }
     
+
 }
