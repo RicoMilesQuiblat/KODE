@@ -6,8 +6,11 @@ using UnityEngine;
 public class Maze_IF_Anim : MonoBehaviour
 {
     private Animator animator;
-    private bool isPlayerInTrigger = false; 
+    private bool isPlayerInTrigger = false;
     public bool isOn = false;
+    public delegate void LeverStateChanged(bool newState);
+    public static event LeverStateChanged OnLeverStateChanged;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -15,18 +18,27 @@ public class Maze_IF_Anim : MonoBehaviour
 
     private void Update()
     {
-       
         if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            if(isOn){
-                TipPopout.Create(transform.position, "True (Press E for False)", 10f, new Color(135, 206, 235),2);
+            if(!isOn){
+                TipPopout.Create(transform.position, "True (Press E for False)", 10f, new Color(0, 0, 1),1);
             }else{
-                TipPopout.Create(transform.position, "False (Press E for True)", 10f, new Color(1, 0, 0),2);
+                TipPopout.Create(transform.position, "False (Press E for True)", 10f, new Color(1, 0, 0),1);
 
             }
-            isOn = animator.GetBool("isOn");
-            animator.SetBool("isOn", !isOn); 
+            ToggleLever();
+
+            Debug.Log(isOn);
         }
+    }
+
+    private void ToggleLever()
+    {
+        isOn = !isOn;
+        animator.SetBool("isOn", isOn);
+
+        // Trigger the event to notify other scripts of the lever state change
+        OnLeverStateChanged?.Invoke(isOn);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,9 +46,9 @@ public class Maze_IF_Anim : MonoBehaviour
         if (other.CompareTag("Player")) 
         {   
             if(!isOn){
-                TipPopout.Create(transform.position, "True (Press E for False)", 10f, new Color(1, 1, 1),2);
+                TipPopout.Create(transform.position, "True (Press E for False)", 10f, new Color(1, 1, 1),1);
             }else{
-                TipPopout.Create(transform.position, "False (Press E for True)", 10f, new Color(1, 1, 1),2);
+                TipPopout.Create(transform.position, "False (Press E for True)", 10f, new Color(1, 1, 1),1);
 
             }
             

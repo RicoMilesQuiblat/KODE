@@ -31,7 +31,7 @@ public class Teleporter_Anim : MonoBehaviour
         if (other.CompareTag("Player")) // You can use a tag or layer to identify your player
         {   
             if(trigger){
-                TipPopout.Create(transform.position, "Teleport(E)",30f, new Color(1, 1, 1),2);
+                TipPopout.Create(transform.position, "Teleport(E)",8f, new Color(1, 1, 1),1);
             }
             
             // Start the animation
