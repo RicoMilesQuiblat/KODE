@@ -234,16 +234,12 @@ public class PlayerController : MonoBehaviour
         dashSoundEffect.Play();
         isMoving = true;
 
-        // Optional: Add any teleportation animation or effects here
-
-        // Teleport the player to the target position
         transform.position = targetPos;
 
-        yield return null; // Wait for the end of the frame
+        yield return null; 
 
         isMoving = false;
 
-        // Optional: Add any teleportation animation or effects here
     }
 
 
@@ -287,7 +283,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             if (input.x == 0 && input.y == 0)
-                return lastMovementDirection; // Use the last movement direction if no input is detected
+                return lastMovementDirection; 
             else
                 return new Vector2(input.x != 0 ? Mathf.Sign(input.x) : 0, input.y != 0 ? Mathf.Sign(input.y) : 0);
         }
@@ -295,7 +291,6 @@ public class PlayerController : MonoBehaviour
 
 
     public void GetHit(Vector2 knockback){
-        // animator.SetTrigger("Hit");
         Debug.Log(health);
         rb.AddForce(knockback);
         inGameUiController.HitScreen();
@@ -331,20 +326,16 @@ public class PlayerController : MonoBehaviour
     private IEnumerator HandleAttack() {
     isAttacking = true;
 
-    // Get facing direction for attack based on mouse position immediately
     Vector2 attackDirection = input.x == 0 && input.y == 0 ? lastMovementDirection : GetFacingDirection();
     
-    // Update animator parameters immediately
     animator.SetFloat("moveX", attackDirection.x);
     animator.SetFloat("moveY", attackDirection.y);
 
-    // Play attack sound effect
+
     attackSoundEffect.Play();
 
-    // Trigger the attacking animation
     animator.SetTrigger("swordAttack");
 
-    // Initiate attack based on direction
     if(attackDirection == Vector2.right){
         swordAttack.AttackRight();
     }else if (attackDirection == Vector2.left){
@@ -355,7 +346,7 @@ public class PlayerController : MonoBehaviour
         swordAttack.AttackDown();
     }
 
-    yield return new WaitForSeconds(0); // Adjust this duration to match your attack animation
+    yield return new WaitForSeconds(0); 
 
     isAttacking = false;
 }
