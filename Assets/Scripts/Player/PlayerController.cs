@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem;  
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
+    private Vector2 lastMovementDirection = Vector2.down; // default facing direction
+
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
@@ -50,6 +52,10 @@ public class PlayerController : MonoBehaviour
 
     private bool canAttack = true;
     private bool wasLowHealth = false;
+    private bool isAttacking = false;
+    private bool useMouseForDirection = true;
+
+
 
     public float Health{
         set{
@@ -97,10 +103,24 @@ public class PlayerController : MonoBehaviour
     }
     public void Update()
     {   
+        CheckForControlSchemeChange();
+
         if(isAlive && lives > 0){
+            Vector2 facingDirection = GetFacingDirection();
+            animator.SetFloat("moveX", facingDirection.x);
+            animator.SetFloat("moveY", facingDirection.y);
+            teleportDirection = new Vector2(
+            input.x != 0 ? Mathf.Sign(input.x) : 0,
+            input.y != 0 ? Mathf.Sign(input.y) : 0
+            );
+
             bool isCurrentlyLowHealth = health < 4f;
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
+            Vector2 movementDirection = new Vector2(
+                input.x != 0 ? Mathf.Sign(input.x) : 0,
+                input.y != 0 ? Mathf.Sign(input.y) : 0
+            );
             if (isCurrentlyLowHealth != wasLowHealth) {
                 wasLowHealth = isCurrentlyLowHealth;
 
@@ -119,8 +139,11 @@ public class PlayerController : MonoBehaviour
             {
                 Teleport(2f);
             }
+            
             if (input != Vector2.zero)
             {
+                lastMovementDirection = new Vector2(input.x, input.y).normalized;
+
                 rb.velocity = new Vector2(input.x * moveSpeed, input.y * moveSpeed);
 
                 animator.SetFloat("moveX", input.x);
@@ -148,22 +171,14 @@ public class PlayerController : MonoBehaviour
                 
                 inGameUiController.DashScreen();
             }
-            if(canAttack){
-
-              if (Input.GetKeyDown(KeyCode.J) || Input.GetMouseButtonDown(0)){
+            if (!isAttacking) {
+            facingDirection = GetFacingDirection();
+            animator.SetFloat("moveX", facingDirection.x);
+            animator.SetFloat("moveY", facingDirection.y);
+        }
+            if(canAttack && (Input.GetKeyDown(KeyCode.J) || Input.GetMouseButtonDown(0))){
             Debug.Log("Attacking");
-            Vector2 facingDirection = GetFacingDirection();
-            if(facingDirection == Vector2.right){
-                swordAttack.AttackRight();
-            }else if (facingDirection == Vector2.left){
-                swordAttack.AttackLeft();
-            }else if (facingDirection == Vector2.up){
-               swordAttack.AttackUp();
-            }else if (facingDirection == Vector2.down){
-                swordAttack.AttackDown();
-            }
-            Attack();
-            }
+            StartCoroutine(HandleAttack());
             }
             
             animator.SetBool("isMoving", isMoving);
@@ -178,14 +193,28 @@ public class PlayerController : MonoBehaviour
         if(lives == 0){
             GameOver();
         }
+
+        
+
     }
+    
+    private void RotateTowardsMouse()
+{
+    // Get the mouse position in world space
+    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+
+    // Calculate the direction from the player to the mouse
+    Vector2 direction = mousePosition - new Vector2(transform.position.x, transform.position.y);
+
+    // Update the player's rotation to face this direction
+    // You might need to adjust this based on your game's orientation and coordinate system
+    transform.up = direction;
+}
 
     private void Teleport(float distance)
     {
-        Vector2 facingDirection = GetFacingDirection();
-        Vector2 teleportPosition = rb.position + facingDirection * distance;
+        Vector2 teleportPosition = rb.position + teleportDirection * distance;
 
-        // Check if the teleportPosition is walkable (modify this based on your game logic)
         if (IsWalkable(teleportPosition))
         {
             StartCoroutine(TeleportCoroutine(teleportPosition));
@@ -247,12 +276,23 @@ public class PlayerController : MonoBehaviour
     }
     
 
-    public Vector2 GetFacingDirection(){
-        float moveX = animator.GetFloat("moveX");
-        float moveY = animator.GetFloat("moveY");
-        Vector2 facingDirection = new Vector2(moveX, moveY).normalized;
-        return facingDirection;
+    private Vector2 GetFacingDirection()
+    {
+        if (useMouseForDirection)
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector2 direction = (mousePosition - new Vector2(transform.position.x, transform.position.y)).normalized;
+            return new Vector2(Mathf.Abs(direction.x) > Mathf.Abs(direction.y) ? (direction.x >= 0 ? 1 : -1) : 0, Mathf.Abs(direction.y) > Mathf.Abs(direction.x) ? (direction.y >= 0 ? 1 : -1) : 0);
+        }
+        else
+        {
+            if (input.x == 0 && input.y == 0)
+                return lastMovementDirection; // Use the last movement direction if no input is detected
+            else
+                return new Vector2(input.x != 0 ? Mathf.Sign(input.x) : 0, input.y != 0 ? Mathf.Sign(input.y) : 0);
+        }
     }
+
 
     public void GetHit(Vector2 knockback){
         // animator.SetTrigger("Hit");
@@ -285,4 +325,50 @@ public class PlayerController : MonoBehaviour
         {
         }
     }
+
+    public Vector2 teleportDirection { get; private set; }
+
+    private IEnumerator HandleAttack() {
+    isAttacking = true;
+
+    // Get facing direction for attack based on mouse position immediately
+    Vector2 attackDirection = input.x == 0 && input.y == 0 ? lastMovementDirection : GetFacingDirection();
+    
+    // Update animator parameters immediately
+    animator.SetFloat("moveX", attackDirection.x);
+    animator.SetFloat("moveY", attackDirection.y);
+
+    // Play attack sound effect
+    attackSoundEffect.Play();
+
+    // Trigger the attacking animation
+    animator.SetTrigger("swordAttack");
+
+    // Initiate attack based on direction
+    if(attackDirection == Vector2.right){
+        swordAttack.AttackRight();
+    }else if (attackDirection == Vector2.left){
+        swordAttack.AttackLeft();
+    }else if (attackDirection == Vector2.up){
+        swordAttack.AttackUp();
+    }else if (attackDirection == Vector2.down){
+        swordAttack.AttackDown();
+    }
+
+    yield return new WaitForSeconds(0); // Adjust this duration to match your attack animation
+
+    isAttacking = false;
+}
+
+private void CheckForControlSchemeChange()
+{
+    if (Input.GetKeyDown(KeyCode.Alpha0))
+    {
+        useMouseForDirection = !useMouseForDirection;
+    }
+}
+
+
+
+
 }
