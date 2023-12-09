@@ -14,12 +14,7 @@ public class StartController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        goblins.SetActive(false);
-        bossBattle1.SetActive(true);
-        bossBattle2.SetActive(false);
-        footsteps.SetActive(false);
-        Boss2Collider.SetActive(false);
-        
+      
     }
 
 }
