@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
 
     public enum EnemyType {
         Slime,
+        MazeSlime,
         Goblin,
         Dragon,
         Golem,
@@ -41,6 +42,7 @@ public class EnemyController : MonoBehaviour
     
     private Vector2 startPosition;
     public float expDropped;
+    private bool willRespawn;
 
     public float Health{
         set{
@@ -63,6 +65,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnEnable(){
+        willRespawn = true;
         canMove = true;
         startPosition = transform.position;
         animator = GetComponent<Animator>();
@@ -73,6 +76,12 @@ public class EnemyController : MonoBehaviour
                 health = 10f;
                 expDropped = 10f;
                 damage = 2f;
+                break;
+            case EnemyType.MazeSlime:
+                health = 10f;
+                expDropped = 10f;
+                damage = 2f;
+                willRespawn = false;
                 break;
             case EnemyType.Goblin:
                 health = 50f;
@@ -134,7 +143,7 @@ public class EnemyController : MonoBehaviour
     public void RemoveEnemy(){
         
         playerController.GainExp(expDropped);
-        enemySpawner.DieAndSpawn(gameObject, startPosition);
+        enemySpawner.DieAndSpawn(gameObject, startPosition, willRespawn);
         
     }
 
