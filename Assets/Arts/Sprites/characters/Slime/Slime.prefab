@@ -171,8 +171,10 @@ MonoBehaviour:
   playerIsAlive: 0
   scrollController: {fileID: 0}
   dropScroll: 0
+  enemyType: 0
   isFlipped: 0
-  hpSlider: {fileID: 0}
+  playerController: {fileID: 0}
+  expDropped: 0
   health: 10
 --- !u!95 &8153930625828972868
 Animator:

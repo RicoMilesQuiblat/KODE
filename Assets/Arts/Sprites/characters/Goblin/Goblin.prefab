@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1444940546250357454}
   - component: {fileID: 6382375048862284906}
   - component: {fileID: 5104747933724957677}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Goblin
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -129,7 +129,12 @@ MonoBehaviour:
   moveSpeed: 800
   playerIsAlive: 0
   scrollController: {fileID: 0}
+  dropScroll: 0
+  enemyType: 1
   isFlipped: 0
+  enemySpawner: {fileID: 0}
+  playerController: {fileID: 0}
+  expDropped: 0
   health: 0
 --- !u!50 &6382375048862284906
 Rigidbody2D:
@@ -204,7 +209,7 @@ GameObject:
   - component: {fileID: 566745001939548268}
   - component: {fileID: 2033252210616434899}
   - component: {fileID: 360287634105442714}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DetectionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

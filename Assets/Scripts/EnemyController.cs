@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,9 +9,16 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+
+    public enum EnemyType {
+        Slime,
+        Goblin,
+        Dragon,
+        Golem,
+    }
     private Animator animator;
     private Rigidbody2D rb;
-    public float damage = 1f;
+    public float damage;
     public float knockbackForce = 5000f;
 
     public Detection detectionZone;
@@ -22,12 +30,16 @@ public class EnemyController : MonoBehaviour
     public ScrollController scrollController;
     public bool dropScroll = false;
     private Vector2 dropPosition;
-
+    public EnemyType enemyType;
     public bool isFlipped = false;
     private Scene currentScene;
+    public EnemySpawner enemySpawner;
+    
 
+    public PlayerController playerController;
     private bool canMove = true;
-  
+    private Vector2 startPosition;
+    public float expDropped;
 
     public float Health{
         set{
@@ -43,24 +55,35 @@ public class EnemyController : MonoBehaviour
     }
     public float health;
     private void Start(){
-        currentScene = SceneManager.GetActiveScene();
-
-        if(currentScene.name == "FlowChart"){
-            health = 10f;
-        }else if(currentScene.name == "InputOutput"){
-            health = 20f;
-        }else if(currentScene.name == "Operations"){
-            health = 30f;
-        }
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         animator.SetBool("isAlive", true);
        
     }
 
+    private void OnEnable(){
+        canMove = true;
+        startPosition = transform.position;
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        animator.SetBool("isAlive", true);
+        switch(enemyType){
+            case EnemyType.Slime:
+                health = 10f;
+                expDropped = 10f;
+                damage = 2f;
+                break;
+            case EnemyType.Goblin:
+                health = 50f;
+                expDropped = 100f;
+                damage = 15f;
+                moveSpeed = 1000f;
+                break;
+        }
+    }
+
     void FixedUpdate(){
         if(canMove){
-
         if(detectionZone.detectedObj.Count > 0 && detectionZone){
             Vector2 direction = (detectionZone.detectedObj[0].transform.position - transform.position).normalized;
             Vector3 scale = transform.localScale;
@@ -91,18 +114,14 @@ public class EnemyController : MonoBehaviour
     }
 
     public void Defeated(){
-        Debug.Log("Defeated");
         canMove = false;
         animator.SetBool("isAlive", false);
     }
 
     public void RemoveEnemy(){
-        Debug.Log(dropScroll);
-        Debug.Log("shets");
-        if(scrollController){
-            scrollController.DropScroll(dropPosition);
-        }
-        Destroy(gameObject);
+        
+        playerController.GainExp(expDropped);
+        enemySpawner.DieAndSpawn(gameObject, startPosition);
         
     }
 
@@ -112,13 +131,11 @@ public class EnemyController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col){
         if(col.collider.tag == "Player"){
-            Debug.Log("ouch");
             PlayerController player = col.collider.GetComponent<PlayerController>();
 
             if(player != null && player.CheckIsAlive()){    
                 if(canAttack){
 
-                    Debug.Log("ouch");
                   player.Health -= damage;
                   Vector3 targetPosition = gameObject.GetComponent<Transform>().position;
                   Debug.Log(targetPosition);
