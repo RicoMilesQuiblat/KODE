@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Edge 3
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -1351423449, guid: 31c29f1d0c83a644d8c72e1bca4b30a5, type: 3}
+  - {fileID: 58754712, guid: 31c29f1d0c83a644d8c72e1bca4b30a5, type: 3}
+  - {fileID: -813068948, guid: 31c29f1d0c83a644d8c72e1bca4b30a5, type: 3}
+  - {fileID: 2006904871, guid: 31c29f1d0c83a644d8c72e1bca4b30a5, type: 3}
+  - {fileID: 437038901, guid: 31c29f1d0c83a644d8c72e1bca4b30a5, type: 3}
+  - {fileID: -290211696, guid: 31c29f1d0c83a644d8c72e1bca4b30a5, type: 3}
+  - {fileID: -238542873, guid: 31c29f1d0c83a644d8c72e1bca4b30a5, type: 3}
+  - {fileID: -2032551745, guid: 31c29f1d0c83a644d8c72e1bca4b30a5, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
