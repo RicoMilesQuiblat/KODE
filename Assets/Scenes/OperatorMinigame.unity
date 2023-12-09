@@ -670,6 +670,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card back6
       objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: 3bbe2891a4c205b45abbe17e10925f92, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: 3bbe2891a4c205b45abbe17e10925f92, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -927,6 +931,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card back12
       objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: 09af8ad6b1f11794385647ce1b021e6f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: 09af8ad6b1f11794385647ce1b021e6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1146,6 +1154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card back14
       objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: b3c489d451aec7446b1d2489ea72919e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: b3c489d451aec7446b1d2489ea72919e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1259,6 +1271,10 @@ PrefabInstance:
     - target: {fileID: 5229332580041227260, guid: 115de8a6491ed2d46affd767bba1cf7c, type: 3}
       propertyPath: m_Name
       value: Card back15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: 115de8a6491ed2d46affd767bba1cf7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: 115de8a6491ed2d46affd767bba1cf7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1427,6 +1443,10 @@ PrefabInstance:
     - target: {fileID: 5229332580041227260, guid: 0d187561f398b31498e26a1480feb90b, type: 3}
       propertyPath: m_Name
       value: Card back8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: 0d187561f398b31498e26a1480feb90b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: 0d187561f398b31498e26a1480feb90b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1636,6 +1656,10 @@ PrefabInstance:
     - target: {fileID: 5229332580041227260, guid: e11a3c6c2cd60c54da6749782165b6f7, type: 3}
       propertyPath: m_Name
       value: Card back3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: e11a3c6c2cd60c54da6749782165b6f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: e11a3c6c2cd60c54da6749782165b6f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2048,6 +2072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card back5
       objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: 8d03b2bd1655d6e4abce7817cdd4480c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: 8d03b2bd1655d6e4abce7817cdd4480c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2250,6 +2278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card back5
       objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: 8d03b2bd1655d6e4abce7817cdd4480c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: 8d03b2bd1655d6e4abce7817cdd4480c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2306,6 +2338,10 @@ PrefabInstance:
     - target: {fileID: 5229332580041227260, guid: e1c8ef6be4b3f50428c0b93915d1db5b, type: 3}
       propertyPath: m_Name
       value: Card back2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: e1c8ef6be4b3f50428c0b93915d1db5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: e1c8ef6be4b3f50428c0b93915d1db5b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2519,6 +2555,10 @@ PrefabInstance:
     - target: {fileID: 5229332580041227260, guid: 499af102aaca80449838aedcc6e50888, type: 3}
       propertyPath: m_Name
       value: Card back18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229332580041227260, guid: 499af102aaca80449838aedcc6e50888, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8087694594754018774, guid: 499af102aaca80449838aedcc6e50888, type: 3}
       propertyPath: m_LocalPosition.x
