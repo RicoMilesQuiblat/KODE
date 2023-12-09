@@ -12,10 +12,14 @@ public class EnemyController : MonoBehaviour
 
     public enum EnemyType {
         Slime,
-        MazeSlime,
         Goblin,
         Dragon,
         Golem,
+        MazeSlime,
+        SlimeBoss,
+        GoblinBoss,
+        DragonBoss,
+        GolemBoss,
     }
     private Animator animator;
     private Rigidbody2D rb;
@@ -101,6 +105,30 @@ public class EnemyController : MonoBehaviour
                 damage = 600f;
                 moveSpeed = 2000f;
                 break;
+            case EnemyType.SlimeBoss:
+                health = 50f;
+                expDropped = 200f;
+                damage = 15f;
+                break;
+            case EnemyType.GoblinBoss:
+                health = 250f;
+                expDropped = 2000f;
+                damage = 150f;
+                break;
+            case EnemyType.DragonBoss:
+                health = 1000f;
+                expDropped = 20000f;
+                damage = 600f;
+                moveSpeed = 1500f;
+                break;
+            case EnemyType.GolemBoss:
+                health = 5000f;
+                expDropped = 200000f;
+                damage = 2500f;
+                moveSpeed = 2000f;
+                break;
+
+            
         }
     }
 
