@@ -37,6 +37,7 @@ public class Maze_IF_Anim : MonoBehaviour
         isOn = !isOn;
         animator.SetBool("isOn", isOn);
 
+        // Trigger the event to notify other scripts of the lever state change
         OnLeverStateChanged?.Invoke(isOn);
     }
 

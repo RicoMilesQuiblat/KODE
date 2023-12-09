@@ -13,6 +13,10 @@ public class Maze_Input_anim : MonoBehaviour
     public bool isOn = false;
     public delegate void LeverStateChanged(bool newState);
     public static event LeverStateChanged OnLeverStateChanged;
+    [SerializeField] private GameObject block1;
+    [SerializeField] private GameObject cloud1,cloud3;
+    [SerializeField] private GameObject block2;
+    [SerializeField] private GameObject cloud2;
 
     private string inputText = ""; // Variable to store input text
 
@@ -74,7 +78,22 @@ public class Maze_Input_anim : MonoBehaviour
         inputText = text;
         Debug.Log("Received Input: " + inputText);
         textmesh1.text = inputText;
+        if(float.Parse(inputText)>32){
+            block1.SetActive(false);
+            cloud1.SetActive(false);
+            cloud3.SetActive(false);
+            block2.SetActive(true);
+            cloud2.SetActive(true);
+        }else{
+            block1.SetActive(false);
+            cloud1.SetActive(false);
+            block2.SetActive(false);
+            cloud2.SetActive(false);
+            cloud3.SetActive(true);
+        }
+            
 
+        
         ui1.mazeinputscreenCLOSE4();
         
 

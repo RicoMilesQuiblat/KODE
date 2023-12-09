@@ -10,6 +10,8 @@ public class ScreenDisplayOnClearMonsters : MonoBehaviour
 {
     [SerializeField] private GameObject block;
     [SerializeField] private GameObject cloud;
+
+    
     public GameObject PopScreen; 
     [SerializeField] private EnemyAreaManager enemyAreaManager; 
     private bool isActive = false;
@@ -28,13 +30,14 @@ public class ScreenDisplayOnClearMonsters : MonoBehaviour
 {
     if (enemyAreaManager != null && !enemyAreaManager.HasEnemies)
     {   
+        
         if (!isActive)
         {
             if (PopScreen != null)
             {
                 PopScreen.SetActive(true);
                 cloud.SetActive(false);
-                block.SetActive(false);
+                block.SetActive(false); 
             }
 
             if (camSwitch && CameraToEdit != null)
@@ -47,7 +50,8 @@ public class ScreenDisplayOnClearMonsters : MonoBehaviour
             }
 
             isActive = true;
-        }       
+        } 
+             
     }
 }
 
