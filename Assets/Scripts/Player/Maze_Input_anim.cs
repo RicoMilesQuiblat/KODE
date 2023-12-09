@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class Maze_IF_Anim : MonoBehaviour
+public class Maze_Input_anim : MonoBehaviour
 {
+    public TextMeshProUGUI textmesh1;
     private Animator animator;
+    [SerializeField] private InGameUiController ui1 ;
     private bool isPlayerInTrigger = false;
     public bool isOn = false;
     public delegate void LeverStateChanged(bool newState);
     public static event LeverStateChanged OnLeverStateChanged;
+
+    private string inputText = ""; // Variable to store input text
 
     private void Start()
     {
@@ -20,11 +25,10 @@ public class Maze_IF_Anim : MonoBehaviour
     {
         if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            if(!isOn){
-                TipPopout.Create(transform.position, "True (Press E for False)", 10f, new Color(0, 0, 1),1);
-            }else{
-                TipPopout.Create(transform.position, "False (Press E for True)", 10f, new Color(1, 0, 0),1);
-
+            if (!isOn)
+            {
+                
+                ShowInputField();
             }
             ToggleLever();
 
@@ -44,13 +48,7 @@ public class Maze_IF_Anim : MonoBehaviour
     {
         if (other.CompareTag("Player")) 
         {   
-            if(!isOn){
-                TipPopout.Create(transform.position, "True (Press E for False)", 10f, new Color(1, 1, 1),1);
-            }else{
-                TipPopout.Create(transform.position, "False (Press E for True)", 10f, new Color(1, 1, 1),1);
-
-            }
-            
+            TipPopout.Create(transform.position,"E to input", 8, new Color(1,1,1), 1);
             isPlayerInTrigger = true; 
         }
     }
@@ -59,7 +57,32 @@ public class Maze_IF_Anim : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // Logic for exiting trigger
+            // ...
             isPlayerInTrigger = false; 
         }
+    }
+
+    private void ShowInputField()
+    {
+        ui1.mazeinputscreen4();
+        
+    }
+
+    public void ReceiveInputText(string text)
+    {
+        inputText = text;
+        Debug.Log("Received Input: " + inputText);
+        textmesh1.text = inputText;
+
+        ui1.mazeinputscreenCLOSE4();
+        
+
+    }
+
+    // Optionally, a method to get the saved input text
+    public string GetInputText()
+    {
+        return inputText;
     }
 }
