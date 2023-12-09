@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
 
     public PlayerController playerController;
     private bool canMove = true;
+    
     private Vector2 startPosition;
     public float expDropped;
 
@@ -78,6 +79,18 @@ public class EnemyController : MonoBehaviour
                 expDropped = 100f;
                 damage = 15f;
                 moveSpeed = 1000f;
+                break;
+            case EnemyType.Dragon:
+                health = 250f;
+                expDropped = 1000f;
+                damage = 150f;
+                moveSpeed = 1500f;
+                break;
+            case EnemyType.Golem:
+                health = 1000f;
+                expDropped = 10000f;
+                damage = 600f;
+                moveSpeed = 2000f;
                 break;
         }
     }

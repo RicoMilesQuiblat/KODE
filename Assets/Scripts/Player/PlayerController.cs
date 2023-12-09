@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isAlive = true;
 
+    public GameObject levelUpEffect;
     private Rigidbody2D rb;
 
     public SwordAttack swordAttack;
@@ -213,13 +214,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log(currentExp);
     }
     private void LevelUp(){
-        level += 1;
+        StartCoroutine(StartLevelUpEffect());   
+        level += (float) Math.Round(((double) currentExp) / ((double)currentMaxExp));
         currentExp -= currentMaxExp;
         currentMaxExp = currentMaxExp * 1.5f;
         maxHP = maxHP * 1.2f;
         slider.maxValue = maxHP;
         health = maxHP;
-        swordAttack.AddDamage();
+        swordAttack.AddDamage(level);
         expSlider.maxValue = currentMaxExp;
         expSlider.value = currentExp;
         expText.text = "Lvl. " + level;
@@ -227,6 +229,12 @@ public class PlayerController : MonoBehaviour
 
     }
     
+    private IEnumerator StartLevelUpEffect(){
+        levelUpEffect.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        levelUpEffect.SetActive(false);
+
+    }
     private void RotateTowardsMouse()
 {
     // Get the mouse position in world space
