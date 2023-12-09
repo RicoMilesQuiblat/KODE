@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ScreenDisplayOnClearMonsters : MonoBehaviour
 {
-    public GameObject PopScreen; // Assign your death screen prefab in the Inspector
-    [SerializeField] private EnemyAreaManager enemyAreaManager; // Serialized field for the EnemyAreaManager
+    public GameObject PopScreen; 
+    [SerializeField] private EnemyAreaManager enemyAreaManager; 
     private bool isActive = false;
+    [SerializeField] private GameObject CameraToTurnOff;
+    [SerializeField] private GameObject CameraToTurnOn;
+    [SerializeField] private bool camSwitch = false;
 
     public EnemyAreaManager EnemyAreaManager
     {
@@ -18,20 +23,22 @@ public class ScreenDisplayOnClearMonsters : MonoBehaviour
 
     void Update()
     {
-        // Check if there are no enemies left in the specified area
         if (enemyAreaManager != null && !enemyAreaManager.HasEnemies)
-        {
-            // Show the death screen
-            if (PopScreen != null && !isActive)
+        {   
+            if (PopScreen != null && !isActive && camSwitch){
+                PopScreen.SetActive(true);
+                isActive = true;
+                CameraToTurnOff.SetActive(false);
+                CameraToTurnOn.SetActive(true);
+            }       
+            else if (PopScreen != null && !isActive)
             {
                 PopScreen.SetActive(true);
                 isActive = true;
-                // You can also add additional logic here to handle the death screen
             }
         }
         else
         {
-            // Handle the case when enemies are still present or no area manager is set
         }
     }
 }

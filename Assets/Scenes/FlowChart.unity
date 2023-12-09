@@ -956,6 +956,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1705491600}
   enemyAreaManager: {fileID: 1822151547}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &25926893
 GameObject:
   m_ObjectHideFlags: 0
@@ -19231,6 +19234,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1126885570}
   enemyAreaManager: {fileID: 286921267}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!114 &103897760 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 542490084507672246, guid: 22db13e147d9ac7458d247e4108d1604, type: 3}
@@ -19591,7 +19597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238acfdc52c2c084d9389d486228e9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!95 &114574682
 Animator:
   serializedVersion: 5
@@ -21608,6 +21613,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1225353150}
   enemyAreaManager: {fileID: 422840835}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &190703598
 GameObject:
   m_ObjectHideFlags: 0
@@ -27382,6 +27390,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 410695476}
   enemyAreaManager: {fileID: 169687511}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1001 &218796207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27795,6 +27806,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 963984866}
   enemyAreaManager: {fileID: 1401049293}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &240773023
 GameObject:
   m_ObjectHideFlags: 0
@@ -27841,6 +27855,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1950944391}
   enemyAreaManager: {fileID: 1632018872}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1001 &244085987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29221,6 +29238,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1928562880}
   enemyAreaManager: {fileID: 135299288}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &286921266
 GameObject:
   m_ObjectHideFlags: 0
@@ -29363,6 +29383,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 779081325}
   enemyAreaManager: {fileID: 1955378712}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &290566968
 GameObject:
   m_ObjectHideFlags: 0
@@ -38706,6 +38729,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 574247429}
   enemyAreaManager: {fileID: 41361363}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1001 &604001253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39243,6 +39269,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 827054059}
   enemyAreaManager: {fileID: 1906641963}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &634675654
 GameObject:
   m_ObjectHideFlags: 0
@@ -40696,6 +40725,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1407821106}
   enemyAreaManager: {fileID: 1882907215}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &703186934
 GameObject:
   m_ObjectHideFlags: 0
@@ -42488,6 +42520,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 2127418692}
   enemyAreaManager: {fileID: 689745120}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!114 &777575372 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 542490084507672246, guid: 22db13e147d9ac7458d247e4108d1604, type: 3}
@@ -42902,6 +42937,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 378406988}
   enemyAreaManager: {fileID: 1598707287}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &791614208
 GameObject:
   m_ObjectHideFlags: 0
@@ -43795,6 +43833,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1379931486}
   enemyAreaManager: {fileID: 538586431}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &812686241
 GameObject:
   m_ObjectHideFlags: 0
@@ -54623,6 +54664,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 423627308}
   enemyAreaManager: {fileID: 146814275}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &889078573
 GameObject:
   m_ObjectHideFlags: 0
@@ -56850,6 +56894,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1006513361}
   enemyAreaManager: {fileID: 1944075905}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &981592085
 GameObject:
   m_ObjectHideFlags: 0
@@ -56983,6 +57030,143 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1894543071}
   m_SourcePrefab: {fileID: 100100000, guid: 5685b629a7ae7c746a9f9ef7feac5a64, type: 3}
+--- !u!1 &985272293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 985272294}
+  - component: {fileID: 985272299}
+  - component: {fileID: 985272298}
+  - component: {fileID: 985272297}
+  - component: {fileID: 985272296}
+  - component: {fileID: 985272295}
+  m_Layer: 0
+  m_Name: ObjectivePrompts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &985272294
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985272293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1847582908}
+  m_Father: {fileID: 535393055}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &985272295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985272293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238acfdc52c2c084d9389d486228e9d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &985272296
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985272293}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c911302c30b553140a730a6e847feda6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &985272297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985272293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &985272298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985272293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &985272299
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985272293}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 1864778823}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 1817670507
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!1 &993262302
 GameObject:
   m_ObjectHideFlags: 0
@@ -58897,6 +59081,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1328661614}
   enemyAreaManager: {fileID: 71105907}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &1055985286
 GameObject:
   m_ObjectHideFlags: 0
@@ -72313,6 +72500,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 2010744680}
   enemyAreaManager: {fileID: 457529781}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1001 &1335416956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81784,6 +81974,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 66460487}
   enemyAreaManager: {fileID: 767326476}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &1464082088
 GameObject:
   m_ObjectHideFlags: 0
@@ -82556,6 +82749,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 1271900031}
   enemyAreaManager: {fileID: 1986520023}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1001 &1472713590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89215,6 +89411,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 14546087}
   enemyAreaManager: {fileID: 483165588}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &1529429501
 GameObject:
   m_ObjectHideFlags: 0
@@ -89408,7 +89607,7 @@ GameObject:
   - component: {fileID: 1541438891}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90753,6 +90952,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 111429383}
   enemyAreaManager: {fileID: 1103878906}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!4 &1588351379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8284284664686075396, guid: 22db13e147d9ac7458d247e4108d1604, type: 3}
@@ -106269,6 +106471,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 917784574}
   enemyAreaManager: {fileID: 1356924031}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &1831667636
 GameObject:
   m_ObjectHideFlags: 0
@@ -107724,6 +107929,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 2023961067}
   enemyAreaManager: {fileID: 1090546675}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!4 &1882287451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8284284664686075396, guid: 22db13e147d9ac7458d247e4108d1604, type: 3}
@@ -131165,6 +131373,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopScreen: {fileID: 285784406}
   enemyAreaManager: {fileID: 967039052}
+  CameraToTurnOff: {fileID: 0}
+  CameraToTurnOn: {fileID: 0}
+  camSwitch: 0
 --- !u!1 &2079548520
 GameObject:
   m_ObjectHideFlags: 0
@@ -132835,6 +133046,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 479292335241464590, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
+      value: 10.000001
+      objectReference: {fileID: 0}
     - target: {fileID: 4088960691600434552, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
       propertyPath: destination
       value: 
@@ -132854,6 +133069,42 @@ PrefabInstance:
     - target: {fileID: 6478626757152360723, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103376840295492804, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511798868807644404, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[13].second.m_AnimationSpeed
+      value: 10.000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511798868807644404, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[48].second.m_AnimationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511798868807644404, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[60].second.m_AnimationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016652935992143025, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
+      value: 10.000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016652935992143025, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[10].second.m_AnimationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016652935992143025, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[43].second.m_AnimationSpeed
+      value: 10.000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016652935992143025, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[54].second.m_AnimationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016652935992143025, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[64].second.m_AnimationSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6569314959147348299, guid: 6c0fffb1acb84fe46a7c470d1dda612e, type: 3}
       propertyPath: m_LocalPosition.x
