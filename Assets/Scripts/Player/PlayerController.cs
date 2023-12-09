@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking = false;
     private bool useMouseForDirection = true;
 
-
+    private float maxHP = 10f;
 
     public float Health{
         set{
@@ -70,28 +70,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public Slider expSlider;
+    public Text expText;
+    public float currentExp = 0;
+    public float currentMaxExp = 100;
+
+    public float level = 1;
     
     private float lives = 3f;
     public float health;
-    
+
 
     private void Awake(){
         currentScene = SceneManager.GetActiveScene();
         health = 10f;
-        slider.value = health;
+        slider.maxValue = maxHP;
+        slider.value = maxHP;
+        expText.text = "Lvl. " + level;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         fill.SetActive(true);
         animator.SetBool("IsAlive", true);
-        Debug.Log("I miss her");
+
         if(currentScene.name == "FlowChart"){
             startPosition = new Vector2(-9.43f, 3.16f);
             
-        }else if(currentScene.name == "InputOutput"){
-            startPosition = new Vector2(107.42f, 8.85f);
-        }else if(currentScene.name == "Operations"){
-            startPosition = new Vector2(34.2f, -25.7f);
         }
+        expSlider.maxValue = currentMaxExp;
+        expSlider.value = currentExp;
         transform.position = startPosition;
         isAlive = true;
         Debug.Log(lives);
@@ -104,6 +110,10 @@ public class PlayerController : MonoBehaviour
     public void Update()
     {   
         CheckForControlSchemeChange();
+        if(currentExp >= currentMaxExp){
+            LevelUp();
+            Debug.Log(currentMaxExp);
+        }
 
         if(isAlive && lives > 0){
             Vector2 facingDirection = GetFacingDirection();
@@ -177,7 +187,6 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("moveY", facingDirection.y);
         }
             if(canAttack && (Input.GetKeyDown(KeyCode.J) || Input.GetMouseButtonDown(0))){
-            Debug.Log("Attacking");
             StartCoroutine(HandleAttack());
             }
             
@@ -195,6 +204,26 @@ public class PlayerController : MonoBehaviour
         }
 
         
+
+    }
+
+    public void GainExp(float exp){
+        currentExp += exp;
+        expSlider.value = currentExp;
+        Debug.Log(currentExp);
+    }
+    private void LevelUp(){
+        level += 1;
+        currentExp -= currentMaxExp;
+        currentMaxExp = currentMaxExp * 1.5f;
+        maxHP = maxHP * 1.2f;
+        slider.maxValue = maxHP;
+        health = maxHP;
+        swordAttack.AddDamage();
+        expSlider.maxValue = currentMaxExp;
+        expSlider.value = currentExp;
+        expText.text = "Lvl. " + level;
+        Debug.Log(level);
 
     }
     
