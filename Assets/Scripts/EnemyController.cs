@@ -78,7 +78,7 @@ public class EnemyController : MonoBehaviour
         switch(enemyType){
             case EnemyType.Slime:
                 health = 10f;
-                expDropped = 10f;
+                expDropped = 20f;
                 damage = 2f;
                 break;
             case EnemyType.MazeSlime:

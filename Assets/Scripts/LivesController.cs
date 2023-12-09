@@ -6,15 +6,17 @@ public class LivesController : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    private int remainingLives = 3;
     public List<GameObject> lives = new List<GameObject>();
-    private void Start(){
+    public void Start(){
+        remainingLives = 3;
         for(int i = 0; i < lives.Count; i++){
             lives[i].SetActive(true);
         }
     }
    public void RemoveLives(){
-        lives[lives.Count - 1].SetActive(false);
-        lives.Remove(lives[lives.Count - 1]);
+        lives[remainingLives - 1].SetActive(false);
+        remainingLives -= 1;
    }
 
 }

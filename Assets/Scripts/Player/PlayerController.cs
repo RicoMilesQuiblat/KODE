@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake(){
         currentScene = SceneManager.GetActiveScene();
-        health = 10f;
+        health = maxHP;
         slider.maxValue = maxHP;
         slider.value = maxHP;
         expText.text = "Lvl. " + level;
@@ -200,10 +200,6 @@ public class PlayerController : MonoBehaviour
            LowAnim.lowhpscreenCLOSE();
         }
 
-        if(lives == 0){
-            GameOver();
-        }
-
         
 
     }
@@ -221,12 +217,31 @@ public class PlayerController : MonoBehaviour
         maxHP = maxHP * 1.2f;
         slider.maxValue = maxHP;
         health = maxHP;
+        slider.maxValue = maxHP;
         swordAttack.AddDamage(level);
         expSlider.maxValue = currentMaxExp;
         expSlider.value = currentExp;
         expText.text = "Lvl. " + level;
         Debug.Log(level);
 
+    }
+    
+    public void GameOver(){
+        if(level > 1){
+            level -= 1;
+
+        }
+        currentMaxExp = currentMaxExp / 1.5f;
+        maxHP = maxHP / 1.2f;
+        slider.maxValue = maxHP;
+        slider.value = maxHP;
+        health = maxHP;
+        swordAttack.RemoveDamage(level);
+        expSlider.maxValue = currentMaxExp;
+        currentExp = 0;
+        expSlider.value = currentExp;
+        expText.text = "Lvl. " + level;
+        lives = 3;
     }
     
     private IEnumerator StartLevelUpEffect(){
@@ -296,18 +311,20 @@ public class PlayerController : MonoBehaviour
         if(lives > 0){
         inGameUiController.DeathScreen();
         }else{
-            inGameUiController.GameOverScreen();
+            GameOver();
+            livesController.Start();
+            inGameUiController.DeathScreen();
         }
 
     }
 
     public void Removelife(){
         lives -= 1;
-        health = 10f;
+        health = maxHP;
         slider.value = health;
         livesController.RemoveLives();
     }
-    
+
 
     private Vector2 GetFacingDirection()
     {
@@ -337,12 +354,7 @@ public class PlayerController : MonoBehaviour
     public bool CheckIsAlive(){
         return isAlive;
     }
-
-    public void GameOver(){
-        Debug.Log("Game Over");
-    }
    
-
     private void Attack()
     {
         attackSoundEffect.Play();
