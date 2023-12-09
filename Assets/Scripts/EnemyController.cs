@@ -97,7 +97,7 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate(){
         if(canMove){
-        if(detectionZone.detectedObj.Count > 0 && detectionZone){
+        if(detectionZone && detectionZone.detectedObj.Count > 0 && detectionZone){
             Vector2 direction = (detectionZone.detectedObj[0].transform.position - transform.position).normalized;
             Vector3 scale = transform.localScale;
             
