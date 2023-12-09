@@ -20,6 +20,10 @@ public class SwordAttack : MonoBehaviour
         damage += 1 + (level / 10);
     }
 
+    public void RemoveDamage(float level){
+        damage -= 1 + (level / 10);
+    }
+
     private void Start(){
        currentScene = SceneManager.GetActiveScene();
     }
@@ -90,7 +94,7 @@ public class SwordAttack : MonoBehaviour
                 enemy.Health -= damage;
 
             
-                TipPopout tip = TipPopout.Create(transform.position, damage.ToString(), 5f, Color.white,(float).5);
+                TipPopout tip = TipPopout.Create(transform.position, Math.Round(damage).ToString(), 5f, Color.white,(float).5);
                 
 
                 Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
