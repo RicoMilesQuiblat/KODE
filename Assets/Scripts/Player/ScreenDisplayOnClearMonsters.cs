@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Cinemachine;
+
 
 public class ScreenDisplayOnClearMonsters : MonoBehaviour
 {
     public GameObject PopScreen; 
     [SerializeField] private EnemyAreaManager enemyAreaManager; 
     private bool isActive = false;
-    [SerializeField] private GameObject CameraToTurnOff;
-    [SerializeField] private GameObject CameraToTurnOn;
+    [SerializeField] private GameObject CameraToEdit;
     [SerializeField] private bool camSwitch = false;
 
     public EnemyAreaManager EnemyAreaManager
@@ -22,23 +23,28 @@ public class ScreenDisplayOnClearMonsters : MonoBehaviour
     }
 
     void Update()
-    {
-        if (enemyAreaManager != null && !enemyAreaManager.HasEnemies)
-        {   
-            if (PopScreen != null && !isActive && camSwitch){
-                PopScreen.SetActive(true);
-                isActive = true;
-                CameraToTurnOff.SetActive(false);
-                CameraToTurnOn.SetActive(true);
-            }       
-            else if (PopScreen != null && !isActive)
+{
+    if (enemyAreaManager != null && !enemyAreaManager.HasEnemies)
+    {   
+        if (!isActive)
+        {
+            if (PopScreen != null)
             {
                 PopScreen.SetActive(true);
-                isActive = true;
             }
-        }
-        else
-        {
-        }
+
+            if (camSwitch && CameraToEdit != null)
+            {
+                var cinemachineCamera = CameraToEdit.GetComponent<CinemachineVirtualCamera>();
+                if (cinemachineCamera != null)
+                {
+                    cinemachineCamera.m_Lens.OrthographicSize = 12;
+                }
+            }
+
+            isActive = true;
+        }       
     }
+}
+
 }
