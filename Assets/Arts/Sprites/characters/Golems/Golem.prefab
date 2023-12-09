@@ -67,7 +67,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 8
 --- !u!114 &2521169411742429052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,5 +274,9 @@ MonoBehaviour:
   playerIsAlive: 0
   scrollController: {fileID: 0}
   dropScroll: 0
+  enemyType: 3
   isFlipped: 0
+  enemySpawner: {fileID: 0}
+  playerController: {fileID: 0}
+  expDropped: 0
   health: 30

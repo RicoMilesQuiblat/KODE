@@ -17,7 +17,7 @@ public class SwordAttack : MonoBehaviour
     
 
     public void AddDamage(float level){
-        damage += 1 + (1/level);
+        damage += 1 + (level / 10);
     }
 
     private void Start(){

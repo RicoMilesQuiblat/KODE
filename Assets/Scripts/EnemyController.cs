@@ -86,6 +86,12 @@ public class EnemyController : MonoBehaviour
                 damage = 150f;
                 moveSpeed = 1500f;
                 break;
+            case EnemyType.Golem:
+                health = 1000f;
+                expDropped = 10000f;
+                damage = 600f;
+                moveSpeed = 2000f;
+                break;
         }
     }
 
