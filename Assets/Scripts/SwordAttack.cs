@@ -16,8 +16,8 @@ public class SwordAttack : MonoBehaviour
     public Scene currentScene;
     
 
-    public void AddDamage(){
-        damage += 1;
+    public void AddDamage(float level){
+        damage += 1 + (1/level);
     }
 
     private void Start(){
