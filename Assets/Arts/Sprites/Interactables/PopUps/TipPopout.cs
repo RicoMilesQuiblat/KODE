@@ -16,13 +16,13 @@ public class TipPopout : MonoBehaviour
     public float timeToDisappear = 1f;
 
     public static TipPopout Create(Vector3 position, string tip, float textSize, Color color, float timeToDisappear)
-{
-    Transform TipPopupTransform = Instantiate(GameAssets.i.PfPopUp, position, Quaternion.identity);
-    TipPopout tipPopup = TipPopupTransform.GetComponent<TipPopout>();
-    tipPopup.setup(tip, textSize, color, timeToDisappear);
+    {
+        Transform TipPopupTransform = Instantiate(GameAssets.i.PfPopUp, position, Quaternion.identity);
+        TipPopout tipPopup = TipPopupTransform.GetComponent<TipPopout>();
+        tipPopup.setup(tip, textSize, color, timeToDisappear);
 
-    return tipPopup;
-}
+        return tipPopup;
+    }
 
 
     private void Awake()

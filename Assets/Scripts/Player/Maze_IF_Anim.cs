@@ -24,7 +24,6 @@ public class Maze_IF_Anim : MonoBehaviour
                 TipPopout.Create(transform.position, "True (Press E for False)", 10f, new Color(0, 0, 1),1);
             }else{
                 TipPopout.Create(transform.position, "False (Press E for True)", 10f, new Color(1, 0, 0),1);
-
             }
             ToggleLever();
 
