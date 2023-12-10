@@ -211,14 +211,16 @@ public class PlayerController : MonoBehaviour
     }
     private void LevelUp(){
         StartCoroutine(StartLevelUpEffect());   
+        float previousLevel = level;
         level += (float) Math.Round(((double) currentExp) / ((double)currentMaxExp));
+        previousLevel = level - previousLevel;
         currentExp -= currentMaxExp;
-        currentMaxExp = currentMaxExp * 1.5f;
-        maxHP = maxHP * 1.2f;
+        currentMaxExp = (currentMaxExp * 1.5f) * previousLevel;
+        maxHP = (maxHP * 1.2f) * previousLevel;
         slider.maxValue = maxHP;
         health = maxHP;
         slider.maxValue = maxHP;
-        swordAttack.AddDamage(level);
+        swordAttack.AddDamage(level, previousLevel);
         expSlider.maxValue = currentMaxExp;
         expSlider.value = currentExp;
         expText.text = "Lvl. " + level;

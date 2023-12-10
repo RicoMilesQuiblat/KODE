@@ -89,7 +89,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyType.Goblin:
                 health = 50f;
-                expDropped = 100f;
+                expDropped = 1000f;
                 damage = 15f;
                 moveSpeed = 1000f;
                 break;
@@ -107,7 +107,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyType.SlimeBoss:
                 health = 50f;
-                expDropped = 200f;
+                expDropped = 500f;
                 damage = 15f;
                 break;
             case EnemyType.GoblinBoss:
