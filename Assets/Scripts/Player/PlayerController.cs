@@ -110,6 +110,13 @@ public class PlayerController : MonoBehaviour
     }
     public void Update()
     {   
+        if(Input.GetKeyDown(KeyCode.G)){
+            swordAttack.GodMode();
+            maxHP = 999999999f;
+            health = maxHP;
+            slider.maxValue = maxHP;
+            slider.value = maxHP;
+        }
         CheckForControlSchemeChange();
         if(currentExp >= currentMaxExp){
             LevelUp();

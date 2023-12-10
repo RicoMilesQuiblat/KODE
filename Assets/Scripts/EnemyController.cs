@@ -40,6 +40,7 @@ public class EnemyController : MonoBehaviour
     private Scene currentScene;
     public EnemySpawner enemySpawner;
 
+    [SerializeField] private ObjectivesController objectivesController;
     [SerializeField] private JournalController journalController;
     
 
@@ -178,6 +179,9 @@ public class EnemyController : MonoBehaviour
     public void RemoveEnemy(){
         
         playerController.GainExp(expDropped);
+        if(enemyType == EnemyType.SlimeBoss){
+            objectivesController.ChangeObjective();
+        }
         if(scrollController){
                 scrollController.DropScroll(dropPosition);
             Destroy(gameObject);
