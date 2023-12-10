@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AI;
 
 public class Maze_Input_anim : MonoBehaviour
 {
@@ -81,19 +82,36 @@ public class Maze_Input_anim : MonoBehaviour
         Debug.Log("Received Input: " + inputText);
         textmesh1.text = inputText;
         if(float.Parse(inputText)>32){
-            block1.SetActive(false);
-            cloud1.SetActive(false);
-            cloud3.SetActive(false);
-            block3.SetActive(false);
-            block2.SetActive(true);
-            cloud2.SetActive(true);
+            if(cloud1 && block1){
+                block1.SetActive(false);
+                cloud1.SetActive(false);
+            }
+            
+            if(cloud3 && block3){
+                cloud3.SetActive(false);
+                block3.SetActive(false);
+            }
+            if(cloud2 && block2){
+                block2.SetActive(true);
+                cloud2.SetActive(true);
+            }
+            
+            
         }else{
-            block1.SetActive(false);
-            cloud1.SetActive(false);
-            block2.SetActive(false);
-            cloud2.SetActive(false);
-            cloud3.SetActive(true);
-            block3.SetActive(true);
+            if(block1 && cloud1){
+                block1.SetActive(false);
+                cloud1.SetActive(false);
+            }
+            if(block2 && cloud2){
+                block2.SetActive(false);
+                cloud2.SetActive(false);
+            }
+            
+            if(cloud3 && block3){
+                cloud3.SetActive(true);
+                block3.SetActive(true);
+            }
+
 
         }
             
