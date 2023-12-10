@@ -8,6 +8,8 @@ public class ObjectivesController : MonoBehaviour
 
     public Animator animator;
     public GameObject slime;
+
+    [SerializeField] private GameObject slimeBoss;
     private List<string> objectives = new List<string>(){
         "",
         "Go and Check the time machine",
@@ -42,6 +44,7 @@ public class ObjectivesController : MonoBehaviour
     public GameObject subQuest;
     public bool firstCompletion = false;
     private bool shouldUpdate = false;
+    [SerializeField] private GameObject cutscene3;
 
     public void setShouldUpdate(bool should){
         shouldUpdate = should;
@@ -67,6 +70,8 @@ public class ObjectivesController : MonoBehaviour
             currentObjective -= 1;
         }else if(currentObjective == 3 && journalController.GetJournalCount() == 5){
             animator.SetTrigger("Change");
+            slimeBoss.SetActive(true);
+            cutscene3.SetActive(true);
         }
         else if(currentObjective == 7 && journalController.GetJournalCount() >5 && journalController.GetJournalCount() < 8){
             animator.SetTrigger("Change");

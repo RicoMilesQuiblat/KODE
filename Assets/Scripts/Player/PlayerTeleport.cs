@@ -6,16 +6,15 @@ using UnityEngine;
 public class PlayerTeleport : MonoBehaviour
 {
     private GameObject currentTeleporter;
-    private bool insideMaze = false;
+    [SerializeField] private GameObject teleporter;
+    [SerializeField] private bool shouldRemove = false;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E)){
             if(currentTeleporter!=null && currentTeleporter.GetComponent<Teleporter_Anim>().GetDestination().position !=null){
                 transform.position = currentTeleporter.GetComponent<Teleporter_Anim>().GetDestination().position;
-                if(insideMaze == true){
-                    insideMaze = false;
-                }else if(insideMaze == false){
-                    insideMaze = true;
+                if(shouldRemove){
+                    teleporter.SetActive(false);
                 }
             }
         }
@@ -34,7 +33,9 @@ public class PlayerTeleport : MonoBehaviour
             }
         }
     }
-    public bool CheckIfInside(){
-        return insideMaze;
+
+    public void setShouldRemove(bool set){
+        shouldRemove = set;
     }
+ 
 }
