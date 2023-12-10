@@ -48,9 +48,11 @@ public class OeprationGameController : MonoBehaviour
             text.text = "";
             if(ctr == 1 || isEqual) {
                 isEqual = true;
-                text.text = string.Format("if (guess == number) {{\n\tprintf(\"You guessed correctly, the number was {0}. \n\t\tIt took you {1} guess(es).\n\t\tDo you want to play again?\");\n}}", guess, ctr);
+                text.text = string.Format("if (guess == number) {{\n\tprintf(\"You guessed correctly, the number was {0}. It took you {1} guess(es). Do you want to play again?\");\n}}", guess, ctr);
+                input.gameObject.SetActive(false);
             } else {
-                text.text = string.Format("else if (guess == number) {{\n\tprintf(\"You guessed correctly, the number was {0}. \n\t\tIt took you {1} guess(es).\n\t\tDo you want to play again?\");\n}}", guess, ctr);
+                text.text = string.Format("else if (guess == number) {{\n\tprintf(\"You guessed correctly, the number was {0}. It took you {1} guess(es). Do you want to play again?\");\n}}", guess, ctr);
+                input.gameObject.SetActive(false);
             }
             btn.SetActive(true);
         } else if(guess < num) {
@@ -81,5 +83,6 @@ public class OeprationGameController : MonoBehaviour
         isEqual = false;
         isLess = false;
         isGreat = false;
+        input.gameObject.SetActive(true);
     }
 }
