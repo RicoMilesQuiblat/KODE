@@ -20,6 +20,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private ObjectivesController objectivesController;
 
     [SerializeField] private GameObject objectivesText;
+    [SerializeField] private PlayerController playerController;
     private bool dialogueTriggered = false;
 
     private float defaultOrthoSize = 8f;
@@ -49,6 +50,7 @@ public class DialogueSystem : MonoBehaviour
 
     private IEnumerator ProcessDialogue()
     {
+        playerController.SetCanAttack(false);
         playerDialogueText.gameObject.SetActive(false);
         enemyDialogueText.gameObject.SetActive(false);
 
@@ -95,6 +97,7 @@ public class DialogueSystem : MonoBehaviour
             }
             ResetCameraFocus();
         }
+        playerController.SetCanAttack(true);
     }
 
 
@@ -166,6 +169,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if (other.CompareTag(playerTag) && !dialogueTriggered)
         {
+            
             Debug.Log("Starting dialogue due to trigger.");
             dialogueTriggered = true; 
             dialogueTriggerArea.enabled = false; 
