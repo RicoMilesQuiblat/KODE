@@ -16,6 +16,8 @@ public class Maze_Input_anim : MonoBehaviour
     [SerializeField] private GameObject block1;
     [SerializeField] private GameObject cloud1,cloud3;
     [SerializeField] private GameObject block2;
+    [SerializeField] private GameObject block3;
+
     [SerializeField] private GameObject cloud2;
 
     private string inputText = ""; // Variable to store input text
@@ -82,6 +84,7 @@ public class Maze_Input_anim : MonoBehaviour
             block1.SetActive(false);
             cloud1.SetActive(false);
             cloud3.SetActive(false);
+            block3.SetActive(false);
             block2.SetActive(true);
             cloud2.SetActive(true);
         }else{
@@ -90,6 +93,8 @@ public class Maze_Input_anim : MonoBehaviour
             block2.SetActive(false);
             cloud2.SetActive(false);
             cloud3.SetActive(true);
+            block3.SetActive(true);
+
         }
             
 
@@ -104,4 +109,6 @@ public class Maze_Input_anim : MonoBehaviour
     {
         return inputText;
     }
+
+    
 }
