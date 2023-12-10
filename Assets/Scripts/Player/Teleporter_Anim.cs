@@ -27,11 +27,15 @@ public class Teleporter_Anim : MonoBehaviour
     [SerializeField] private  TeleporterType teleporterType;
     
     [SerializeField] private bool trigger = false;
-    [SerializeField] private bool instant = false;
+    [SerializeField] private bool switcher = true;
+    [SerializeField] private  Transform TeleporterOnSwitch;
+
 
     public Transform GetDestination(){
-        if(trigger){
+        if(trigger && switcher){
             return destination;
+        }else if (trigger){
+            return TeleporterOnSwitch;
         }else{
             return null;
         }
@@ -49,21 +53,26 @@ public class Teleporter_Anim : MonoBehaviour
 
         if (other.CompareTag("Player")) // You can use a tag or layer to identify your player
         {   
-            if(teleporterType == TeleporterType.Exit){
-            playerTeleport.setShouldRemove(true);
-            destination = exit;
-        }else{
-            playerTeleport.setShouldRemove(false);
-            if(journalController.GetJournalCount() == 1){
-                destination = destination1;
-            }else if(journalController.GetJournalCount() == 2){
-                destination = destination2;
-            }else if(journalController.GetJournalCount() == 3){
-                destination = destination3;
-            }else if(journalController.GetJournalCount() == 4){
-                destination = destination4;
-            }   
-        }
+            if(switcher){
+                if(teleporterType == TeleporterType.Exit){
+                playerTeleport.setShouldRemove(true);
+                destination = exit;
+                }
+                else
+                {
+                    playerTeleport.setShouldRemove(false);
+                    if(journalController.GetJournalCount() == 1){
+                        destination = destination1;
+                    }else if(journalController.GetJournalCount() == 2){
+                        destination = destination2;
+                    }else if(journalController.GetJournalCount() == 3){
+                        destination = destination3;
+                    }else if(journalController.GetJournalCount() == 4){
+                        destination = destination4;
+                    }
+                }
+            }
+            destination = TeleporterOnSwitch.transform;
             if(trigger){
                 TipPopout.Create(transform.position, "Teleport(E)",8f, new Color(1, 1, 1),1);
             }
