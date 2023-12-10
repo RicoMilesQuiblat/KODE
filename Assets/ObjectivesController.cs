@@ -45,9 +45,8 @@ public class ObjectivesController : MonoBehaviour
     public bool firstCompletion = false;
     private bool shouldUpdate = false;
     [SerializeField] private GameObject cutscene3;
-    [SerializeField] private GameObject chapter2StartCollider;
 
-    public void setShouldUpdate(bool should){   
+    public void setShouldUpdate(bool should){
         shouldUpdate = should;
     }
     private void Awake(){
@@ -81,9 +80,6 @@ public class ObjectivesController : MonoBehaviour
             animator.SetTrigger("Change");
         }
         
-        if(currentObjective == 5){
-            chapter2StartCollider.SetActive(true);
-        }
         animator.SetTrigger("Change");
         
         currentObjective += 1;
