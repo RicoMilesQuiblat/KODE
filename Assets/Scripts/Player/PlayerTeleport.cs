@@ -6,12 +6,17 @@ using UnityEngine;
 public class PlayerTeleport : MonoBehaviour
 {
     private GameObject currentTeleporter;
-
+    private bool insideMaze = false;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E)){
             if(currentTeleporter!=null && currentTeleporter.GetComponent<Teleporter_Anim>().GetDestination().position !=null){
                 transform.position = currentTeleporter.GetComponent<Teleporter_Anim>().GetDestination().position;
+                if(insideMaze == true){
+                    insideMaze = false;
+                }else if(insideMaze == false){
+                    insideMaze = true;
+                }
             }
         }
     }
@@ -28,5 +33,8 @@ public class PlayerTeleport : MonoBehaviour
                 currentTeleporter = null;
             }
         }
+    }
+    public bool CheckIfInside(){
+        return insideMaze;
     }
 }

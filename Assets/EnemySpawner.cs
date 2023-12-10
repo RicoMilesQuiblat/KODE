@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    
+
    public void DieAndSpawn(GameObject enemy, Vector2 startPosition, bool willRespawn){
         enemy.SetActive(false);
         if(willRespawn){

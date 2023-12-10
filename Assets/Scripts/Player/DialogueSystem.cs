@@ -17,6 +17,9 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private bool isBattleMode;
     [SerializeField] private Collider2D dialogueTriggerArea; 
     [SerializeField] private string playerTag = "Player"; 
+    [SerializeField] private ObjectivesController objectivesController;
+
+    [SerializeField] private GameObject objectivesText;
     private bool dialogueTriggered = false;
 
     private float defaultOrthoSize = 8f;
@@ -24,9 +27,12 @@ public class DialogueSystem : MonoBehaviour
     private string[] dialogueParts;
     private int currentPart = 0;
     private float typingSpeed = 0.02f;
+    private int currentObjective;
 
     private void Start()
     {
+        currentObjective = objectivesController.GetCurrentObjective();
+
         dialogueCanvas.gameObject.SetActive(false);
         
         dialogueParts = dialogueScript.Split(new string[] { "##" }, System.StringSplitOptions.RemoveEmptyEntries);
@@ -84,6 +90,9 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
+            if(currentObjective == 0 || currentObjective == 1){
+               ChangeObjective();
+            }
             ResetCameraFocus();
         }
     }
@@ -178,6 +187,12 @@ public class DialogueSystem : MonoBehaviour
         dialogueCanvas.gameObject.SetActive(true);
         StartCoroutine(ProcessDialogue()); 
     }
+
+    private void ChangeObjective(){
+        objectivesController.ChangeObjective();
+    }
+
+   
 
 
 

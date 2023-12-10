@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 
@@ -47,7 +47,8 @@ public class EnemyController : MonoBehaviour
     private Vector2 startPosition;
     public float expDropped;
     private bool willRespawn;
-
+    public MazeDropController mazeDropController;
+   
     public float Health{
         set{
             health = value;
@@ -171,7 +172,17 @@ public class EnemyController : MonoBehaviour
     public void RemoveEnemy(){
         
         playerController.GainExp(expDropped);
-        enemySpawner.DieAndSpawn(gameObject, startPosition, willRespawn);
+        if(scrollController){
+            scrollController.DropScroll(dropPosition);
+            Destroy(gameObject);
+        }else{
+            int number = Random.Range(0, 2);
+            if(number == 0){
+                mazeDropController.DropMaze(dropPosition);
+            }
+            enemySpawner.DieAndSpawn(gameObject, startPosition, willRespawn);
+
+        }
         
     }
 

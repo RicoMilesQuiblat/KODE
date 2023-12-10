@@ -9,11 +9,12 @@ public class ObjectivesController : MonoBehaviour
     public Animator animator;
     public GameObject slime;
     private List<string> objectives = new List<string>(){
+        "",
         "Go and Check the time machine",
         "Defeat the Slime",
         "Collect Journals ",
-        "Continue exploring the forest",
-        "Enter the mysterious entrance",
+        "Explore the surrounding area",
+        "Defeat the Slime Boss",
         "Go back to the time machine",
         "Find the goblins",
         "Follow the footsteps",
@@ -58,19 +59,19 @@ public class ObjectivesController : MonoBehaviour
 
 
     public void ChangeObjective(){
-        if(currentObjective == 0){
+        if(currentObjective == 1){
             StartCoroutine(SpawnFirstSlime());
-        }else if(currentObjective == 2 && journalController.GetJournalCount() < 5){
+        }else if(currentObjective == 3 && journalController.GetJournalCount() < 5){
             
             animator.SetTrigger("Change");
             currentObjective -= 1;
-        }else if(currentObjective == 2 && journalController.GetJournalCount() == 5){
+        }else if(currentObjective == 3 && journalController.GetJournalCount() == 5){
             animator.SetTrigger("Change");
         }
-        else if(currentObjective == 6 && journalController.GetJournalCount() >5 && journalController.GetJournalCount() < 8){
+        else if(currentObjective == 7 && journalController.GetJournalCount() >5 && journalController.GetJournalCount() < 8){
             animator.SetTrigger("Change");
             currentObjective -= 1;
-        }else if(currentObjective == 6 && journalController.GetJournalCount() == 8 ){
+        }else if(currentObjective == 7 && journalController.GetJournalCount() == 8 ){
             animator.SetTrigger("Change");
         }
         
@@ -81,12 +82,16 @@ public class ObjectivesController : MonoBehaviour
 
     }
 
+    public void PlayAnimation(){
+        animator.SetTrigger("Change");
+    }
+
     public void ChangeText(){
         string newText = objectives[currentObjective];
-        if(currentObjective == 2){
+        if(currentObjective == 3){
             newText = newText + journalController.GetJournalCount() + "/5"; 
         }
-        if(currentObjective == 6){
+        if(currentObjective == 7){
             newText = newText + (journalController.GetJournalCount() - 5) + "/3";
         }
         objectiveText.text = newText;
@@ -97,25 +102,12 @@ public class ObjectivesController : MonoBehaviour
     }
 
     IEnumerator SpawnFirstSlime(){
-        playerController.SetCanAttack(false);
-        Debug.Log(currentObjective);
-        mainCamera.enabled = false;
-        timeMachineCamera.enabled = true;
-        timeMachineCanvas.SetActive(true);
-        yield return new WaitUntil(() => shouldUpdate);
-        yield return new WaitForSeconds(4f);
         slime.SetActive(true);
-        StartCoroutine(TimeMachineCamera());
         shouldUpdate = false;
+        yield return null;
     }
 
-    IEnumerator TimeMachineCamera(){
-        yield return new WaitForSeconds(1f);
-        timeMachineCanvas.SetActive(false);
-        mainCamera.enabled = true;
-        timeMachineCamera.enabled = false;
-        playerController.SetCanAttack(true);
-    }
+    
 
     IEnumerator PlayerMiniCamera(){
         playerController.SetCanAttack(false);
