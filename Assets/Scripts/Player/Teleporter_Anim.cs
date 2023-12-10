@@ -10,6 +10,10 @@ public class Teleporter_Anim : MonoBehaviour
 
     private Transform destination;
     private bool shouldExit = false;
+    public enum TeleporterType{
+        Entrance,
+        Exit,
+    }
     [SerializeField] private Transform destination1;
     [SerializeField] private Transform destination2;
     [SerializeField] private Transform destination3;
@@ -20,6 +24,7 @@ public class Teleporter_Anim : MonoBehaviour
 
     [SerializeField] private PlayerTeleport playerTeleport;
     
+    [SerializeField] private  TeleporterType teleporterType;
     
     [SerializeField] private bool trigger = false;
     [SerializeField] private bool instant = false;
@@ -41,10 +46,14 @@ public class Teleporter_Anim : MonoBehaviour
     // Called when another collider enters the trigger area
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(playerTeleport.CheckIfInside()){
+
+        if (other.CompareTag("Player")) // You can use a tag or layer to identify your player
+        {   
+            if(teleporterType == TeleporterType.Exit){
+            playerTeleport.setShouldRemove(true);
             destination = exit;
         }else{
-
+            playerTeleport.setShouldRemove(false);
             if(journalController.GetJournalCount() == 1){
                 destination = destination1;
             }else if(journalController.GetJournalCount() == 2){
@@ -55,8 +64,6 @@ public class Teleporter_Anim : MonoBehaviour
                 destination = destination4;
             }   
         }
-        if (other.CompareTag("Player")) // You can use a tag or layer to identify your player
-        {   
             if(trigger){
                 TipPopout.Create(transform.position, "Teleport(E)",8f, new Color(1, 1, 1),1);
             }

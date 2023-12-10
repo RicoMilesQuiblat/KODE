@@ -39,6 +39,8 @@ public class EnemyController : MonoBehaviour
     public bool isFlipped = false;
     private Scene currentScene;
     public EnemySpawner enemySpawner;
+
+    [SerializeField] private JournalController journalController;
     
 
     public PlayerController playerController;
@@ -110,23 +112,27 @@ public class EnemyController : MonoBehaviour
                 health = 50f;
                 expDropped = 500f;
                 damage = 15f;
+                willRespawn = false;
                 break;
             case EnemyType.GoblinBoss:
                 health = 250f;
                 expDropped = 2000f;
                 damage = 150f;
+                willRespawn = false;
                 break;
             case EnemyType.DragonBoss:
                 health = 1000f;
                 expDropped = 20000f;
                 damage = 600f;
                 moveSpeed = 1500f;
+                willRespawn = false;
                 break;
             case EnemyType.GolemBoss:
                 health = 5000f;
                 expDropped = 200000f;
                 damage = 2500f;
                 moveSpeed = 2000f;
+                willRespawn = false;
                 break;
 
             
@@ -173,12 +179,15 @@ public class EnemyController : MonoBehaviour
         
         playerController.GainExp(expDropped);
         if(scrollController){
-            scrollController.DropScroll(dropPosition);
+                scrollController.DropScroll(dropPosition);
             Destroy(gameObject);
         }else{
-            int number = Random.Range(0, 2);
-            if(number == 0){
-                mazeDropController.DropMaze(dropPosition);
+            if(journalController.GetJournalCount() < 5){
+
+                int number = Random.Range(0, 2);
+                if(number == 0){
+                    mazeDropController.DropMaze(dropPosition);
+                }   
             }
             enemySpawner.DieAndSpawn(gameObject, startPosition, willRespawn);
 

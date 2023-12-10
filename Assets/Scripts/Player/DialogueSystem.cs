@@ -90,7 +90,7 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
-            if(currentObjective == 0 || currentObjective == 1){
+            if(currentObjective == 0 || currentObjective == 1 || currentObjective == 4){
                ChangeObjective();
             }
             ResetCameraFocus();
