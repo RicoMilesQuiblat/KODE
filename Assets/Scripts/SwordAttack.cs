@@ -13,6 +13,7 @@ public class SwordAttack : MonoBehaviour
     public Collider2D swordCollider;
     public float knockbackForce = 500f;
     public Scene currentScene;
+    private float lastDamage;
 
     [SerializeField]
     private float damage = 2f;
@@ -23,6 +24,10 @@ public class SwordAttack : MonoBehaviour
 
     public void RemoveDamage(float level){
         damage -= 1 + (level / 10);
+    }
+    public void GodMode(){
+        lastDamage = damage;
+        damage = 9999999f;
     }
 
     private void Start(){
