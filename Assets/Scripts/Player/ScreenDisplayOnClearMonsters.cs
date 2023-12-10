@@ -36,8 +36,6 @@ public class ScreenDisplayOnClearMonsters : MonoBehaviour
             if (PopScreen != null)
             {
                 PopScreen.SetActive(true);
-                cloud.SetActive(false);
-                block.SetActive(false); 
             }
 
             if (camSwitch && CameraToEdit != null)
