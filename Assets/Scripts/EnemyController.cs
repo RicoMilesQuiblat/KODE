@@ -40,9 +40,11 @@ public class EnemyController : MonoBehaviour
     private Scene currentScene;
     public EnemySpawner enemySpawner;
 
+    [SerializeField] private GameObject afterMazeCollider;
+
     [SerializeField] private ObjectivesController objectivesController;
     [SerializeField] private JournalController journalController;
-    
+    public AfterBoss afterBoss;
 
     public PlayerController playerController;
     private bool canMove = true;
@@ -50,6 +52,7 @@ public class EnemyController : MonoBehaviour
     private Vector2 startPosition;
     public float expDropped;
     private bool willRespawn;
+     public GameObject mazeEntrance;
     public MazeDropController mazeDropController;
    
     public float Health{
@@ -180,22 +183,26 @@ public class EnemyController : MonoBehaviour
         
         playerController.GainExp(expDropped);
         if(enemyType == EnemyType.SlimeBoss){
+            DropMaze(dropPosition);
+            afterBoss.StartAfterBoss();
             objectivesController.ChangeObjective();
+            
         }
+
         if(scrollController){
                 scrollController.DropScroll(dropPosition);
-            Destroy(gameObject);
+           
         }else{
             if(journalController.GetJournalCount() < 5){
 
                 int number = Random.Range(0, 2);
                 if(number == 0){
-                    mazeDropController.DropMaze(dropPosition);
+                    DropMaze(dropPosition);
                 }   
             }
-            enemySpawner.DieAndSpawn(gameObject, startPosition, willRespawn);
 
         }
+            enemySpawner.DieAndSpawn(gameObject, startPosition, willRespawn);
         
     }
 
@@ -222,6 +229,30 @@ public class EnemyController : MonoBehaviour
                 }
               }
         }
+    }
+     public void DropMaze(Vector2 dropPosition){
+            if(!CheckIsActive()){
+            mazeEntrance.SetActive(true);
+            mazeEntrance.transform.position = dropPosition;
+            }
+            
+        
+    }
+
+    public bool CheckIsActive(){
+        return mazeEntrance.activeSelf;
+    }
+
+    private IEnumerator spawnAfterMazeCollider(){
+        Debug.Log("kapoy");
+        yield return new WaitForSeconds(2f);
+         Debug.Log("kapoy");
+        afterMazeCollider.SetActive(true);
+
+    }
+
+    public void ReduceDamageBuff(){
+        damage -= damage * 0.3f;
     }
 
     public Detection Detection

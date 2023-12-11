@@ -44,7 +44,6 @@ public class ToBattle : MonoBehaviour
 
     public void Initialize(){
         Debug.Log(mainCamera.enabled);
-        batlleController.Initialize();
         battleCamera.enabled = true;
         Debug.Log(battleCamera.enabled);
         playerHP.SetActive(true);

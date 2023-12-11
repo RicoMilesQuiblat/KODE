@@ -17,9 +17,10 @@ public class ObjectivesController : MonoBehaviour
         "Collect Journals ",
         "Explore the surrounding area",
         "Defeat the Slime Boss",
+        "Escape the Maze",
         "Go back to the time machine",
-        "Find the goblins",
-        "Follow the footsteps",
+        "Find the goblins ",
+        "Kill the goblin boss",
         "Head back to the time machine"
     };
     public Text objectiveText;
@@ -44,8 +45,11 @@ public class ObjectivesController : MonoBehaviour
     public GameObject subQuest;
     public bool firstCompletion = false;
     private bool shouldUpdate = false;
+     [SerializeField] private PlayerTeleport playerTeleport;
     [SerializeField] private GameObject cutscene3;
     [SerializeField] private GameObject chapter2StartCollider;
+    [SerializeField] private GameObject goblinBoss;
+    [SerializeField] private GameObject cutscene5;
 
     public void setShouldUpdate(bool should){   
         shouldUpdate = should;
@@ -74,16 +78,18 @@ public class ObjectivesController : MonoBehaviour
             slimeBoss.SetActive(true);
             cutscene3.SetActive(true);
         }
-        else if(currentObjective == 7 && journalController.GetJournalCount() >5 && journalController.GetJournalCount() < 8){
-            animator.SetTrigger("Change");
-            currentObjective -= 1;
-        }else if(currentObjective == 7 && journalController.GetJournalCount() == 8 ){
-            animator.SetTrigger("Change");
-        }
-        
-        if(currentObjective == 5){
+
+        else if(currentObjective == 6){
             chapter2StartCollider.SetActive(true);
         }
+        else if(currentObjective == 8 && journalController.GetJournalCount() >5 && journalController.GetJournalCount() < 8){
+            animator.SetTrigger("Change");
+            currentObjective -= 1;
+        }else if(currentObjective == 8 && journalController.GetJournalCount() == 8 ){
+            animator.SetTrigger("Change");
+            goblinBoss.SetActive(true);
+            cutscene5.SetActive(true);        }
+        
         animator.SetTrigger("Change");
         
         currentObjective += 1;
@@ -100,7 +106,7 @@ public class ObjectivesController : MonoBehaviour
         if(currentObjective == 3){
             newText = newText + journalController.GetJournalCount() + "/5"; 
         }
-        if(currentObjective == 7){
+        if(currentObjective == 8){
             newText = newText + (journalController.GetJournalCount() - 5) + "/3";
         }
         objectiveText.text = newText;

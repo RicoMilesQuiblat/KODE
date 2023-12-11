@@ -22,6 +22,14 @@ public class SwordAttack : MonoBehaviour
         damage += (1 * previousLevel) + (level / 10);
     }
 
+    public void DamageBuff(float add, string type){
+        if(type == "+"){
+            damage += add;
+        }else{
+            damage *= add;
+        }
+    }
+
     public void RemoveDamage(float level){
         damage -= 1 + (level / 10);
     }
@@ -94,7 +102,6 @@ public class SwordAttack : MonoBehaviour
         {
             
             EnemyController enemy = other.GetComponent<EnemyController>();
-
             if (enemy != null)
             {
                 enemy.Health -= damage;

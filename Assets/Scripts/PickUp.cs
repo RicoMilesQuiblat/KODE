@@ -6,33 +6,57 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
 
+    public enum PickupType {
+        scroll,
+        add,
+        minus,
+        multiply,
+        divide,
+        modulo,
+        greaterThan,
+        lessThan,
+        greaterThanOrEqual,
+        lesserThanOrEqual,
+        equal,
+        notEqual,
+        and,
+        or,
+        not
+    }
+
+    public PickupType pickupType;
     public JournalController journalController;
     public ObjectivesController objectivesController;
 
-    public ObjectivesController ObjectivesController
-    {
-        get => default;
-        set
-        {
-        }
-    }
+    public ObjectivesController ObjectivesController;
 
-    public JournalController JournalController
-    {
-        get => default;
-        set
-        {
-        }
-    }
+    public PlayerController playerController;
+    public JournalController JournalController;
+    public GameObject firstDialogue;
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Player"){
-            Debug.Log("pickup");
-            journalController.AddPage();
-            objectivesController.ChangeObjective();
+            if(pickupType == PickupType.scroll){
+                if(journalController.GetJournalCount() == 0){
+                    firstDialogue.SetActive(true);
+                }
+                Debug.Log("pickup");
+                journalController.AddPage();
+                objectivesController.ChangeObjective();
+                Destroy(gameObject);
                
-            Destroy(gameObject);
+            }else{
+                switch(pickupType){
+                    case PickupType.greaterThan:
+                        playerController.Debuffs(0);
+                        break;
+                    case PickupType.lessThan:
+                        playerController.Debuffs(1);
+                        break;
+                }
+                gameObject.SetActive(false);
+            }
             }
         }
     }

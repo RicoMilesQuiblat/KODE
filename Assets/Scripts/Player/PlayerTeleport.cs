@@ -8,6 +8,10 @@ public class PlayerTeleport : MonoBehaviour
     private GameObject currentTeleporter;
     [SerializeField] private GameObject teleporter;
     [SerializeField] private bool shouldRemove = false;
+    [SerializeField] private bool shouldUpdateObjective = false;
+    [SerializeField] private ObjectivesController objectivesController;
+
+    public PlayerController playerController;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E)){
@@ -15,6 +19,7 @@ public class PlayerTeleport : MonoBehaviour
                 transform.position = currentTeleporter.GetComponent<Teleporter_Anim>().GetDestination().position;
                 if(shouldRemove){
                     teleporter.SetActive(false);
+                    playerController.GainExp(300f);
                 }
             }
         }
@@ -36,6 +41,9 @@ public class PlayerTeleport : MonoBehaviour
 
     public void setShouldRemove(bool set){
         shouldRemove = set;
+    }
+    public void setShouldUpdate(bool set){
+        shouldUpdateObjective = set;
     }
  
 }

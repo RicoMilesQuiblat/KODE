@@ -21,6 +21,8 @@ public class DialogueSystem : MonoBehaviour
 
     [SerializeField] private GameObject objectivesText;
     [SerializeField] private PlayerController playerController;
+
+    [SerializeField] private GameObject goblins;
     private bool dialogueTriggered = false;
 
     private float defaultOrthoSize = 8f;
@@ -95,9 +97,13 @@ public class DialogueSystem : MonoBehaviour
             if(currentObjective == 0 || currentObjective == 1 || currentObjective == 4){
                ChangeObjective();
             }
+            if(currentObjective == 7){
+                objectivesController.ChangeObjective();
+            }
             ResetCameraFocus();
         }
         playerController.SetCanAttack(true);
+        goblins.SetActive(false);
     }
 
 
@@ -172,7 +178,7 @@ public class DialogueSystem : MonoBehaviour
             
             Debug.Log("Starting dialogue due to trigger.");
             dialogueTriggered = true; 
-            dialogueTriggerArea.enabled = false; 
+            dialogueTriggerArea.enabled = true; 
             StartDialogue();
         }
     }

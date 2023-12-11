@@ -98,9 +98,7 @@ public class FirstSlimeDialogue : MonoBehaviour
         }else if(currentDialogue == 4){
             chapter2StartDialogueController.shouldUpdate = true;
         }
-        if(batlleController.win == true){
-            batlleController.shouldSwitch = true;
-        }
+       
         objectivesController.setShouldUpdate(true);
         
         currentDialogue++;

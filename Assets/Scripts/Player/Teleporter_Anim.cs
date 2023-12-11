@@ -13,6 +13,7 @@ public class Teleporter_Anim : MonoBehaviour
     public enum TeleporterType{
         Entrance,
         Exit,
+        FinalExit,
     }
     [SerializeField] private Transform destination1;
     [SerializeField] private Transform destination2;
@@ -58,7 +59,8 @@ public class Teleporter_Anim : MonoBehaviour
                 if(teleporterType == TeleporterType.Exit){
                     playerTeleport.setShouldRemove(true);
                     destination = exit;
-                }else{
+                }
+                else{
                     playerTeleport.setShouldRemove(false);
                     if(journalController.GetJournalCount() == 1){
                         destination = destination1;
@@ -73,6 +75,10 @@ public class Teleporter_Anim : MonoBehaviour
             }
             
             if(trigger){
+                if(teleporterType == TeleporterType.Exit){
+                    playerTeleport.setShouldRemove(true);
+                    destination = exit;
+                }
                 TipPopout.Create(transform.position, "Teleport(E)",8f, new Color(1, 1, 1),1);
             }
             

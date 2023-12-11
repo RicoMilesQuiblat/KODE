@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.Net.NetworkInformation;
 
 public class Card : MonoBehaviour
 {
@@ -14,16 +15,19 @@ public class Card : MonoBehaviour
     public string cardIdentifier;
     static int ctr = 0;
     static string temp;
+    private int completed = 0;
     void Start()
     {
         prefabObject = Instantiate(backPrefab, transform.position, Quaternion.identity);
         prefabObject.transform.parent = transform;
         prefabObject.SetActive(true);
-        backPrefab.SetActive(true);
-        facePrefab.SetActive(false);
+        backPrefab.SetActive(false);
+        facePrefab.SetActive(true);
+        StartCoroutine(bali());
         coroutineAllowed = true;
-        facedUp = false;
+        facedUp = true;
     }
+   
 
     private void OnMouseDown()
     {
@@ -38,6 +42,12 @@ public class Card : MonoBehaviour
         }
     }   
 
+    private IEnumerator bali(){
+        yield return new WaitForSeconds(3f);
+        backPrefab.SetActive(true);
+        facePrefab.SetActive(false);
+        facedUp = false;
+    }
     private IEnumerator RotateCard()
     {
         coroutineAllowed = false;
@@ -106,11 +116,13 @@ public class Card : MonoBehaviour
     {
         Card[] allCards = GameObject.FindObjectsOfType<Card>();
 
+
         foreach (Card card in allCards)
         {
             if (card.facedUp)
             {
                 card.StartCoroutine(card.FlipBack());
+                
             }
         }
     }
@@ -125,6 +137,7 @@ public class Card : MonoBehaviour
             {
                 Destroy(card.gameObject); // Destroy the GameObject associated with the Card script
             }
+            
         }
     }
 

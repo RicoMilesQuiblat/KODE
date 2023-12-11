@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;  
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
     private float lives = 3f;
     public float health;
 
+    private bool canMove = true;
 
     private void Awake(){
         currentScene = SceneManager.GetActiveScene();
@@ -110,6 +112,8 @@ public class PlayerController : MonoBehaviour
     }
     public void Update()
     {   
+        if(canMove){
+            
         if(Input.GetKeyDown(KeyCode.G)){
             swordAttack.GodMode();
             maxHP = 999999999f;
@@ -202,6 +206,7 @@ public class PlayerController : MonoBehaviour
             slider.value = health;
             
             
+        }
         }
         if(!isAlive){
            LowAnim.lowhpscreenCLOSE();
@@ -417,6 +422,31 @@ private void CheckForControlSchemeChange()
     }
 }
 
+public void Buffs(int num){
+       
+    }
+
+public void Debuffs(int num){
+    if(num == 0){
+        StartCoroutine(CantMove());
+    }else if(num == 1){
+        StartCoroutine(DecreaseMoveSpeed());
+    }
+}
+
+private IEnumerator CantMove(){
+    canMove = false;
+    yield return new WaitForSeconds(5f);
+    canMove = true;
+}
+
+private IEnumerator DecreaseMoveSpeed(){
+    float previousMoveSpeed = moveSpeed;
+    moveSpeed -= 30f;
+    yield return new WaitForSeconds(10f);
+    moveSpeed = previousMoveSpeed;
+
+}
 
 
 
