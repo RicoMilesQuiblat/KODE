@@ -232,6 +232,7 @@ public class EnemyController : MonoBehaviour
     }
      public void DropMaze(Vector2 dropPosition){
             if(!CheckIsActive()){
+                Debug.Log("on ra ");
             mazeEntrance.SetActive(true);
             mazeEntrance.transform.position = dropPosition;
             }

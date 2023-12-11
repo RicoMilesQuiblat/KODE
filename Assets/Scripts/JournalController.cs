@@ -20,6 +20,10 @@ public class JournalController : MonoBehaviour
    public GameObject page6;
    public GameObject page7;
    public GameObject page8;
+   public GameObject page9;
+   public GameObject page10;
+   public GameObject page11;
+   public GameObject page12;
 
    private List<GameObject> allPages = new List<GameObject>();
 
@@ -41,6 +45,10 @@ public class JournalController : MonoBehaviour
         allPages.Add(page6);
         allPages.Add(page7);
         allPages.Add(page8);
+        allPages.Add(page9);
+        allPages.Add(page10);
+        allPages.Add(page11);
+        allPages.Add(page12);
     }
     public void DisplayPage(){
         Debug.Log(pages.Count);

@@ -9,8 +9,8 @@ public class MazeDropController : MonoBehaviour
     // Update is called once per frame
     public void DropMaze(Vector2 dropPosition){
             if(!CheckIsActive()){
-            mazeEntrance.SetActive(true);
-            mazeEntrance.transform.position = dropPosition;
+                mazeEntrance.SetActive(true);
+                mazeEntrance.transform.position = dropPosition;
             }
             
         
