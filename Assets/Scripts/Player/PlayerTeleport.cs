@@ -6,12 +6,16 @@ using UnityEngine;
 public class PlayerTeleport : MonoBehaviour
 {
     private GameObject currentTeleporter;
-
+    [SerializeField] private GameObject teleporter;
+    [SerializeField] private bool shouldRemove = false;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E)){
             if(currentTeleporter!=null && currentTeleporter.GetComponent<Teleporter_Anim>().GetDestination().position !=null){
                 transform.position = currentTeleporter.GetComponent<Teleporter_Anim>().GetDestination().position;
+                if(shouldRemove){
+                    teleporter.SetActive(false);
+                }
             }
         }
     }
@@ -29,4 +33,9 @@ public class PlayerTeleport : MonoBehaviour
             }
         }
     }
+
+    public void setShouldRemove(bool set){
+        shouldRemove = set;
+    }
+ 
 }

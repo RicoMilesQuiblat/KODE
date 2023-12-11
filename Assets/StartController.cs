@@ -11,6 +11,7 @@ public class StartController : MonoBehaviour
     public GameObject footsteps;
     public GameObject Boss2Collider;
 
+    public GameObject objectiveText;
     // Start is called before the first frame update
     void Start()
     {

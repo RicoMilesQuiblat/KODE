@@ -15,7 +15,7 @@ public class TImeMachineDialogue : MonoBehaviour
         "Oh, this is not good. Not good at all. What kind of temporal turbulence did I stumble upon?",
         "Blast it! I never anticipated a detour to the 14th century. The recalibration must have gone haywire. This wasn't part of the plan.",
         "Well, looks like I'll need to improvise a way out of this mess. Time to channel my inner Renaissance inventor and figure out how to fix this contraptions"
-    };
+    };  
 
     public ObjectivesController ObjectivesController
     {
