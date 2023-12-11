@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OeprationGameController : MonoBehaviour
@@ -14,7 +16,7 @@ public class OeprationGameController : MonoBehaviour
     public TMP_Text text;
 
     [SerializeField]
-    private GameObject btn;
+    private GameObject btn, btnLeave;
     private int num;
     private int ctr = 0;
     private Boolean isLess, isGreat, isEqual = false;
@@ -50,11 +52,13 @@ public class OeprationGameController : MonoBehaviour
                 isEqual = true;
                 text.text = string.Format("if (guess == number) {{\n\tprintf(\"You guessed correctly, the number was {0}. It took you {1} guess(es). Do you want to play again?\");\n}}", guess, ctr);
                 input.gameObject.SetActive(false);
+
             } else {
                 text.text = string.Format("else if (guess == number) {{\n\tprintf(\"You guessed correctly, the number was {0}. It took you {1} guess(es). Do you want to play again?\");\n}}", guess, ctr);
                 input.gameObject.SetActive(false);
             }
             btn.SetActive(true);
+            btnLeave.SetActive(true);
         } else if(guess < num) {
             text.text = "";
             if(ctr == 1 || isLess) {
@@ -80,9 +84,15 @@ public class OeprationGameController : MonoBehaviour
         text.alignment = TextAlignmentOptions.Center;
         ctr = 0;
         btn.SetActive(false);
+        btnLeave.SetActive(false);
         isEqual = false;
         isLess = false;
         isGreat = false;
         input.gameObject.SetActive(true);
+    }
+
+    public void LeaveGame() {
+        //diri mahuman ang duwa rico
+        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 }

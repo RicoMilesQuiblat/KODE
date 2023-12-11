@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Card : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Card : MonoBehaviour
 
     private bool coroutineAllowed, facedUp;
     public string cardIdentifier;
-    static int ctr = 0;
+    static int ctr, ctr2 = 0;
     static string temp;
     void Start()
     {
@@ -123,7 +124,12 @@ public class Card : MonoBehaviour
         {
             if (card.facedUp)
             {
-                Destroy(card.gameObject); // Destroy the GameObject associated with the Card script
+                Destroy(card.gameObject); 
+                ctr2++;
+                if(ctr2 == 5) {
+                    //diri mahuman ang duwa rico
+                    //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+                }
             }
         }
     }
