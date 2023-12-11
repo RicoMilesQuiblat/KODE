@@ -187,6 +187,8 @@ public class EnemyController : MonoBehaviour
             afterBoss.StartAfterBoss();
             objectivesController.ChangeObjective();
             
+        }else if(enemyType == EnemyType.GoblinBoss){
+            objectivesController.ChangeObjective();
         }
 
         if(scrollController){

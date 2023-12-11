@@ -21,7 +21,8 @@ public class ObjectivesController : MonoBehaviour
         "Go back to the time machine",
         "Find the goblins ",
         "Kill the goblin boss",
-        "Head back to the time machine"
+        "Head back to the time machine",
+        "Find foods"
     };
     public Text objectiveText;
 
